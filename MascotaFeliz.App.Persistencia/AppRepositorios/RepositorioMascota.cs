@@ -1,16 +1,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using MascotaFeliz.App.Dominio;
+using static MascotaFeliz.App.Persistencia.RepositorioPropietario;
 
 namespace MascotaFeliz.App.Persistencia
 {
     public class RepositorioMascota : IRepositorioMascota
     {
+        static public List<Mascota> mascotas;
         private readonly AppContext _appContext;
 
         public RepositorioMascota(AppContext appContext)
         {
             _appContext=appContext;
+        }
+
+        public RepositorioMascota()
+        {
+            mascotas = new List<Mascota>()
+            {
+                new Mascota{Id=1,NombreMascota="Pepito",Raza="Bull Dog",TipoAnimal=Tipo.Canino,Propietario=RepositorioPropietario.propietarios[0]},
+                new Mascota{Id=2,NombreMascota="Luna",Raza="Criollo",TipoAnimal=Tipo.Felino,Propietario=RepositorioPropietario.propietarios[1]},
+                new Mascota{Id=3,NombreMascota="Tom",Raza="Persa",TipoAnimal=Tipo.Felino,Propietario=RepositorioPropietario.propietarios[2]},
+                new Mascota{Id=4,NombreMascota="Pelos",Raza="Golden Retriever",TipoAnimal=Tipo.Canino,Propietario=RepositorioPropietario.propietarios[3]}
+            };
         }
         Mascota IRepositorioMascota.AddMascota(Mascota mascota)
         {
@@ -30,7 +43,8 @@ namespace MascotaFeliz.App.Persistencia
 
         IEnumerable<Mascota> IRepositorioMascota.GetAllMascotas()
         {
-            return _appContext.Mascotas;
+            //return _appContext.Mascotas;
+            return mascotas;
         }
 
         Mascota IRepositorioMascota.GetMascota(int IdMascota)
