@@ -1,0 +1,126 @@
+﻿@page
+@model MascotaFeliz.App.Presentacion.Pages.ListModel
+@{
+    Layout = null;
+    ViewData["Title"] = "Registro de Mascotas";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/listStyle.css" />
+    <title>Registro de Visitas</title>
+</head>
+
+<body>
+    <header>
+        <a id="nav_header_logo" asp-page="/RegisterPages/vetView"><img src="/lib/logoMascFeliz.png"
+                alt="Logo Mascota Feliz" />
+        </a>
+        <a id="nav_header_text" asp-page="/RegisterPages/vetView">
+            <h1>Mascota Feliz</h1>
+        </a>
+
+        <nav>
+            <a id="nav_header_visit" asp-page="/RegisterPages/visitRegister">Registro Visitas</a>
+            <a id="nav_header_petregister" href="/html/PetRegister.html">Registro de Mascotas</a>
+            <a id="nav_header_profile" href="#">Perfil</a>
+            <link rel="icon" href="icoMascFeliz.ico" />
+        </nav>
+    </header>
+
+    <h2>Veterinarios:</h2>
+    <table class="table">
+        <tr>
+            <th>IDENTIFICACIÓN</th>
+            <th>NOMBRE</th>
+            <th>APELLIDOS</th>
+            <th>TELEFONO</th>
+            <th>TARJETA PROFESIONAL</th>
+        </tr>
+        @foreach (var veterinario in Model.Veterinarios)
+        {
+            <tr>
+                <td>@veterinario.Identificacion</td>
+                <td>@veterinario.Nombre</td>
+                <td>@veterinario.Apellidos</td>
+                <td>@veterinario.Telefono</td>
+                <td>@veterinario.TarjetaProfesional</td>
+            </tr>
+        }
+    </table>
+    <h2>Propietarios:</h2>
+    <table class="table">
+        <tr>
+            <th>IDENTIFICACIÓN</th>
+            <th>NOMBRE</th>
+            <th>APELLIDOS</th>
+            <th>TELEFONO</th>
+            <th>DIRECCIÓN</th>
+        </tr>
+        @foreach (var propietario in Model.Propietarios)
+        {
+            <tr>
+                <td>@propietario.Identificacion</td>
+                <td>@propietario.Nombre</td>
+                <td>@propietario.Apellidos</td>
+                <td>@propietario.Telefono</td>
+                <td>@propietario.Direccion</td>
+            </tr>
+        }
+    </table>
+    <h2>Mascotas:</h2>
+    <table class="table">
+        <tr>
+            <th>PET NOMBRE</th>
+            <th>RAZA</th>
+            <th>TIPO DE ANIMAL</th>
+            <th>DUEÑO</th>
+        </tr>
+        @foreach (var mascota in Model.Mascotas)
+        {
+            <tr>
+                <td>@mascota.NombreMascota</td>
+                <td>@mascota.Raza</td>
+                <td>@mascota.TipoAnimal</td>
+                <td>@mascota.Propietario.Nombre</td>
+            </tr>
+        }
+    </table>
+    <h2>Visitas:</h2>
+    <table class="table">
+        <tr>
+            <th>PET NOMBRE</th>
+            <th>VETERINARIO</th>
+            <th>FECHA</th>
+            <th>TEMPERATURA</th>
+            <th>PESO</th>
+            <th>FRECUENCIA RESPIRATORIA</th>
+            <th>FRECUENCIA CARDIACA</th>
+            <th>ESTADO DE ÁNIMO</th>
+            <th>RECOMENDACIONES</th>
+        </tr>
+        @foreach (var visita in Model.Visitas)
+        {
+            <tr>
+                <td>@visita.Mascota.NombreMascota</td>
+                <td>@visita.Veterinario.Nombre</td>
+                <td>@visita.Fecha</td>
+                <td>@visita.Temperatura °C</td>
+                <td>@visita.Peso Kg</td>
+                <td>@visita.FrecuenciaRespiratoria x Minuto</td>
+                <td>@visita.FrecuenciaCardiaca x Minuto</td>
+                <td>@visita.EstadoDeAnimo</td>
+                <td>@visita.Recomendaciones</td>
+            </tr>
+        }
+    </table>
+
+
+
+    <footer>
+        <article>
+            <p><i>© 2021 - Designed and Developed by InMotion</i></p>
+        </article>
+    </footer>
+
+
+</body>

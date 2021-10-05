@@ -1,0 +1,134 @@
+﻿@page
+@model MascotaFeliz.App.Presentacion.Pages.VisitRegisterModel
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Registro de Visitas";
+}
+<head>
+    <link rel="stylesheet" href="~/css/visitRegStyle.css"/>
+    <title>Registro de Visitas - Mascota Feliz</title>
+</head>
+
+
+<body>
+    <header>
+        <a id="nav_header_logo" asp-page="/RegisterPages/vetView"><img src="/lib/logoMascFeliz.png" alt="Logo Mascota Feliz"/>
+        </a>
+        <a id="nav_header_text" asp-page="/RegisterPages/vetView">
+            <h1>Mascota Feliz</h1>
+        </a>
+
+        <nav>
+            <a id="nav_header_visit" asp-page="/RegisterPages/visitRegister">Registro Visitas</a>
+            <a id="nav_header_petregister" asp-page="/RegisterPages/List">Registro de Mascotas</a>
+            <a id="nav_header_profile" href="#">Perfil</a>
+            <link rel="icon" href="icoMascFeliz.ico" />
+        </nav>
+    </header>
+
+    <main>
+        <form id="main_form" action="#">
+            <h1 id="title_propietary">Registre aquí los datos del propietario de la mascota</h1>
+            <div class="div_propietary">
+                <label id="label_user_name" for="user_name" >
+                    <p id="p_name">Nombres</p>
+                    <input type="text" id="user_name" placeholder="Ingrese su nombre" autocomplete="name" required />
+                </label>
+                <label for="user_lastname">
+                    <p id="p_lastname">Apellidos</p>
+                    <input type="text" id="user_lastname" placeholder="Ingrese sus apellidos" autocomplete="lastname"
+                        required />
+                </label>
+                <label for="identification">
+                    <p id="p_id">Identificación</p>
+                    <input type="number" id="identification" placeholder="Ingrese su numero de identificación"
+                        autocomplete="identification" required />
+                </label>
+                <label for="phone">
+                    <p id="p_phone">Teléfono</p>
+                    <input type="number" id="phone" placeholder="Ingrese su numero de telefono" autocomplete="phone"
+                        required />
+                </label>
+                <label for="address">
+                    <p id="p_address">Dirección de residencia</p>
+                    <input type="text" id="address" placeholder="Ingrese su dirección de residencia"
+                        autocomplete="address" required />
+                </label>
+
+
+            </div>
+
+            <h1 id="tittle_petReg">Registre aquí los datos de la mascota</h1>
+            <div class="div_pet">
+
+                <label for="pet_name">
+                    <p id="p_pet_name">Nombre de la mascota</p>
+                    <input type="text" id="pet_name" placeholder="Ingrese el nombre de la mascota"
+                        autocomplete="pet_name" required />
+                </label>
+                <label id="inside_container" for="temperature">
+                    <p id="p_pet_temperature">Temperatura °C</p>
+                    <input type="number" id="temperature" placeholder="Valor (#)" required />
+                </label>
+                <label for="breatingFrequency">
+                    <p id="p_pet_bretFrequency">Frecuencia respiratoria</p>
+                    <input type="number" id="breatingFrequency" required />
+                </label>
+                <label id="inside_container" for="type">
+                    <p id="p_pet_type">Tipo</p>
+                    <select id="type" name="type">
+                        <option value="felino">Felino</option>
+                        <option value="canino">Canino</option>
+                    </select>
+                </label>
+                <label for="heartRate">
+                    <p id="p_pet_heartRate">Frecuencia cardiaca</p>
+                    <input type="number" id="heartRate" required />
+                </label>
+                <label id="inside_container" for="weight">
+                    <p id="p_pet_weight">Peso</p>
+                    <input type="number" id="weight" autocomplete="weight" required />
+                </label>
+                <label for="dateVisited">
+                    <p id="p_pet_date">Fecha de visita</p>
+                    <input type="date" id="dateVisited" required />
+                </label>
+                <label id="inside_container" for="mood">
+                    <p id="p_pet_mood">Estado de animo</p>
+                    <input type="text" id="mood" required />
+                </label>
+
+            </div>
+
+            <h1 id="tittle_professional">Recomendaciones y datos del profesional</h1>   
+            <div class="div_professional">
+                
+                <label for="profesionalID">
+                    <p id="p_professional_id">Identificación del profesional</p>
+                    <input type="text" id="profesionalID" placeholder="Ingrese su identificación de profesional"
+                        required />
+                </label>
+                <label for="recomendations">
+                    <p id="p_professional_recommendations">Recomendaciones</p>
+                    <textarea id="recomendations" rows="9" cols="90"></textarea>
+                </label>
+
+            </div>
+
+            <label for="save">
+                <button id="save_form" type="submit"><b>Guardar</b></button>
+            </label>
+        </form>
+
+    </main>
+
+    <footer>
+        <article>
+            <p><i>© 2021 - Designed and Developed by InMotion</i></p>
+        </article>
+    </footer>
+
+    
+
+</body>

@@ -1,5 +1,9 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿@page
+@model MascotaFeliz.App.Presentacion.Pages.VetViewModel
+@{
+    Layout = null;
+    ViewData["Title"] = "Veterinario";
+}
 
 <head>
     <meta charset="utf-8" />
@@ -7,26 +11,27 @@
     <title>@ViewData["Title"] - Mascota Feliz</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/vetStyle.css" />
-    @RenderSection("Styles", false)
+    
 </head>
 
 <body>
     <header>
-        <a id="nav_header_logo" asp-page="/_Layout.cshtml"><img src="/lib/logoMascFeliz.png" alt="Logo Mascota Feliz"/>
+        <a id="nav_header_logo" asp-page="/vetView"><img src="/lib/logoMascFeliz.png" alt="Logo Mascota Feliz"/>
         </a>
-        <a id="nav_header_text" asp-page="/_Layout.cshtml">
+        <a id="nav_header_text" asp-page="/vetView">
             <h1>Mascota Feliz</h1>
         </a>
 
         <nav>
-            <a id="nav_header_petregister" asp-page="/html/PetRegister.html">Registro de Mascotas</a>
-            <a id="nav_header_profile" asp-page="/RegisterPages/VetView">Login</a>
+            <a id="nav_header_visit" asp-page="/RegisterPages/visitRegister">Registro Visitas</a>
+            <a id="nav_header_petregister" asp-page="/RegisterPages/List">Registro de Mascotas</a>
+            <a id="nav_header_profile" href="#">Perfil</a>
             <link rel="icon" href="icoMascFeliz.ico" />
+
         </nav>
     </header>
 
-    <main role="main">
-        @RenderBody()
+    <main>
 
         <article class="main_article">
             <p>
@@ -59,12 +64,6 @@
         </article>
     </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-
-    @RenderSection("Scripts", required: false)
 </body>
-
 
 </html>
