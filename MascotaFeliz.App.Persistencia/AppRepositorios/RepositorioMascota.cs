@@ -25,6 +25,11 @@ namespace MascotaFeliz.App.Persistencia
                 new Mascota{Id=4,NombreMascota="Pelos",Raza="Golden Retriever",TipoAnimal=Tipo.Canino,Propietario=RepositorioPropietario.propietarios[3]}
             };
         }
+
+        public Mascota GetMascotaPorId(int mascotaId)
+        {
+            return mascotas.SingleOrDefault(m => m.Id ==mascotaId);
+        }
         Mascota IRepositorioMascota.AddMascota(Mascota mascota)
         {
             var mascotaAdicionado=_appContext.Mascotas.Add(mascota);

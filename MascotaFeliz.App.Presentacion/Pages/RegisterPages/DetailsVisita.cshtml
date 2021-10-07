@@ -1,0 +1,32 @@
+﻿@page
+@model MascotaFeliz.App.Presentacion.Pages.DetailsVisitaModel
+@{
+    Layout=null;
+}
+<h1>DETALLES DE LA VISITA</h1>
+<h2>Pet nombre: @Model.Visita.Mascota.NombreMascota</h2>
+<div>
+    Veterinario: @Model.Visita.Veterinario.Nombre
+</div>
+<div>
+    Fecha: @Model.Visita.Fecha
+</div>
+<div>
+    Temperatura: @Model.Visita.Temperatura °C
+</div>
+<div>
+    Peso:@Model.Visita.Peso Kg
+</div>
+<div>
+    Frecuencia respiratoria: @Model.Visita.FrecuenciaRespiratoria x Minuto
+</div>
+<div>
+    Frecuencia cardiaca: @Model.Visita.FrecuenciaCardiaca x Minuto
+</div>
+<div>
+    Estado de ánimo:@Model.Visita.EstadoDeAnimo 
+</div>
+<div>
+    Recomendaciones:@Model.Visita.Recomendaciones
+</div>
+<a asp-page="./List" class="btn-default">Lista de Visitas </a>

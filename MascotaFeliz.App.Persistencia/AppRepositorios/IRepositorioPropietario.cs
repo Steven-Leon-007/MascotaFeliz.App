@@ -13,5 +13,6 @@ namespace MascotaFeliz.App.Persistencia
         void DeletePropietario(int idPropietario);    
         Propietario GetPropietario(int idPropietario);
         //Medico AsignarMedico(int idPaciente, int idMedico); 
+        Propietario GetPropietarioPorId(int propietarioId);
     }
 }

@@ -10,5 +10,6 @@ namespace MascotaFeliz.App.Persistencia
         Veterinario UpdateVeterinario(Veterinario veterinario, int idVeterinario_original);
         void DeleteVeterinario(int IdVeterinario);
         Veterinario GetVeterinario(int IdVeterinario);
+        Veterinario GetVeterinarioPorId(int veterinarioId);
     }
 }

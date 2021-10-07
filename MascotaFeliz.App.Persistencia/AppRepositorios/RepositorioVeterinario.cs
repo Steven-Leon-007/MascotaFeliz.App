@@ -23,6 +23,10 @@ namespace MascotaFeliz.App.Persistencia
                 new Veterinario{Id=8,Identificacion="1125601020",Nombre="Daniel",Apellidos="Rosas Perez",Telefono="6452012",TarjetaProfesional="45820"}
             };
         }
+        public Veterinario GetVeterinarioPorId(int veterinarioId)
+        {
+            return veterinarios.SingleOrDefault(v => v.Id ==veterinarioId);
+        }
         Veterinario IRepositorioVeterinario.AddVeterinario(Veterinario veterinario)
         {
             var veterinarioAdicionado=_appContext.Veterinarios.Add(veterinario);

@@ -25,6 +25,11 @@ namespace MascotaFeliz.App.Persistencia
                 new Visita{Id=6,Mascota=RepositorioMascota.mascotas[0],Veterinario=RepositorioVeterinario.veterinarios[1], Fecha=new System.DateTime(2021,09,29),Temperatura=36,Peso=23,FrecuenciaRespiratoria=36,FrecuenciaCardiaca=110,EstadoDeAnimo="Tranquilo, alegre",Recomendaciones="Bañar cada 7 días. Continuar con los cuidados"}
             };
         }
+
+        public Visita GetVisitaPorId(int visitaId)
+        {
+            return visitas.SingleOrDefault(vi => vi.Id ==visitaId);
+        }        
         Visita IRepositorioVisita.AddVisita(Visita visita)
         {
             var visitaAdicionado=_appContext.Visitas.Add(visita);

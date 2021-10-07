@@ -44,6 +44,12 @@
                 <td>@veterinario.Apellidos</td>
                 <td>@veterinario.Telefono</td>
                 <td>@veterinario.TarjetaProfesional</td>
+                <td>
+                    <a class="btn btn-primary table-btn" asp-page="./DetailsVeterinario" asp-route-veterinarioId="@veterinario.Id">
+                    <i class="fas fa-info-circle"></i>
+                    Detalle 
+                    </a>
+                </td>
             </tr>
         }
     </table>
@@ -64,6 +70,12 @@
                 <td>@propietario.Apellidos</td>
                 <td>@propietario.Telefono</td>
                 <td>@propietario.Direccion</td>
+                <td>
+                    <a class="btn btn-primary table-btn" asp-page="./DetailsPropietario" asp-route-propietarioId="@propietario.Id">
+                    <i class="fas fa-info-circle"></i>
+                    Detalle 
+                    </a>
+                </td>
             </tr>
         }
     </table>
@@ -82,6 +94,12 @@
                 <td>@mascota.Raza</td>
                 <td>@mascota.TipoAnimal</td>
                 <td>@mascota.Propietario.Nombre</td>
+                <td>
+                    <a class="btn btn-primary table-btn" asp-page="./DetailsMascota" asp-route-mascotaId="@mascota.Id">
+                    <i class="fas fa-info-circle"></i>
+                    Detalle 
+                    </a>
+                </td> 
             </tr>
         }
     </table>
@@ -110,6 +128,12 @@
                 <td>@visita.FrecuenciaCardiaca x Minuto</td>
                 <td>@visita.EstadoDeAnimo</td>
                 <td>@visita.Recomendaciones</td>
+                <td>
+                    <a class="btn btn-primary table-btn" asp-page="./DetailsVisita" asp-route-visitaId="@visita.Id">
+                    <i class="fas fa-info-circle"></i>
+                    Detalle 
+                    </a>
+                </td>
             </tr>
         }
     </table>

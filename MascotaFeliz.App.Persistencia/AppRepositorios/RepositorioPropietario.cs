@@ -23,6 +23,11 @@ namespace MascotaFeliz.App.Persistencia
                 new Propietario{Id=4,Identificacion="1023434532",Nombre="Gloria",Apellidos="Chaparro Alvarez",Telefono="3143590845", Direccion="Cra 20 # 27-18"}
             };
         }
+        public Propietario GetPropietarioPorId(int propietarioId)
+        {
+            return propietarios.SingleOrDefault(p => p.Id ==propietarioId);
+        }
+
         Propietario IRepositorioPropietario.AddPropietario(Propietario propietario)
         {
             var propietarioAdicionado=_appContext.Propietarios.Add(propietario);
