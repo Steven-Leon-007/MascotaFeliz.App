@@ -27,11 +27,17 @@ namespace MascotaFeliz.App.Persistencia
         {
             return veterinarios.SingleOrDefault(v => v.Id ==veterinarioId);
         }
-        Veterinario IRepositorioVeterinario.AddVeterinario(Veterinario veterinario)
+        /*Veterinario IRepositorioVeterinario.AddVeterinario(Veterinario veterinario)
         {
             var veterinarioAdicionado=_appContext.Veterinarios.Add(veterinario);
             _appContext.SaveChanges();
             return veterinarioAdicionado.Entity;
+        }*/
+        public Veterinario AddVeterinario(Veterinario nuevoVeterinario)
+        {
+            nuevoVeterinario.Id=veterinarios.Max(r => r.Id)+1;
+            veterinarios.Add(nuevoVeterinario);
+            return nuevoVeterinario;
         }
 
         void IRepositorioVeterinario.DeleteVeterinario(int IdVeterinario)
@@ -55,7 +61,7 @@ namespace MascotaFeliz.App.Persistencia
 
         }
 
-        Veterinario IRepositorioVeterinario.UpdateVeterinario(Veterinario veterinario, int idVeterinario_original)
+        /*Veterinario IRepositorioVeterinario.UpdateVeterinario(Veterinario veterinario, int idVeterinario_original)
         {
             var veterinarioEncontrado=_appContext.Veterinarios.FirstOrDefault(v => v.Id == idVeterinario_original);
             if (veterinarioEncontrado==null)
@@ -70,6 +76,20 @@ namespace MascotaFeliz.App.Persistencia
                 
             }
             return veterinarioEncontrado;
+        }*/
+
+        public Veterinario UpdateVeterinario(Veterinario veterinarioActualizado)
+        {
+            var veterinario = veterinarios.SingleOrDefault(r => r.Id == veterinarioActualizado.Id);
+            if (veterinario!=null)
+            {
+                veterinario.Identificacion=veterinarioActualizado.Identificacion;
+                veterinario.Nombre=veterinarioActualizado.Nombre;
+                veterinario.Apellidos=veterinarioActualizado.Apellidos;
+                veterinario.Telefono=veterinarioActualizado.Telefono;
+                veterinario.TarjetaProfesional=veterinarioActualizado.TarjetaProfesional;
+            }
+            return veterinario;
         }
     }
 }

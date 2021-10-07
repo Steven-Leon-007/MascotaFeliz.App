@@ -2072,6 +2072,9 @@
       "MascotaFeliz.App.Dominio/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "System.ComponentModel.Annotations": "5.0.0"
+        },
         "compile": {
           "bin/placeholder/MascotaFeliz.App.Dominio.dll": {}
         },
@@ -7263,7 +7266,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\LORENA\\.nuget\\packages\\": {}
+    "C:\\Users\\Edinson García\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -7271,11 +7274,11 @@
       "projectUniqueName": "C:\\MascotaFeliz\\MascotaFeliz.App\\MascotaFeliz.App.Persistencia\\MascotaFeliz.App.Persistencia.csproj",
       "projectName": "MascotaFeliz.App.Persistencia",
       "projectPath": "C:\\MascotaFeliz\\MascotaFeliz.App\\MascotaFeliz.App.Persistencia\\MascotaFeliz.App.Persistencia.csproj",
-      "packagesPath": "C:\\Users\\LORENA\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\Edinson García\\.nuget\\packages\\",
       "outputPath": "C:\\MascotaFeliz\\MascotaFeliz.App\\MascotaFeliz.App.Persistencia\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\LORENA\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Edinson García\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.1"

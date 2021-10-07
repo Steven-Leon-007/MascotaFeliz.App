@@ -8,6 +8,7 @@
 <head>
     <link rel="stylesheet" href="~/css/listStyle.css" />
     <title>Registro de Visitas</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -47,12 +48,17 @@
                 <td>
                     <a class="btn btn-primary table-btn" asp-page="./DetailsVeterinario" asp-route-veterinarioId="@veterinario.Id">
                     <i class="fas fa-info-circle"></i>
-                    Detalle 
                     </a>
+                </td>
+                <td>
+                    <a class="btn btn-primary table-btn" asp-page="./EditVeterinario" asp-route-veterinarioId="@veterinario.Id">
+                    <i class="fas fa-address-book fa-lg" aria-hidden="true"></i>
+                </a>
                 </td>
             </tr>
         }
     </table>
+    <a asp-page=".\EditVeterinario" class="btn btn-primary">Adicionar Veterinario</a>
     <h2>Propietarios:</h2>
     <table class="table">
         <tr>
@@ -73,12 +79,17 @@
                 <td>
                     <a class="btn btn-primary table-btn" asp-page="./DetailsPropietario" asp-route-propietarioId="@propietario.Id">
                     <i class="fas fa-info-circle"></i>
-                    Detalle 
                     </a>
+                </td>
+                <td>
+                    <a class="btn btn-primary table-btn" asp-page="./EditPropietario" asp-route-propietarioId="@propietario.Id">
+                    <i class="fas fa-address-book fa-lg" aria-hidden="true"></i>
+                </a>
                 </td>
             </tr>
         }
     </table>
+    <a asp-page=".\EditPropietario" class="btn btn-primary">Adicionar Propietario</a>
     <h2>Mascotas:</h2>
     <table class="table">
         <tr>
@@ -97,12 +108,17 @@
                 <td>
                     <a class="btn btn-primary table-btn" asp-page="./DetailsMascota" asp-route-mascotaId="@mascota.Id">
                     <i class="fas fa-info-circle"></i>
-                    Detalle 
                     </a>
                 </td> 
+                <td>
+                    <a class="btn btn-primary table-btn" asp-page="./EditMascota" asp-route-mascotaId="@mascota.Id">
+                    <i class="fas fa-address-book fa-lg" aria-hidden="true"></i>
+                </a>
+                </td>
             </tr>
         }
     </table>
+    <a asp-page=".\EditMascota" class="btn btn-primary">Adicionar Mascota</a>
     <h2>Visitas:</h2>
     <table class="table">
         <tr>
@@ -131,13 +147,17 @@
                 <td>
                     <a class="btn btn-primary table-btn" asp-page="./DetailsVisita" asp-route-visitaId="@visita.Id">
                     <i class="fas fa-info-circle"></i>
-                    Detalle 
                     </a>
+                </td>
+                <td>
+                    <a class="btn btn-primary table-btn" asp-page="./EditVisita" asp-route-visitaId="@visita.Id">
+                    <i class="fas fa-address-book fa-lg" aria-hidden="true"></i>
+                </a>
                 </td>
             </tr>
         }
     </table>
-
+    <a asp-page=".\EditVisita" class="btn btn-primary">Adicionar Visita</a>
 
 
     <footer>

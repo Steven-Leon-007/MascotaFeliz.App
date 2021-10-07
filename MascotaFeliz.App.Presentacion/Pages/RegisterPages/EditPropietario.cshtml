@@ -1,0 +1,37 @@
+﻿@page
+@model MascotaFeliz.App.Presentacion.Pages.EditPropietarioModel
+@{
+    Layout = null;
+}
+<h1>EDICIÓN DATOS PROPIETARIO:</h1>
+<h2>Nombre: @Model.Propietario.Nombre</h2>
+<form method="post">
+    <input type="hidden" asp-for="Propietario.Id"/>
+    <div class="form-group">
+        <label asp-for="Propietario.Identificacion">Identificacion</label>
+        <input asp-for="Propietario.Identificacion" class="form-control">
+        <span class="text-danger" asp-validation-for="Propietario.Identificacion"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Propietario.Nombre">Nombre</label>
+        <input asp-for="Propietario.Nombre" class="form-control">
+        <span class="text-danger" asp-validation-for="Propietario.Nombre"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Propietario.Apellidos">Apellidos</label>
+        <input asp-for="Propietario.Apellidos" class="form-control">
+        <span class="text-danger" asp-validation-for="Propietario.Apellidos"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Propietario.Telefono">Telefono</label>
+        <input asp-for="Propietario.Telefono" class="form-control">
+        <span class="text-danger" asp-validation-for="Propietario.Telefono"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Propietario.Direccion">Direccion</label>
+        <input asp-for="Propietario.Direccion" class="form-control">
+        <span class="text-danger" asp-validation-for="Propietario.Direccion"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Grabar</button>
+</form>
+<a asp-page="./List" class="btn-default">Lista de Propietarios </a>

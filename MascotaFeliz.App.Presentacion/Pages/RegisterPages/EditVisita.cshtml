@@ -1,0 +1,57 @@
+﻿@page
+@model MascotaFeliz.App.Presentacion.Pages.EditVisitaModel
+@{
+    Layout = null;
+}
+<h1>EDICIÓN DATOS VISITA:</h1>
+<h2>ID: @Model.Visita.Id - @Model.Visita.Mascota.NombreMascota</h2>
+<form method="post">
+    <input type="hidden" asp-for="Visita.Id"/>
+    <div class="form-group">
+        <label asp-for="Visita.Mascota.NombreMascota">Nombre Pet</label>
+        <input asp-for="Visita.Mascota.NombreMascota" class="form-control">
+        <span class="text-danger" asp-validation-for="Visita.Mascota.NombreMascota"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Visita.Veterinario.Nombre">Veterinario</label>
+        <input asp-for="Visita.Veterinario.Nombre" class="form-control">
+        <span class="text-danger" asp-validation-for="Visita.Veterinario.Nombre"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Visita.Fecha">Fecha</label>
+        <input asp-for="Visita.Fecha" class="form-control">
+        <span class="text-danger" asp-validation-for="Visita.Fecha"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Visita.Temperatura">Temperatura</label>
+        <input asp-for="Visita.Temperatura" class="form-control">
+        <span class="text-danger" asp-validation-for="Visita.Temperatura"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Visita.Peso">Peso</label>
+        <input asp-for="Visita.Peso" class="form-control">
+        <span class="text-danger" asp-validation-for="Visita.Peso"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Visita.FrecuenciaRespiratoria">Frecuencia Respiratoria</label>
+        <input asp-for="Visita.FrecuenciaRespiratoria" class="form-control">
+        <span class="text-danger" asp-validation-for="Visita.FrecuenciaRespiratoria"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Visita.FrecuenciaCardiaca">Frecuencia Cardiaca</label>
+        <input asp-for="Visita.FrecuenciaCardiaca" class="form-control">
+        <span class="text-danger" asp-validation-for="Visita.FrecuenciaCardiaca"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Visita.EstadoDeAnimo">Estado de ánimo</label>
+        <input asp-for="Visita.EstadoDeAnimo" class="form-control">
+        <span class="text-danger" asp-validation-for="Visita.EstadoDeAnimo"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Visita.Recomendaciones">Recomendaciones</label>
+        <input asp-for="Visita.Recomendaciones" class="form-control">
+        <span class="text-danger" asp-validation-for="Visita.Recomendaciones"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Grabar</button>
+</form>
+<a asp-page="./List" class="btn-default">Lista de Visitas</a>

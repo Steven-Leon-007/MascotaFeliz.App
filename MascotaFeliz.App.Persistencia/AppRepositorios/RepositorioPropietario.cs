@@ -28,11 +28,17 @@ namespace MascotaFeliz.App.Persistencia
             return propietarios.SingleOrDefault(p => p.Id ==propietarioId);
         }
 
-        Propietario IRepositorioPropietario.AddPropietario(Propietario propietario)
+        /*Propietario IRepositorioPropietario.AddPropietario(Propietario propietario)
         {
             var propietarioAdicionado=_appContext.Propietarios.Add(propietario);
             _appContext.SaveChanges();
             return propietarioAdicionado.Entity;
+        }*/
+        public Propietario AddPropietario(Propietario nuevoPropietario)
+        {
+            nuevoPropietario.Id=propietarios.Max(r => r.Id)+1;
+            propietarios.Add(nuevoPropietario);
+            return nuevoPropietario;
         }
 
         void IRepositorioPropietario.DeletePropietario(int idPropietario)
@@ -56,7 +62,7 @@ namespace MascotaFeliz.App.Persistencia
 
         }
 
-        Propietario IRepositorioPropietario.UpdatePropietario(Propietario propietario, int idPropietario_original)
+        /*Propietario IRepositorioPropietario.UpdatePropietario(Propietario propietario, int idPropietario_original)
         {
             var propietarioEncontrado=_appContext.Propietarios.FirstOrDefault(p =>p.Id== idPropietario_original);
             if (propietarioEncontrado==null)
@@ -71,6 +77,20 @@ namespace MascotaFeliz.App.Persistencia
                 
             }
             return propietarioEncontrado;
+        }*/
+
+        public Propietario UpdatePropietario(Propietario propietarioActualizado)
+        {
+            var propietario = propietarios.SingleOrDefault(r => r.Id == propietarioActualizado.Id);
+            if (propietario!=null)
+            {
+                propietario.Identificacion=propietarioActualizado.Identificacion;
+                propietario.Nombre=propietarioActualizado.Nombre;
+                propietario.Apellidos=propietarioActualizado.Apellidos;
+                propietario.Telefono=propietarioActualizado.Telefono;
+                propietario.Direccion=propietarioActualizado.Direccion;
+            }
+            return propietario;
         }
     }
 }

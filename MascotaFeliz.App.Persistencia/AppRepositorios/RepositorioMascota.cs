@@ -30,11 +30,17 @@ namespace MascotaFeliz.App.Persistencia
         {
             return mascotas.SingleOrDefault(m => m.Id ==mascotaId);
         }
-        Mascota IRepositorioMascota.AddMascota(Mascota mascota)
+        /*Mascota IRepositorioMascota.AddMascota(Mascota mascota)
         {
             var mascotaAdicionado=_appContext.Mascotas.Add(mascota);
             _appContext.SaveChanges();
             return mascotaAdicionado.Entity;
+        }*/
+        public Mascota AddMascota(Mascota nuevaMascota)
+        {
+            nuevaMascota.Id=mascotas.Max(r => r.Id)+1;
+            mascotas.Add(nuevaMascota);
+            return nuevaMascota;
         }
 
         void IRepositorioMascota.DeleteMascota(int IdMascota)
@@ -58,7 +64,7 @@ namespace MascotaFeliz.App.Persistencia
 
         }
 
-        Mascota IRepositorioMascota.UpdateMascota(Mascota mascota, int idMascota_original)
+        /*Mascota IRepositorioMascota.UpdateMascota(Mascota mascota, int idMascota_original)
         {
             var mascotaEncontrado=_appContext.Mascotas.FirstOrDefault(m => m.Id == idMascota_original);
             if (mascotaEncontrado==null)
@@ -74,6 +80,20 @@ namespace MascotaFeliz.App.Persistencia
                 
             }
             return mascotaEncontrado;
+
+        }*/
+
+        public Mascota UpdateMascota(Mascota mascotaActualizado)
+        {
+            var mascota = mascotas.SingleOrDefault(r => r.Id == mascotaActualizado.Id);
+            if (mascota!=null)
+            {
+                mascota.NombreMascota=mascotaActualizado.NombreMascota;
+                mascota.Raza=mascotaActualizado.Raza;
+                mascota.TipoAnimal=mascotaActualizado.TipoAnimal;
+                mascota.Propietario=mascotaActualizado.Propietario;
+            }
+            return mascota;
         }
     }
 }
