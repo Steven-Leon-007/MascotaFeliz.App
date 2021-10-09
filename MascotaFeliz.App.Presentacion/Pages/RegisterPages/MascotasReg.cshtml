@@ -30,39 +30,38 @@
 
 
     <main>
-    <h2>Veterinarios:</h2>
+    <h2>Mascotas:</h2>
     <table class="table">
         <tr>
-            <th>IDENTIFICACIÓN</th>
-            <th>NOMBRE</th>
-            <th>APELLIDOS</th>
-            <th>TELEFONO</th>
-            <th>TARJETA PROFESIONAL</th>
+            <th>PET NOMBRE</th>
+            <th>RAZA</th>
+            <th>TIPO DE ANIMAL</th>
+            <th>DUEÑO</th>
         </tr>
-        @foreach (var veterinario in Model.Veterinarios)
+        @foreach (var mascota in Model.Mascotas)
         {
             <tr>
-                <td>@veterinario.Identificacion</td>
-                <td>@veterinario.Nombre</td>
-                <td>@veterinario.Apellidos</td>
-                <td>@veterinario.Telefono</td>
-                <td>@veterinario.TarjetaProfesional</td>
+                <td>@mascota.NombreMascota</td>
+                <td>@mascota.Raza</td>
+                <td>@mascota.TipoAnimal</td>
+                <td>@mascota.Propietario.Nombre</td>
                 <td>
-                    <a class="btn btn-primary table-btn" asp-page="./DetailsVeterinario" asp-route-veterinarioId="@veterinario.Id">
+                    <a class="btn btn-primary table-btn" asp-page="./DetailsMascota" asp-route-mascotaId="@mascota.Id">
                     <i class="fas fa-info-circle"></i>
                     </a>
-                </td>
+                </td> 
                 <td>
-                    <a class="btn btn-primary table-btn" asp-page="./EditVeterinario" asp-route-veterinarioId="@veterinario.Id">
+                    <a class="btn btn-primary table-btn" asp-page="./EditMascota" asp-route-mascotaId="@mascota.Id">
                     <i class="fas fa-address-book fa-lg" aria-hidden="true"></i>
                 </a>
                 </td>
             </tr>
         }
     </table>
-    <a asp-page=".\EditVeterinario" class="btn btn-primary">Adicionar Veterinario</a>
-    
+    <a asp-page=".\EditMascota" class="btn btn-primary">Adicionar Mascota</a>
+
     </main>
+
     <footer>
         <article>
             <p><i>© 2021 - Designed and Developed by InMotion</i></p>

@@ -13,18 +13,28 @@
 
 <body>
     <header>
-        <a id="nav_header_logo" asp-page="/RegisterPages/vetView"><img src="/lib/logoMascFeliz.png" alt="Logo Mascota Feliz"/>
+    <a id="nav_header_logo" asp-page="/RegisterPages/vetView"><img src="/lib/logoMascFeliz.png" alt="Logo Mascota Feliz" />
         </a>
         <a id="nav_header_text" asp-page="/RegisterPages/vetView">
             <h1>Mascota Feliz</h1>
         </a>
 
-        <nav>
-            <a id="nav_header_visit" asp-page="/RegisterPages/visitRegister">Registro Visitas</a>
-            <a id="nav_header_petregister" asp-page="/RegisterPages/List">Registro de Mascotas</a>
-            <a id="nav_header_profile" href="#">Perfil</a>
-            <link rel="icon" href="icoMascFeliz.ico" />
+        <nav class="navbar">
+            <ul class="nav_menu">
+                <li><a id="nav_header_visit" asp-page="/RegisterPages/visitRegister">Registro Visitas</a></li>
+                <li><a id="nav_header_petregister">Historial de Registros</a>
+                    <ul class="nav_submenu">
+                        <li><a href="#">Mascotas</a></li>
+                        <li><a href="#">Propietarios</a></li>
+                        <li><a href="#">Veterinarios</a></li>
+                        <li><a href="#">Visitas</a></li>
+                    </ul>
+                </li>
+                <li><a id="nav_header_profile" href="/RegisterPages/vetView">Perfil</a></li>
+            </ul>
+
         </nav>
+
     </header>
 
     <main>

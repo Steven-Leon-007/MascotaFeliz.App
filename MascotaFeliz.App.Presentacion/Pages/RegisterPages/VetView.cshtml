@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Mascota Feliz</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!--<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />-->
     <link rel="stylesheet" href="~/css/vetStyle.css" />
     
 </head>
@@ -21,14 +21,23 @@
         <a id="nav_header_text" asp-page="/vetView">
             <h1>Mascota Feliz</h1>
         </a>
-        <!-- Cambiar header para tener lista desplegable-->
-        <nav>
-            <a id="nav_header_visit" asp-page="/RegisterPages/visitRegister">Registro Visitas</a>
-            <a id="nav_header_petregister" asp-page="/RegisterPages/List">Registro de Mascotas</a>
-            <a id="nav_header_profile" href="#">Perfil</a>
-            <link rel="icon" href="icoMascFeliz.ico" />
+
+        <nav class="navbar">
+            <ul class="nav_menu">
+                <li><a id="nav_header_visit" asp-page="/RegisterPages/visitRegister">Registro Visitas</a></li>
+                <li><a id="nav_header_petregister">Historial de Registros</a>
+                    <ul class="nav_submenu">
+                        <li><a href="/RegisterPages/MascotasReg">Mascotas</a></li>
+                        <li><a href="/RegisterPages/PropietarioReg">Propietarios</a></li>   
+                        <li><a href="/RegisterPages/List">Veterinarios</a></li>
+                        <li><a href="/RegisterPages/VisitasReg">Visitas</a></li>
+                    </ul>
+                </li>
+                <li><a id="nav_header_profile" href="#">Perfil</a></li>
+            </ul>
 
         </nav>
+
     </header>
 
     <main>

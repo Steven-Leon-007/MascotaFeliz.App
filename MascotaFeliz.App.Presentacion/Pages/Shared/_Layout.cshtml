@@ -6,23 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Mascota Feliz</title>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/vetStyle.css" />
+    <!--<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />-->
+    <link rel="stylesheet" href="~/css/clientStyle.css" />
     @RenderSection("Styles", false)
 </head>
 
 <body>
     <header>
-        <a id="nav_header_logo" asp-page="/_Layout.cshtml"><img src="/lib/logoMascFeliz.png" alt="Logo Mascota Feliz"/>
+        <a id="nav_header_logo" asp-page="/vetView"><img src="/lib/logoMascFeliz.png" alt="Logo Mascota Feliz"/>
         </a>
-        <a id="nav_header_text" asp-page="/_Layout.cshtml">
+        <a id="nav_header_text" asp-page="/vetView">
             <h1>Mascota Feliz</h1>
         </a>
 
-        <nav>
-            <a id="nav_header_petregister" asp-page="/html/PetRegister.html">Registro de Mascotas</a>
-            <a id="nav_header_profile" asp-page="/RegisterPages/VetView">Login</a>
-            <link rel="icon" href="icoMascFeliz.ico" />
+        <nav class="navbar">
+            <ul class="nav_menu">
+                <li><a id="nav_header_petregister">Historial de Registros</a>
+                    <ul class="nav_submenu">
+                        <li><a href="#">Mascotas</a></li>
+                        <li><a href="#">Propietarios</a></li>
+                        <li><a href="#">Veterinarios</a></li>
+                        <li><a href="#">Visitas</a></li>
+                    </ul>
+                </li>
+                <li><a id="nav_header_profile" asp-page="/RegisterPages/VetView">Login</a></li>
+            </ul>
+
         </nav>
     </header>
 

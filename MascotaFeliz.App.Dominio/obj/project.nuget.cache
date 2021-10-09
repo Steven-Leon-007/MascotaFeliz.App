@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "z+LBA4Fo2UYbMYnqb4bpQ8exdFkupnUc+k3PEtVN5kPJZeGvgsmEVbuAZSO4WwUxmfzN1b53S6x1MCDifevRlA==",
+  "dgSpecHash": "B7YqE+tlT3xofaWTMJMFkUMsvTGVvgBocLT2XcyWNpQJB01QZeYBr1gaVHUTQMQtRV/6KnclPqefRum5XWoLqw==",
   "success": true,
   "projectFilePath": "C:\\MascotaFeliz\\MascotaFeliz.App\\MascotaFeliz.App.Dominio\\MascotaFeliz.App.Dominio.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Edinson García\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\Edinson García\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
-    "C:\\Users\\Edinson García\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512"
+    "C:\\Users\\HP\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }
