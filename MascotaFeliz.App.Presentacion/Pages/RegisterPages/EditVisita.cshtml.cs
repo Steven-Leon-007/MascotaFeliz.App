@@ -10,7 +10,10 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 namespace MascotaFeliz.App.Presentacion.Pages
 {
     public class EditVisitaModel : PageModel
+    
     {
+        public IEnumerable<Mascota> Mascotas = RepositorioMascota.mascotas;
+        public IEnumerable<Veterinario> Veterinarios = RepositorioVeterinario.veterinarios;
         private readonly IRepositorioVisita repositorioVisita;
         [BindProperty]
         public Visita Visita { get; set; }

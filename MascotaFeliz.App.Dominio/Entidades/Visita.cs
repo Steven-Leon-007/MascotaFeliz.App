@@ -10,16 +10,15 @@ namespace MascotaFeliz.App.Dominio
         
         public Mascota Mascota {get; set;}
         public Veterinario Veterinario {get;set;}
-        [Required, StringLength(50)]
         public DateTime Fecha {get; set;}
         [Required, StringLength(50)]
-        public float Temperatura {get;set;}
+        public string Temperatura {get;set;}
         [Required, StringLength(50)]
-        public float Peso {get;set;}
+        public string Peso {get;set;}
         [Required, StringLength(50)]
-        public int FrecuenciaRespiratoria {get;set;}
+        public string FrecuenciaRespiratoria {get;set;}
         [Required, StringLength(50)]
-        public int FrecuenciaCardiaca {get;set;}
+        public string FrecuenciaCardiaca {get;set;}
         [Required, StringLength(50)]
         public string EstadoDeAnimo {get;set;}
         [Required, StringLength(100)]

@@ -4,23 +4,31 @@
     Layout = null;
 }
 <h1>EDICIÓN DATOS VISITA:</h1>
-<h2>ID: @Model.Visita.Id - @Model.Visita.Mascota.NombreMascota</h2>
 <form method="post">
     <input type="hidden" asp-for="Visita.Id"/>
     <div class="form-group">
-        <label asp-for="Visita.Mascota.NombreMascota">Nombre Pet</label>
-        <input asp-for="Visita.Mascota.NombreMascota" class="form-control">
-        <span class="text-danger" asp-validation-for="Visita.Mascota.NombreMascota"></span>
+        <label asp-for="Visita.Mascota">Mascota</label>
+        <select asp-for="Visita.Mascota" class="form-control">
+        <option disabled selected="">Selecciona una opción</option>
+        @foreach (var pet in Model.Mascotas)
+        {
+            <option value="Visita.Mascota" class="form-control">@pet.NombreMascota</option>
+        }
+        </select>
     </div>
     <div class="form-group">
-        <label asp-for="Visita.Veterinario.Nombre">Veterinario</label>
-        <input asp-for="Visita.Veterinario.Nombre" class="form-control">
-        <span class="text-danger" asp-validation-for="Visita.Veterinario.Nombre"></span>
+        <label asp-for="Visita.Veterinario">Propietario</label>
+        <select asp-for="Visita.Veterinario" class="form-control">
+        <option disabled selected="">Selecciona una opción</option>
+        @foreach (var ve in Model.Veterinarios)
+        {
+            <option value="Mascota.Propietario" class="form-control">@ve.Nombre</option>
+        }
+        </select>
     </div>
     <div class="form-group">
         <label asp-for="Visita.Fecha">Fecha</label>
         <input asp-for="Visita.Fecha" class="form-control">
-        <span class="text-danger" asp-validation-for="Visita.Fecha"></span>
     </div>
     <div class="form-group">
         <label asp-for="Visita.Temperatura">Temperatura</label>
@@ -54,4 +62,4 @@
     </div>
     <button type="submit" class="btn btn-primary">Grabar</button>
 </form>
-<a asp-page="./List" class="btn-default">Lista de Visitas</a>
+<a asp-page="./VisitasReg" class="btn-default">Lista de Visitas</a>

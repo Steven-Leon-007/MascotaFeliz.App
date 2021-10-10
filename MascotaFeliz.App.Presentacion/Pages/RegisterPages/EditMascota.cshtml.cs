@@ -14,7 +14,7 @@ namespace MascotaFeliz.App.Presentacion.Pages
         private readonly IRepositorioMascota repositorioMascota;
         [BindProperty]
         public Mascota Mascota { get; set; }
-
+        public IEnumerable<Propietario> Propietarios = RepositorioPropietario.propietarios;
         public EditMascotaModel(IRepositorioMascota repositorioMascota)
         {
             this.repositorioMascota = repositorioMascota;
