@@ -6,16 +6,17 @@
 }
 
 <head>
-    <link rel="stylesheet" href="~/css/detailsStyle.css" />
-    <title>Historial de Visitas</title>
+    <link rel="stylesheet" href="~/css/regVisitStyle.css" />
+    <title>Registro de Visitas - Mascota Feliz</title>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body> 
     <header>
-           <a id="nav_header_logo" asp-page="/vetView"><img src="/lib/logoMascFeliz.png" alt="Logo Mascota Feliz"/>
+        <a id="nav_header_logo" asp-page="/RegisterPages/vetView"><img src="/lib/logoMascFeliz.png"
+                alt="Logo Mascota Feliz" />
         </a>
-        <a id="nav_header_text" asp-page="/vetView">
+        <a id="nav_header_text" asp-page="/RegisterPages/vetView">
             <h1>Mascota Feliz</h1>
         </a>
 
@@ -25,7 +26,7 @@
                 <li><a id="nav_header_petregister">Historial de Registros</a>
                     <ul class="nav_submenu">
                         <li><a href="/RegisterPages/MascotasReg">Mascotas</a></li>
-                        <li><a href="/RegisterPages/PropietarioReg">Propietarios</a></li>   
+                        <li><a href="/RegisterPages/PropietarioReg">Propietarios</a></li>
                         <li><a href="/RegisterPages/List">Veterinarios</a></li>
                         <li><a href="/RegisterPages/VisitasReg">Visitas</a></li>
                     </ul>
@@ -41,29 +42,25 @@
     <main>
         <h2>Visitas:</h2>
         <table class="table">
-            <tr>
-                <th>PET NOMBRE</th>
+            <tr class="top-tr">
+                <th>NOMBRE <br>MASCOTA</th>
                 <th>VETERINARIO</th>
-                <th>FECHA</th>
-                <th>TEMPERATURA</th>
                 <th>PESO</th>
-                <th>FRECUENCIA RESPIRATORIA</th>
-                <th>FRECUENCIA CARDIACA</th>
-                <th>ESTADO DE ÁNIMO</th>
-                <th>RECOMENDACIONES</th>
+                <th>FECHA</th>
+                <th>FRECUENCIA <br>RESPIRATORIA</th>
+                <th>FRECUENCIA <br>CARDIACA</th>
+                
             </tr>
             @foreach (var visita in Model.Visitas)
             {
                 <tr>
                     <td>@visita.Mascota.NombreMascota</td>
                     <td>@visita.Veterinario.Nombre</td>
-                    <td>@visita.Fecha</td>
-                    <td>@visita.Temperatura °C</td>
                     <td>@visita.Peso Kg</td>
+                    <td>@visita.Fecha</td>
                     <td>@visita.FrecuenciaRespiratoria x Minuto</td>
                     <td>@visita.FrecuenciaCardiaca x Minuto</td>
-                    <td>@visita.EstadoDeAnimo</td>
-                    <td>@visita.Recomendaciones</td>
+                    
                     <td>
                         <a class="btn btn-primary table-btn" asp-page="./DetailsVisita" asp-route-visitaId="@visita.Id">
                             <i class="fas fa-info-circle" id="details_link"></i>
@@ -77,15 +74,18 @@
                 </tr>
             }
         </table>
+        <p class="p-separator-up">ㅤ</p>
+        <p class="p-separator-down"></p>
         <a asp-page=".\EditVisita" class="btn btn-primary" id="create_link">Adicionar Visita</a>
 
 
-        <footer>
-            <article>
-                <p><i>© 2021 - Designed and Developed by InMotion</i></p>
-            </article>
-        </footer>
-
     </main>
+
+    <footer>
+        <article>
+            <p>© 2021 - Designed and Developed by InMotion</p>
+        </article>
+    </footer>
+
 
 </body>

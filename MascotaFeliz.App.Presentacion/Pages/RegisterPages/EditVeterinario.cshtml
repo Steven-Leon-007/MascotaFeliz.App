@@ -3,35 +3,86 @@
 @{
     Layout = null;
 }
-<h1>EDICIÓN DATOS VETERINARIO:</h1>
-<h2>Nombre: @Model.Veterinario.Nombre</h2>
-<form method="post">
-    <input type="hidden" asp-for="Veterinario.Id"/>
-    <div class="form-group">
-        <label asp-for="Veterinario.Identificacion">Identificacion</label>
-        <input asp-for="Veterinario.Identificacion" class="form-control">
-        <span class="text-danger" asp-validation-for="Veterinario.Identificacion"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Veterinario.Nombre">Nombre</label>
-        <input asp-for="Veterinario.Nombre" class="form-control">
-        <span class="text-danger" asp-validation-for="Veterinario.Nombre"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Veterinario.Apellidos">Apellidos</label>
-        <input asp-for="Veterinario.Apellidos" class="form-control">
-        <span class="text-danger" asp-validation-for="Veterinario.Apellidos"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Veterinario.Telefono">Telefono</label>
-        <input asp-for="Veterinario.Telefono" class="form-control">
-        <span class="text-danger" asp-validation-for="Veterinario.Telefono"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Veterinario.TarjetaProfesional">Tarjeta Profesional</label>
-        <input asp-for="Veterinario.TarjetaProfesional" class="form-control">
-        <span class="text-danger" asp-validation-for="Veterinario.TarjetaProfesional"></span>
-    </div>
-    <button type="submit" class="btn btn-primary">Grabar</button>
-</form>
-<a asp-page="./List" class="btn-default">Lista de Veterinarios </a>
+
+<head>
+    <link rel="stylesheet" href="~/css/editStyle.css" />
+    <title>Editar datos del Veterinario - Mascota Feliz</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+
+    <header>
+        <a id="nav_header_logo" asp-page="/RegisterPages/vetView"><img src="/lib/logoMascFeliz.png"
+                alt="Logo Mascota Feliz" />
+        </a>
+        <a id="nav_header_text" asp-page="/RegisterPages/vetView">
+            <h1>Mascota Feliz</h1>
+        </a>
+
+        <nav class="navbar">
+            <ul class="nav_menu">
+                <li><a id="nav_header_visit" asp-page="/RegisterPages/visitRegister">Registro Visitas</a></li>
+                <li><a id="nav_header_petregister">Historial de Registros</a>
+                    <ul class="nav_submenu">
+                        <li><a href="/RegisterPages/MascotasReg">Mascotas</a></li>
+                        <li><a href="/RegisterPages/PropietarioReg">Propietarios</a></li>
+                        <li><a href="/RegisterPages/List">Veterinarios</a></li>
+                        <li><a href="/RegisterPages/VisitasReg">Visitas</a></li>
+                    </ul>
+                </li>
+                <li><a id="nav_header_profile" href="#">Perfil</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <main>
+
+        <h1>EDICIÓN DATOS VETERINARIO:</h1>
+
+        <form method="post">
+            <input type="hidden" asp-for="Veterinario.Id" />
+            <div class="form-group">
+                <label asp-for="Veterinario.Identificacion" id="id-veterinary">Identificacion: </label>
+                <input asp-for="Veterinario.Identificacion" class="form-control">
+                <span class="text-danger" asp-validation-for="Veterinario.Identificacion"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Veterinario.Nombre" id="name-veterinary">Nombre: </label>
+                <input asp-for="Veterinario.Nombre" class="form-control">
+                <span class="text-danger" asp-validation-for="Veterinario.Nombre"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Veterinario.Apellidos" id="lastname-veterinary">Apellidos: </label>
+                <input asp-for="Veterinario.Apellidos" class="form-control">
+                <span class="text-danger" asp-validation-for="Veterinario.Apellidos"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Veterinario.Telefono" id="phone-veterinary">Telefono: </label>
+                <input asp-for="Veterinario.Telefono" class="form-control">
+                <span class="text-danger" asp-validation-for="Veterinario.Telefono"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Veterinario.TarjetaProfesional">Tarjeta Profesional: </label>
+                <input asp-for="Veterinario.TarjetaProfesional" class="form-control">
+                <span class="text-danger" asp-validation-for="Veterinario.TarjetaProfesional"></span>
+            </div>
+            <button type="submit" class="btn btn-primary" id="save_form">Grabar</button>
+        </form>
+        
+        <p class="p-separator-up"></p>
+        <a asp-page="./List" class="btn-default">Regresar a la lista de Veterinarios </a>
+        <p class="p-separator-down">ㅤ</p>
+    </main>
+
+    <footer>
+        <article>
+            <p>© 2021 - Designed and Developed by InMotion</p>
+        </article>
+    </footer>
+
+
+</body>

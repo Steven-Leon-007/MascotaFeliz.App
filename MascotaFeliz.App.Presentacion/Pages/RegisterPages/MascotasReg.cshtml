@@ -7,15 +7,15 @@
 
 <head>
     <link rel="stylesheet" href="~/css/detailsStyle.css" />
-    <title>Registro de Visitas</title>
+    <title>Registro de Mascotas - Mascota Feliz</title>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <header>
-           <a id="nav_header_logo" asp-page="/vetView"><img src="/lib/logoMascFeliz.png" alt="Logo Mascota Feliz"/>
+           <a id="nav_header_logo" asp-page="/RegisterPages/vetView"><img src="/lib/logoMascFeliz.png" alt="Logo Mascota Feliz"/>
         </a>
-        <a id="nav_header_text" asp-page="/vetView">
+        <a id="nav_header_text" asp-page="/RegisterPages/vetView">
             <h1>Mascota Feliz</h1>
         </a>
 
@@ -41,8 +41,8 @@
     <main>
     <h2>Mascotas:</h2>
     <table class="table">
-        <tr>
-            <th>PET NOMBRE</th>
+        <tr class="top-tr">
+            <th>NOMBRE</th>
             <th>RAZA</th>
             <th>TIPO DE ANIMAL</th>
             <th>DUEÑO</th>
@@ -67,6 +67,8 @@
             </tr>
         }
     </table>
+            <p class="p-separator-up">ㅤ</p>
+            <p class="p-separator-down"></p>
     <a asp-page=".\EditMascota" class="btn btn-primary" id="create_link">Adicionar Mascota</a>
 
     </main>

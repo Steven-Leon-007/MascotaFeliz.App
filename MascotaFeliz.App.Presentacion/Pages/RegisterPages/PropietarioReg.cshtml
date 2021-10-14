@@ -7,15 +7,16 @@
 
 <head>
     <link rel="stylesheet" href="~/css/detailsStyle.css" />
-    <title>Registro de Visitas</title>
+    <title>Registro de Propietarios - Mascota Feliz</title>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <header>
-           <a id="nav_header_logo" asp-page="/vetView"><img src="/lib/logoMascFeliz.png" alt="Logo Mascota Feliz"/>
+        <a id="nav_header_logo" asp-page="/RegisterPages/vetView"><img src="/lib/logoMascFeliz.png"
+                alt="Logo Mascota Feliz" />
         </a>
-        <a id="nav_header_text" asp-page="/vetView">
+        <a id="nav_header_text" asp-page="/RegisterPages/vetView">
             <h1>Mascota Feliz</h1>
         </a>
 
@@ -25,7 +26,7 @@
                 <li><a id="nav_header_petregister">Historial de Registros</a>
                     <ul class="nav_submenu">
                         <li><a href="/RegisterPages/MascotasReg">Mascotas</a></li>
-                        <li><a href="/RegisterPages/PropietarioReg">Propietarios</a></li>   
+                        <li><a href="/RegisterPages/PropietarioReg">Propietarios</a></li>
                         <li><a href="/RegisterPages/List">Veterinarios</a></li>
                         <li><a href="/RegisterPages/VisitasReg">Visitas</a></li>
                     </ul>
@@ -40,21 +41,21 @@
     <main>
         <h2>Propietarios:</h2>
         <table class="table">
-            <tr>
+            <tr class="top-tr">
                 <th>IDENTIFICACIÓN</th>
                 <th>NOMBRE</th>
                 <th>APELLIDOS</th>
                 <th>TELEFONO</th>
-                <th>DIRECCIÓN</th>
+
             </tr>
             @foreach (var propietario in Model.Propietarios)
             {
                 <tr>
                     <td>@propietario.Identificacion</td>
-                    <td>@propietario.Nombre</td>
+                    <td>@propietario.Nombre</td> 
                     <td>@propietario.Apellidos</td>
                     <td>@propietario.Telefono</td>
-                    <td>@propietario.Direccion</td>
+                    
                     <td>
                         <a class="btn btn-primary table-btn" asp-page="./DetailsPropietario"
                         asp-route-propietarioId="@propietario.Id">
@@ -70,10 +71,12 @@
                 </tr>
             }
         </table>
+        <p class="p-separator-up">ㅤ</p>
+        <p class="p-separator-down"></p>
         <a asp-page=".\EditPropietario" class="btn btn-primary" id="create_link">Adicionar Propietario</a>
 
     </main>
-    
+
     <footer>
         <article>
             <p>© 2021 - Designed and Developed by InMotion</p>

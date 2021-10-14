@@ -1,21 +1,70 @@
 ﻿@page
 @model MascotaFeliz.App.Presentacion.Pages.DetailsMascotaModel
 @{
-    Layout=null;
+    Layout = null;
 }
-<h1>DETALLES DE LA MASCOTA</h1>
-<h2>Pet nombre: @Model.Mascota.NombreMascota</h2>
-<div>
-    Id: @Model.Mascota.Id
-</div>
-<div>
-    Raza: @Model.Mascota.Raza
-</div>
-<div>
-    Tipo de Animal: @Model.Mascota.TipoAnimal
-</div>
-<div>
-    Dueño:@Model.Mascota.Propietario.Nombre
-</div>
-<a asp-page="./List" class="btn-default">Lista de Mascotas </a>
 
+
+<head>
+    <link rel="stylesheet" href="~/css/detailsInfo.css" />
+    <title>Detalle de la Mascota - Mascota Feliz</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <a id="nav_header_logo" asp-page="/RegisterPages/vetView"><img src="/lib/logoMascFeliz.png"
+                alt="Logo Mascota Feliz" />
+        </a>
+        <a id="nav_header_text" asp-page="/RegisterPages/vetView">
+            <h1>Mascota Feliz</h1>
+        </a>
+
+        <nav class="navbar">
+            <ul class="nav_menu">
+                <li><a id="nav_header_visit" asp-page="/RegisterPages/visitRegister">Registro Visitas</a></li>
+                <li><a id="nav_header_petregister">Historial de Registros</a>
+                    <ul class="nav_submenu">
+                        <li><a href="/RegisterPages/MascotasReg">Mascotas</a></li>
+                        <li><a href="/RegisterPages/PropietarioReg">Propietarios</a></li>
+                        <li><a href="/RegisterPages/List">Veterinarios</a></li>
+                        <li><a href="/RegisterPages/VisitasReg">Visitas</a></li>
+                    </ul>
+                </li>
+                <li><a id="nav_header_profile" href="#">Perfil</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <main>
+
+        <h1>DETALLES DE LA MASCOTA</h1>
+        <h3>Nombre de la Mascota: @Model.Mascota.NombreMascota</h3>
+        <div>
+            Id: @Model.Mascota.Id
+        </div>
+        <div>
+            Raza: @Model.Mascota.Raza
+        </div>
+        <div>
+            Tipo de Animal: @Model.Mascota.TipoAnimal
+        </div>
+        <div>
+            Dueño: @Model.Mascota.Propietario.Nombre
+        </div>
+        <p class="p-separator-up"></p>
+        <a asp-page="./MascotasReg" class="btn-default">Regresar a la lista de Mascotas</a>
+        <p class="p-separator-down"></p>
+    </main>
+
+    <footer>
+        <article>
+            <p><i>© 2021 - Designed and Developed by InMotion</i></p>
+        </article>
+    </footer>
+
+
+
+</body>

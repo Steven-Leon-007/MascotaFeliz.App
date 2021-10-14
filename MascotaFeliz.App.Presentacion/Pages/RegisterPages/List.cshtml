@@ -7,15 +7,16 @@
 
 <head>
     <link rel="stylesheet" href="~/css/detailsStyle.css" />
-    <title>Registro de Visitas</title>
+    <title>Registro de Veterinarios - Mascota Feliz</title>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <header>
-           <a id="nav_header_logo" asp-page="/vetView"><img src="/lib/logoMascFeliz.png" alt="Logo Mascota Feliz"/>
+        <a id="nav_header_logo" asp-page="/RegisterPages/vetView"><img src="/lib/logoMascFeliz.png"
+                alt="Logo Mascota Feliz" />
         </a>
-        <a id="nav_header_text" asp-page="/vetView">
+        <a id="nav_header_text" asp-page="/RegisterPages/vetView">
             <h1>Mascota Feliz</h1>
         </a>
 
@@ -25,7 +26,7 @@
                 <li><a id="nav_header_petregister">Historial de Registros</a>
                     <ul class="nav_submenu">
                         <li><a href="/RegisterPages/MascotasReg">Mascotas</a></li>
-                        <li><a href="/RegisterPages/PropietarioReg">Propietarios</a></li>   
+                        <li><a href="/RegisterPages/PropietarioReg">Propietarios</a></li>
                         <li><a href="/RegisterPages/List">Veterinarios</a></li>
                         <li><a href="/RegisterPages/VisitasReg">Visitas</a></li>
                     </ul>
@@ -39,38 +40,40 @@
 
 
     <main>
-    <h2>Veterinarios:</h2>
-    <table class="table">
-        <tr>
-            <th>IDENTIFICACIÓN</th>
-            <th>NOMBRE</th>
-            <th>APELLIDOS</th>
-            <th>TELEFONO</th>
-            <th>TARJETA PROFESIONAL</th>
-        </tr>
-        @foreach (var veterinario in Model.Veterinarios)
-        {
-            <tr>
-                <td>@veterinario.Identificacion</td>
-                <td>@veterinario.Nombre</td>
-                <td>@veterinario.Apellidos</td>
-                <td>@veterinario.Telefono</td>
-                <td>@veterinario.TarjetaProfesional</td>
-                <td>
-                    <a class="btn btn-primary table-btn" asp-page="./DetailsVeterinario" asp-route-veterinarioId="@veterinario.Id">
-                    <i class="fas fa-info-circle" id="details_link"></i>
-                    </a>
-                </td>
-                <td>
-                    <a class="btn btn-primary table-btn" asp-page="./EditVeterinario" asp-route-veterinarioId="@veterinario.Id">
-                    <i class="fas fa-address-book fa-lg" id="edit_link" aria-hidden="true"></i>
-                </a>
-                </td>
+        <h2>Veterinarios:</h2>
+        <table class="table">
+            <tr class="top-tr">
+                <th>IDENTIFICACIÓN</th>
+                <th>TARJETA PROFESIONAL</th>
+                <th>NOMBRE</th>
+                <th>APELLIDOS</th>
             </tr>
-        }
-    </table>
-    <a asp-page=".\EditVeterinario" class="btn btn-primary" id="create_link">Adicionar Veterinario</a>
-    
+            @foreach (var veterinario in Model.Veterinarios)
+            {
+                <tr>
+                    <td>@veterinario.Identificacion</td>
+                    <td>@veterinario.TarjetaProfesional</td>
+                    <td>@veterinario.Nombre</td>
+                    <td>@veterinario.Apellidos</td>
+                    <td>
+                        <a class="btn btn-primary table-btn" asp-page="./DetailsVeterinario"
+                        asp-route-veterinarioId="@veterinario.Id">
+                            <i class="fas fa-info-circle" id="details_link"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="btn btn-primary table-btn" asp-page="./EditVeterinario"
+                        asp-route-veterinarioId="@veterinario.Id">
+                            <i class="fas fa-address-book fa-lg" id="edit_link" aria-hidden="true"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </table>
+        <p class="p-separator-up">ㅤ</p>
+        <p class="p-separator-down"></p>
+        <a asp-page=".\EditVeterinario" class="btn btn-primary" id="create_link">Adicionar Veterinario</a>
+
     </main>
     <footer>
         <article>

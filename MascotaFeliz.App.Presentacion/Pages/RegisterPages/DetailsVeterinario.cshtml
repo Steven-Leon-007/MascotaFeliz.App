@@ -1,20 +1,70 @@
 ﻿@page
 @model MascotaFeliz.App.Presentacion.Pages.DetailsVeterinarioModel
 @{
- Layout=null;
+    Layout = null;
 }
-<h1>DETALLES DEL VETERINARIO</h1>
-<h2>Identificacion: @Model.Veterinario.Identificacion</h2>
-<div>
-    Nombre: @Model.Veterinario.Nombre
-</div>
-<div>
-    Apellidos: @Model.Veterinario.Apellidos
-</div>
-<div>
-    Telefono: @Model.Veterinario.Telefono
-</div>
-<div>
-    Tarjeta Profesional:@Model.Veterinario.TarjetaProfesional
-</div>
-<a asp-page="./List" class="btn-default">Lista de Veterinarios </a>
+
+
+<head>
+    <link rel="stylesheet" href="~/css/detailsInfo.css" />
+    <title>Detalle del Veterinario - Mascota Feliz</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+    <header>
+        <a id="nav_header_logo" asp-page="/RegisterPages/vetView"><img src="/lib/logoMascFeliz.png"
+                alt="Logo Mascota Feliz" />
+        </a>
+        <a id="nav_header_text" asp-page="/RegisterPages/vetView">
+            <h1>Mascota Feliz</h1>
+        </a>
+
+        <nav class="navbar">
+            <ul class="nav_menu">
+                <li><a id="nav_header_visit" asp-page="/RegisterPages/visitRegister">Registro Visitas</a></li>
+                <li><a id="nav_header_petregister">Historial de Registros</a>
+                    <ul class="nav_submenu">
+                        <li><a href="/RegisterPages/MascotasReg">Mascotas</a></li>
+                        <li><a href="/RegisterPages/PropietarioReg">Propietarios</a></li>
+                        <li><a href="/RegisterPages/List">Veterinarios</a></li>
+                        <li><a href="/RegisterPages/VisitasReg">Visitas</a></li>
+                    </ul>
+                </li>
+                <li><a id="nav_header_profile" href="#">Perfil</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <main>
+
+        <h1>DETALLES DEL VETERINARIO</h1>
+        <h3>Identificacion: @Model.Veterinario.Identificacion</h3>
+        <div>
+            Nombre: @Model.Veterinario.Nombre
+        </div>
+        <div>
+            Apellidos: @Model.Veterinario.Apellidos
+        </div>
+        <div>
+            Telefono: @Model.Veterinario.Telefono
+        </div>
+        <div>
+            Tarjeta Profesional:@Model.Veterinario.TarjetaProfesional
+        </div>
+        <p class="p-separator-up"></p>
+        <a asp-page="./List" class="btn-default">Regresar a la lista de Veterinarios</a>
+        <p class="p-separator-down"></p>
+
+    </main>
+
+    <footer>
+        <article>
+            <p><i>© 2021 - Designed and Developed by InMotion</i></p>
+        </article>
+    </footer>
+
+</body>

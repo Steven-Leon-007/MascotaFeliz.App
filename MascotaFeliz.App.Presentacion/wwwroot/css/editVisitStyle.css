@@ -119,6 +119,8 @@ header nav a:hover{
     transition: all .7s;
 }
 
+
+
 main{
     background-color: #F6F3F3;
     margin: 50px 50px 50px 50px;
@@ -128,54 +130,74 @@ main{
 
 }
 
-main table {
-    height: 50%;
+.grid-form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-left: 60px;
+    margin-right: 60px;
 }
 
-main th,
-main td{
-    padding: 20px;
-    padding-left: 50px;
-    text-align: center;
+main form input,
+main form select{
+    margin-left: 20px;
 }
 
-main td{
-    font-size: 18px;
+main h1{
+    margin: 20px;
+    padding: 15px;
+    margin-left: 50px;
+    margin-bottom: 30px;
 }
 
-main h2{
-    margin-bottom: 15px;
-    margin-left: 48px;
-    padding-top: 20px;
-    font-size: 28px;
-}
-
-
-main td,
-main th{
-    border-radius: 8px;
-}
-
-main tr:hover{
-    background: #d8dddd;
-    transition: all 0.4s ease-in-out;
+main label{
+    margin-left: 5px;
 
 }
 
-.top-tr:hover{
-    background: #e2dfdf;
-    transition: all 0.4s ease-in-out;
+#recomendations {
+    resize: none;
+    border-radius: 4px;
+    border: 1px solid gray;
 }
 
-
-#edit_link{
-    text-decoration: none;
-    color: rgb(79, 81, 175);
+#recomendations-div {
+    display: grid;
+    margin: 10px;
+    margin-left: 65px;
+    margin-right: 132px;
 }
 
-#details_link{
-    text-decoration: none;
-    color: rgb(108, 63, 112);
+main input,
+main select{
+    width: 50%;
+    height: 62%;
+    margin-bottom: 30px;
+    border-radius: 4px;
+    border: 1px solid gray;
+}
+
+.visit-pet{
+    margin-right: 81px;
+}
+
+.visit-propietary{
+    margin-right: 85px;
+}
+
+.visit-date{
+    margin-right: 100px;
+}
+
+.visit-temperature{
+    margin-right: 75px;
+}
+
+.visit-weight{
+    margin-right: 107px;
+}
+
+.visit-mood{
+    margin-right: 44px;
 }
 
 
@@ -184,37 +206,53 @@ main tr:hover{
 }
 
 .p-separator-down {
-    margin-top: 1px;
+    margin-top: 12px;
 }
 
 
-
-#create_link{
+main a{
+    padding: 7px;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-left: 70px;
+    border: 1px solid #4e1566;
+    border-radius: 4px;
     text-decoration: none;
     color: #000;
-    background: #d2d8d8;
-    margin-left: 70px;
-    margin-top: 30px;
-    border: 1px solid;
-    border-radius: 8px;
-    padding: 20px;
-    position: absolute;
-    right: 100px;
-    font-weight: bold;
+}
 
+main a:hover{
+    background-color: #c493eb;
+    transition: all 0.3s ease-in-out;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 
-#create_link:hover{
+
+#save_form{
+    background-color: #d2d8d8;
+    border: 1px solid #918888;
+    border-radius: 10px;
+    padding: 6px 192px;
+    margin-bottom: 30px;
+    margin-left: 65px;
+    margin-top: 10px;
+    font-weight: bold;
+    
+}
+
+#save_form:hover {
+    box-shadow: rgba(41, 40, 40, 0.24) 0px 3px 8px;
     background: #c98eae;
-    transition: all 0.3s ease-in-out;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    transition: all 0.2s ease-in;
+    cursor: hand;
+
 }
 
 
 
 footer{
-    margin-top: 125px;
+    margin-top: 95px;
     margin-bottom: 0px;
     background-color: #1A181B;
     box-shadow: #4e1566 0px 1px 4px, rgb(145, 89, 89) 0px 0px 0px 3px;

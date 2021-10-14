@@ -119,64 +119,105 @@ header nav a:hover{
     transition: all .7s;
 }
 
+
+
 main{
     background-color: #F6F3F3;
     margin: 50px 50px 50px 50px;
     border-radius: 20px;
     padding-left: 50px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+
+main h1{
+    padding: 18px;
+    padding-left: 47px;
+    padding-bottom: 30px;
+}
+
+main label{
+    margin-left: 50px;
+    margin-right: 15px;
 
 }
 
-main table {
-    height: 50%;
-}
-
-main th,
-main td{
-    padding: 20px;
-    padding-left: 50px;
+main input,
+main select{
+    width: 25%;
+    height: 5%;
+    margin-bottom: 25px;
+    border-radius: 3px;
+    border: 1px solid gray;
     text-align: center;
 }
 
-main td{
-    font-size: 18px;
+
+#save_form{
+    background-color: #d2d8d8;
+    border: 1px solid #918888;
+    border-radius: 10px;
+    padding: 6px 192px;
+    margin-bottom: 30px;
+    margin-left: 52px;
+    margin-top: 5px;
+    font-weight: bold;
+    
 }
 
-main h2{
-    margin-bottom: 15px;
-    margin-left: 48px;
-    padding-top: 20px;
-    font-size: 28px;
-}
+#save_form:hover {
+    box-shadow: rgba(41, 40, 40, 0.24) 0px 3px 8px;
+    background: #c98eae;
+    transition: all 0.2s ease-in;
+    cursor: hand;
 
-
-main td,
-main th{
-    border-radius: 8px;
-}
-
-main tr:hover{
-    background: #d8dddd;
-    transition: all 0.4s ease-in-out;
-
-}
-
-.top-tr:hover{
-    background: #e2dfdf;
-    transition: all 0.4s ease-in-out;
 }
 
 
-#edit_link{
-    text-decoration: none;
-    color: rgb(79, 81, 175);
+#name-pet{
+    margin-right: 66px;
 }
 
-#details_link{
-    text-decoration: none;
-    color: rgb(108, 63, 112);
+#name-raza{
+    margin-right: 89px;
 }
+
+#name-propietary{
+    margin-right: 44px;
+}
+
+#name-propietary-prop{
+    margin-right: 50px;
+}
+
+#lastname-propietary{
+    margin-right: 43px;
+}
+
+#phone-propietary{
+    margin-right: 47px;
+}
+
+#address-propietary{
+    margin-right: 41px;
+}
+
+#id-veterinary{
+    margin-right: 52px;
+}
+
+#name-veterinary{
+    margin-right: 87px;
+}
+
+#lastname-veterinary{
+    margin-right: 80px;
+}
+
+#phone-veterinary{
+    margin-right: 84px;
+}
+
 
 
 .p-separator-up {
@@ -184,43 +225,35 @@ main tr:hover{
 }
 
 .p-separator-down {
-    margin-top: 1px;
+    margin-top: 12px;
 }
 
 
 
-#create_link{
+main a{
+    padding: 7px;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-left: 45px;
+    border: 1px solid #4e1566;
+    border-radius: 4px;
     text-decoration: none;
     color: #000;
-    background: #d2d8d8;
-    margin-left: 70px;
-    margin-top: 30px;
-    border: 1px solid;
-    border-radius: 8px;
-    padding: 20px;
-    position: absolute;
-    right: 100px;
-    font-weight: bold;
-
 }
 
-
-#create_link:hover{
-    background: #c98eae;
+main a:hover{
+    background-color: #c493eb;
     transition: all 0.3s ease-in-out;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
-
-
 
 footer{
-    margin-top: 125px;
+    margin-top: 100px;
     margin-bottom: 0px;
     background-color: #1A181B;
     box-shadow: #4e1566 0px 1px 4px, rgb(145, 89, 89) 0px 0px 0px 3px;
     
 }
-
 
 footer p{
     color: #f0e9e9;

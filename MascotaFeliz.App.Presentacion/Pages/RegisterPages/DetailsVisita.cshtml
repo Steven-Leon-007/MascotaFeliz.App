@@ -1,32 +1,84 @@
 ﻿@page
 @model MascotaFeliz.App.Presentacion.Pages.DetailsVisitaModel
 @{
-    Layout=null;
+    Layout = null;
 }
-<h1>DETALLES DE LA VISITA</h1>
-<h2>Pet nombre: @Model.Visita.Mascota.NombreMascota</h2>
-<div>
-    Veterinario: @Model.Visita.Veterinario.Nombre
-</div>
-<div>
-    Fecha: @Model.Visita.Fecha
-</div>
-<div>
-    Temperatura: @Model.Visita.Temperatura °C
-</div>
-<div>
-    Peso:@Model.Visita.Peso Kg
-</div>
-<div>
-    Frecuencia respiratoria: @Model.Visita.FrecuenciaRespiratoria x Minuto
-</div>
-<div>
-    Frecuencia cardiaca: @Model.Visita.FrecuenciaCardiaca x Minuto
-</div>
-<div>
-    Estado de ánimo:@Model.Visita.EstadoDeAnimo 
-</div>
-<div>
-    Recomendaciones:@Model.Visita.Recomendaciones
-</div>
-<a asp-page="./List" class="btn-default">Lista de Visitas </a>
+
+
+<head>
+    <link rel="stylesheet" href="~/css/detailsInfo.css" />
+    <title>Detalle de la Visita - Mascota Feliz</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+
+    <header>
+        <a id="nav_header_logo" asp-page="/RegisterPages/vetView"><img src="/lib/logoMascFeliz.png"
+                alt="Logo Mascota Feliz" />
+        </a>
+        <a id="nav_header_text" asp-page="/RegisterPages/vetView">
+            <h1>Mascota Feliz</h1>
+        </a>
+
+        <nav class="navbar">
+            <ul class="nav_menu">
+                <li><a id="nav_header_visit" asp-page="/RegisterPages/visitRegister">Registro Visitas</a></li>
+                <li><a id="nav_header_petregister">Historial de Registros</a>
+                    <ul class="nav_submenu">
+                        <li><a href="/RegisterPages/MascotasReg">Mascotas</a></li>
+                        <li><a href="/RegisterPages/PropietarioReg">Propietarios</a></li>
+                        <li><a href="/RegisterPages/List">Veterinarios</a></li>
+                        <li><a href="/RegisterPages/VisitasReg">Visitas</a></li>
+                    </ul>
+                </li>
+                <li><a id="nav_header_profile" href="#">Perfil</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+        <h1>DETALLES DE LA VISITA</h1>
+        <h3>Nombre de la mascota: @Model.Visita.Mascota.NombreMascota</h3>
+        <div>
+            Veterinario: @Model.Visita.Veterinario.Nombre
+        </div>
+        <div>
+            Fecha: @Model.Visita.Fecha
+        </div>
+        <div>
+            Temperatura: @Model.Visita.Temperatura °C
+        </div>
+        <div>
+            Peso: @Model.Visita.Peso Kg
+        </div>
+        <div>
+            Frecuencia respiratoria: @Model.Visita.FrecuenciaRespiratoria x Minuto
+        </div>
+        <div>
+            Frecuencia cardiaca: @Model.Visita.FrecuenciaCardiaca x Minuto
+        </div>
+        <div>
+            Estado de ánimo: @Model.Visita.EstadoDeAnimo
+        </div>
+        <div>
+            Recomendaciones: @Model.Visita.Recomendaciones
+        </div>
+        <p class="p-separator-up"></p>
+        <a asp-page="./VisitasReg" class="btn-default">Regresar a la lista de Visitas</a>
+        <p class="p-separator-down"></p>
+
+    </main>
+
+    <footer>
+        <article>
+            <p><i>© 2021 - Designed and Developed by InMotion</i></p>
+        </article>
+    </footer>
+
+
+</body>

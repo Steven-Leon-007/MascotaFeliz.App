@@ -123,7 +123,7 @@ main{
     background-color: #F6F3F3;
     margin: 50px 50px 50px 50px;
     border-radius: 20px;
-    padding-left: 50px;
+    padding-left: 20px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 
 }
@@ -134,14 +134,16 @@ main table {
 
 main th,
 main td{
-    padding: 20px;
-    padding-left: 50px;
+    padding: 15px;
+    padding-left: 35px;
     text-align: center;
 }
 
 main td{
-    font-size: 18px;
+    font-size: 17px;
+    
 }
+
 
 main h2{
     margin-bottom: 15px;
@@ -168,6 +170,7 @@ main tr:hover{
 }
 
 
+
 #edit_link{
     text-decoration: none;
     color: rgb(79, 81, 175);
@@ -188,7 +191,6 @@ main tr:hover{
 }
 
 
-
 #create_link{
     text-decoration: none;
     color: #000;
@@ -200,7 +202,6 @@ main tr:hover{
     padding: 20px;
     position: absolute;
     right: 100px;
-    font-weight: bold;
 
 }
 
@@ -210,8 +211,6 @@ main tr:hover{
     transition: all 0.3s ease-in-out;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
-
-
 
 footer{
     margin-top: 125px;
