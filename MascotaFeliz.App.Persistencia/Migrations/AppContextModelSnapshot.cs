@@ -27,13 +27,17 @@ namespace MascotaFeliz.App.Persistencia.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("NombreMascota")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int?>("PropietarioId")
                         .HasColumnType("int");
 
                     b.Property<string>("Raza")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("TipoAnimal")
                         .HasColumnType("int");
@@ -53,20 +57,28 @@ namespace MascotaFeliz.App.Persistencia.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("Apellidos")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Discriminator")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Identificacion")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Telefono")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
@@ -83,28 +95,40 @@ namespace MascotaFeliz.App.Persistencia.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("EstadoDeAnimo")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("FrecuenciaCardiaca")
-                        .HasColumnType("int");
+                    b.Property<string>("FrecuenciaCardiaca")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("FrecuenciaRespiratoria")
-                        .HasColumnType("int");
+                    b.Property<string>("FrecuenciaRespiratoria")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int?>("MascotaId")
                         .HasColumnType("int");
 
-                    b.Property<float>("Peso")
-                        .HasColumnType("real");
+                    b.Property<string>("Peso")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Recomendaciones")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
-                    b.Property<float>("Temperatura")
-                        .HasColumnType("real");
+                    b.Property<string>("Temperatura")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int?>("VeterinarioId")
                         .HasColumnType("int");
@@ -123,7 +147,9 @@ namespace MascotaFeliz.App.Persistencia.Migrations
                     b.HasBaseType("MascotaFeliz.App.Dominio.Persona");
 
                     b.Property<string>("Direccion")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasDiscriminator().HasValue("Propietario");
                 });
@@ -133,7 +159,9 @@ namespace MascotaFeliz.App.Persistencia.Migrations
                     b.HasBaseType("MascotaFeliz.App.Dominio.Persona");
 
                     b.Property<string>("TarjetaProfesional")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasDiscriminator().HasValue("Veterinario");
                 });

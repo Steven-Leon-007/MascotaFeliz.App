@@ -6,43 +6,22 @@ namespace MascotaFeliz.App.Persistencia
 {
     public class RepositorioVeterinario : IRepositorioVeterinario
     {
-        static public List<Veterinario> veterinarios;
         private readonly AppContext _appContext;
 
         public RepositorioVeterinario(AppContext appContext)
         {
             _appContext=appContext;
         }
-        public RepositorioVeterinario()
+        Veterinario IRepositorioVeterinario.AddVeterinario(Veterinario nuevoVeterinario)
         {
-            veterinarios = new List<Veterinario>()
-            {
-                new Veterinario{Id=5,Identificacion="1192839472",Nombre="Esteban",Apellidos="Peréz Roa",Telefono="6851254",TarjetaProfesional="85301"},
-                new Veterinario{Id=6,Identificacion="91285452",Nombre="Martha",Apellidos="Durán",Telefono="3154852651",TarjetaProfesional="75148"},
-                new Veterinario{Id=7,Identificacion="1002562487",Nombre="Estefania",Apellidos="Buitrago",Telefono="3004517541",TarjetaProfesional="85914"},
-                new Veterinario{Id=8,Identificacion="1125601020",Nombre="Daniel",Apellidos="Rosas Perez",Telefono="6452012",TarjetaProfesional="45820"}
-            };
-        }
-        public Veterinario GetVeterinarioPorId(int veterinarioId)
-        {
-            return veterinarios.SingleOrDefault(v => v.Id ==veterinarioId);
-        }
-        /*Veterinario IRepositorioVeterinario.AddVeterinario(Veterinario veterinario)
-        {
-            var veterinarioAdicionado=_appContext.Veterinarios.Add(veterinario);
+            var veterinarioAdicionado=_appContext.Veterinarios.Add(nuevoVeterinario);
             _appContext.SaveChanges();
             return veterinarioAdicionado.Entity;
-        }*/
-        public Veterinario AddVeterinario(Veterinario nuevoVeterinario)
-        {
-            nuevoVeterinario.Id=veterinarios.Max(r => r.Id)+1;
-            veterinarios.Add(nuevoVeterinario);
-            return nuevoVeterinario;
         }
 
-        void IRepositorioVeterinario.DeleteVeterinario(int IdVeterinario)
+        void IRepositorioVeterinario.DeleteVeterinario(int idVeterinario)
         {
-            var veterinarioEncontrado=_appContext.Veterinarios.FirstOrDefault(v =>v.Id==IdVeterinario);
+            var veterinarioEncontrado=_appContext.Veterinarios.FirstOrDefault(p =>p.Id==idVeterinario);
             if(veterinarioEncontrado==null)
                 return;
             _appContext.Veterinarios.Remove(veterinarioEncontrado);
@@ -51,45 +30,32 @@ namespace MascotaFeliz.App.Persistencia
 
         IEnumerable<Veterinario> IRepositorioVeterinario.GetAllVeterinarios()
         {
-            //return _appContext.Veterinarios;
-            return veterinarios;
+            return _appContext.Veterinarios;
         }
 
-        Veterinario IRepositorioVeterinario.GetVeterinario(int IdVeterinario)
+        Veterinario IRepositorioVeterinario.GetVeterinario(int idVeterinario)
         {
-            return _appContext.Veterinarios.FirstOrDefault(v =>v.Id==IdVeterinario);
+            return _appContext.Veterinarios.FirstOrDefault(p =>p.Id==idVeterinario);
 
         }
 
-        /*Veterinario IRepositorioVeterinario.UpdateVeterinario(Veterinario veterinario, int idVeterinario_original)
+        Veterinario IRepositorioVeterinario.UpdateVeterinario(Veterinario veterinarioActualizado)
         {
-            var veterinarioEncontrado=_appContext.Veterinarios.FirstOrDefault(v => v.Id == idVeterinario_original);
-            if (veterinarioEncontrado==null)
+            var veterinarioEncontrado=_appContext.Veterinarios.FirstOrDefault(p =>p.Id== veterinarioActualizado.Id);
+            if (veterinarioEncontrado!=null)
             {
-                veterinarioEncontrado.Identificacion=veterinario.Identificacion;
-                veterinarioEncontrado.Nombre=veterinario.Nombre;
-                veterinarioEncontrado.Apellidos=veterinario.Apellidos;
-                veterinarioEncontrado.Telefono=veterinario.Telefono;
-                veterinarioEncontrado.TarjetaProfesional=veterinario.TarjetaProfesional;
+                veterinarioEncontrado.Identificacion=veterinarioActualizado.Identificacion;
+                veterinarioEncontrado.Nombre=veterinarioActualizado.Nombre;
+                veterinarioEncontrado.Apellidos=veterinarioActualizado.Apellidos;
+                veterinarioEncontrado.Telefono=veterinarioActualizado.Telefono;
+                veterinarioEncontrado.TarjetaProfesional=veterinarioActualizado.TarjetaProfesional;
 
                 _appContext.SaveChanges();
                 
             }
             return veterinarioEncontrado;
-        }*/
-
-        public Veterinario UpdateVeterinario(Veterinario veterinarioActualizado)
-        {
-            var veterinario = veterinarios.SingleOrDefault(r => r.Id == veterinarioActualizado.Id);
-            if (veterinario!=null)
-            {
-                veterinario.Identificacion=veterinarioActualizado.Identificacion;
-                veterinario.Nombre=veterinarioActualizado.Nombre;
-                veterinario.Apellidos=veterinarioActualizado.Apellidos;
-                veterinario.Telefono=veterinarioActualizado.Telefono;
-                veterinario.TarjetaProfesional=veterinarioActualizado.TarjetaProfesional;
-            }
-            return veterinario;
         }
+
     }
+
 }

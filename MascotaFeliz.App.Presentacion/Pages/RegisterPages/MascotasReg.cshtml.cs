@@ -12,11 +12,11 @@ namespace MascotaFeliz.App.Presentacion.Pages
     public class MascotasRegModel : PageModel
     {
         private readonly IRepositorioMascota repositorioMascota;
-        public IEnumerable<Mascota> Mascotas {get; set;}
+        public IEnumerable<Mascota> Mascotas{get;set;}
         
-        public MascotasRegModel(IRepositorioMascota repositorioMascota)
+        public MascotasRegModel()
         {
-            this.repositorioMascota = repositorioMascota;
+            this.repositorioMascota = new RepositorioMascota(new MascotaFeliz.App.Persistencia.AppContext());
         }
         public void OnGet()
         {
@@ -24,4 +24,5 @@ namespace MascotaFeliz.App.Presentacion.Pages
             
         }
     }
+
 }

@@ -15,15 +15,15 @@ namespace MascotaFeliz.App.Presentacion.Pages
         [BindProperty]
         public Veterinario Veterinario { get; set; }
 
-        public EditVeterinarioModel(IRepositorioVeterinario repositorioVeterinario)
+        public EditVeterinarioModel()
         {
-            this.repositorioVeterinario = repositorioVeterinario;
+            this.repositorioVeterinario = new RepositorioVeterinario(new MascotaFeliz.App.Persistencia.AppContext());
         }
         public IActionResult OnGet(int? veterinarioId)
         {
             if(veterinarioId.HasValue)
             {
-            Veterinario = repositorioVeterinario.GetVeterinarioPorId(veterinarioId.Value);
+            Veterinario = repositorioVeterinario.GetVeterinario(veterinarioId.Value);
             }
             else
             {
@@ -54,4 +54,5 @@ namespace MascotaFeliz.App.Presentacion.Pages
             return Page();
         }
     }
+
 }

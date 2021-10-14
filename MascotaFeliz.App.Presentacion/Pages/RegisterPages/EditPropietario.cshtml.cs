@@ -15,15 +15,15 @@ namespace MascotaFeliz.App.Presentacion.Pages
         [BindProperty]
         public Propietario Propietario { get; set; }
 
-        public EditPropietarioModel(IRepositorioPropietario repositorioPropietario)
+        public EditPropietarioModel()
         {
-            this.repositorioPropietario = repositorioPropietario;
+            this.repositorioPropietario = new RepositorioPropietario(new MascotaFeliz.App.Persistencia.AppContext());
         }
         public IActionResult OnGet(int? propietarioId)
         {
             if(propietarioId.HasValue)
             {
-            Propietario = repositorioPropietario.GetPropietarioPorId(propietarioId.Value);
+            Propietario = repositorioPropietario.GetPropietario(propietarioId.Value);
             }
             else
             {
@@ -53,4 +53,5 @@ namespace MascotaFeliz.App.Presentacion.Pages
             return Page();
         }
     }
+
 }

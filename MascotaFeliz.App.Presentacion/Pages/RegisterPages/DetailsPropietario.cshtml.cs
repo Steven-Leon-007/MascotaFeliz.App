@@ -14,15 +14,15 @@ namespace MascotaFeliz.App.Presentacion.Pages
         private readonly IRepositorioPropietario repositorioPropietario;
         public Propietario Propietario { get; set; }
 
-        public DetailsPropietarioModel(IRepositorioPropietario repositorioPropietario)
+        public DetailsPropietarioModel()
         {
-            this.repositorioPropietario = repositorioPropietario;
+            this.repositorioPropietario = new RepositorioPropietario(new MascotaFeliz.App.Persistencia.AppContext());
         }
 
         public IActionResult OnGet(int propietarioId)
         {
 
-            Propietario = repositorioPropietario.GetPropietarioPorId(propietarioId);
+            Propietario = repositorioPropietario.GetPropietario(propietarioId);
             if (Propietario == null)
             {
                 return RedirectToPage("./NotFound");
@@ -31,4 +31,5 @@ namespace MascotaFeliz.App.Presentacion.Pages
                 return Page();
         }
     }
+
 }

@@ -12,18 +12,21 @@ namespace MascotaFeliz.App.Presentacion.Pages
     public class EditMascotaModel : PageModel
     {
         private readonly IRepositorioMascota repositorioMascota;
+        public IEnumerable<Propietario> Propietarios{get;set;}
+        public IRepositorioPropietario repositorioPropietario;
         [BindProperty]
         public Mascota Mascota { get; set; }
-        public IEnumerable<Propietario> Propietarios = RepositorioPropietario.propietarios;
-        public EditMascotaModel(IRepositorioMascota repositorioMascota)
+        public EditMascotaModel()
         {
-            this.repositorioMascota = repositorioMascota;
+            this.repositorioMascota = new RepositorioMascota(new MascotaFeliz.App.Persistencia.AppContext());
+            this.repositorioPropietario = new RepositorioPropietario(new MascotaFeliz.App.Persistencia.AppContext());
         }
         public IActionResult OnGet(int? mascotaId)
         {
+            Propietarios = repositorioPropietario.GetAllPropietarios();
             if(mascotaId.HasValue)
             {
-            Mascota = repositorioMascota.GetMascotaPorId(mascotaId.Value);
+            Mascota = repositorioMascota.GetMascota(mascotaId.Value);
             }
             else
             {
@@ -50,8 +53,10 @@ namespace MascotaFeliz.App.Presentacion.Pages
             else
             {
                 repositorioMascota.AddMascota(Mascota);
+                repositorioMascota.UpdateMascota(Mascota);
             }
             return Page();
         }
     }
+
 }

@@ -16,9 +16,9 @@ namespace MascotaFeliz.App.Presentacion.Pages
         
         public IEnumerable<Propietario> Propietarios {get;set;}
         
-        public PropietarioRegModel(IRepositorioPropietario repositorioPropietario)
+        public PropietarioRegModel()
         {
-            this.repositorioPropietario = repositorioPropietario;
+            this.repositorioPropietario = new RepositorioPropietario(new MascotaFeliz.App.Persistencia.AppContext());
         }
 
         public void OnGet()
@@ -27,4 +27,5 @@ namespace MascotaFeliz.App.Presentacion.Pages
             
         }
     }
+
 }

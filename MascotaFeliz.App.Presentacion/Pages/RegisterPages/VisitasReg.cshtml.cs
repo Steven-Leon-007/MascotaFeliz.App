@@ -17,9 +17,9 @@ namespace MascotaFeliz.App.Presentacion.Pages
 
         public IEnumerable<Visita> Visitas {get;set;}
         
-        public VisitasRegModel(IRepositorioVisita repositorioVisita)
+        public VisitasRegModel()
         {
-            this.repositorioVisita = repositorioVisita;
+            this.repositorioVisita = new RepositorioVisita(new MascotaFeliz.App.Persistencia.AppContext());
         }
 
 
@@ -28,4 +28,5 @@ namespace MascotaFeliz.App.Presentacion.Pages
              Visitas = repositorioVisita.GetAllVisitas();   
         }
     }
+
 }

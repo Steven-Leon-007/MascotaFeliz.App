@@ -8,14 +8,10 @@ namespace MascotaFeliz.App.Persistencia
     public interface IRepositorioPropietario
     {
         IEnumerable<Propietario> GetAllPropietarios();
-        //Propietario AddPropietario(Propietario propietario);
         Propietario AddPropietario(Propietario nuevoPropietario);
-
         Propietario UpdatePropietario(Propietario propietarioActualizado);
-        //Propietario UpdatePropietario(Propietario propietario, int idPropietario_original);//modificada por mi para que funcionara
         void DeletePropietario(int idPropietario);    
         Propietario GetPropietario(int idPropietario);
-        //Medico AsignarMedico(int idPaciente, int idMedico); 
-        Propietario GetPropietarioPorId(int propietarioId);
     }
+
 }

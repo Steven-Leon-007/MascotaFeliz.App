@@ -12,21 +12,27 @@ namespace MascotaFeliz.App.Presentacion.Pages
     public class EditVisitaModel : PageModel
     
     {
-        public IEnumerable<Mascota> Mascotas = RepositorioMascota.mascotas;
-        public IEnumerable<Veterinario> Veterinarios = RepositorioVeterinario.veterinarios;
+        private readonly IRepositorioMascota repositorioMascota;
+        private readonly IRepositorioVeterinario repositorioVeterinario;
+        public IEnumerable<Veterinario> Veterinarios{get;set;}
+        public IEnumerable<Mascota> Mascotas{get;set;}
         private readonly IRepositorioVisita repositorioVisita;
         [BindProperty]
         public Visita Visita { get; set; }
 
-        public EditVisitaModel(IRepositorioVisita repositorioVisita)
+        public EditVisitaModel()
         {
-            this.repositorioVisita = repositorioVisita;
+            this.repositorioVisita = new RepositorioVisita(new MascotaFeliz.App.Persistencia.AppContext());
+            this.repositorioVeterinario = new RepositorioVeterinario(new MascotaFeliz.App.Persistencia.AppContext());
+            this.repositorioMascota = new RepositorioMascota(new MascotaFeliz.App.Persistencia.AppContext());
         }
         public IActionResult OnGet(int? visitaId)
         {
+            Mascotas = repositorioMascota.GetAllMascotas();
+            Veterinarios = repositorioVeterinario.GetAllVeterinarios();
             if(visitaId.HasValue)
             {
-            Visita = repositorioVisita.GetVisitaPorId(visitaId.Value);
+            Visita = repositorioVisita.GetVisita(visitaId.Value);
             }
             else
             {
@@ -57,4 +63,5 @@ namespace MascotaFeliz.App.Presentacion.Pages
             return Page();
         }
     }
+
 }

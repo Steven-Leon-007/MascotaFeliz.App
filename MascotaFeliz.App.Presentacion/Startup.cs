@@ -25,10 +25,6 @@ namespace MascotaFeliz.App.Presentacion
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddSingleton<IRepositorioPropietario, RepositorioPropietario>();
-            services.AddSingleton<IRepositorioVeterinario, RepositorioVeterinario>();
-            services.AddSingleton<IRepositorioMascota, RepositorioMascota>();
-            services.AddSingleton<IRepositorioVisita, RepositorioVisita>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

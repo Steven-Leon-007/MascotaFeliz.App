@@ -6,46 +6,22 @@ namespace MascotaFeliz.App.Persistencia
 {
     public class RepositorioVisita : IRepositorioVisita
     {
-        List<Visita> visitas;
         private readonly AppContext _appContext;
 
         public RepositorioVisita(AppContext appContext)
         {
             _appContext=appContext;
         }
-        public RepositorioVisita()
+        Visita IRepositorioVisita.AddVisita(Visita nuevaVisita)
         {
-            visitas = new List<Visita>()
-            {
-                new Visita{Id=1,Mascota=RepositorioMascota.mascotas[0],Veterinario=RepositorioVeterinario.veterinarios[2], Fecha=new System.DateTime(2021,09,12,17,30,00),Temperatura="36",Peso="12",FrecuenciaRespiratoria="32",FrecuenciaCardiaca="172",EstadoDeAnimo="Un poco alterado, pero no fuera de lo común",Recomendaciones="Proporcionar las vitaminas cada 12 horas y asegurarse de que beba abundante agua"},
-                new Visita{Id=2,Mascota=RepositorioMascota.mascotas[1],Veterinario=RepositorioVeterinario.veterinarios[3], Fecha=new System.DateTime(2021,09,15,14,45,00),Temperatura="35",Peso="17",FrecuenciaRespiratoria="40",FrecuenciaCardiaca="109",EstadoDeAnimo="Bastante sereno y calmado",Recomendaciones="Limpiar constantemente patas y cuello. Aumentar ingesta de proteína"},
-                new Visita{Id=3,Mascota=RepositorioMascota.mascotas[2],Veterinario=RepositorioVeterinario.veterinarios[0],Fecha=new System.DateTime(2021,09,16,08,40,00),Temperatura="34",Peso="15",FrecuenciaRespiratoria="35",FrecuenciaCardiaca="157",EstadoDeAnimo="Alegre,alterado",Recomendaciones="Bajar consumo de enlatados, proporcionar cantidades más pequeñas con respecto a la hora del día"},
-                new Visita{Id=4,Mascota=RepositorioMascota.mascotas[3],Veterinario=RepositorioVeterinario.veterinarios[1], Fecha=new System.DateTime(2021,09,22,12,30,00),Temperatura="35",Peso="23",FrecuenciaRespiratoria="37",FrecuenciaCardiaca="120",EstadoDeAnimo="Algo malhumorado, impaciente",Recomendaciones="Prestar especial atención a las manchas del cuello, si continuan, regresar lo mas pronto posible. Proporcionar medicina asignada"},
-                new Visita{Id=5,Mascota=RepositorioMascota.mascotas[1],Veterinario=RepositorioVeterinario.veterinarios[2], Fecha=new System.DateTime(2021,09,23,07,45,00),Temperatura="34",Peso="12",FrecuenciaRespiratoria="39",FrecuenciaCardiaca="135",EstadoDeAnimo="Timido, bastante nervioso",Recomendaciones="Incrementar el tiempo de paseo, procurar que socialice con otros animales. Suministrar vitaminas"},
-                new Visita{Id=6,Mascota=RepositorioMascota.mascotas[0],Veterinario=RepositorioVeterinario.veterinarios[1], Fecha=new System.DateTime(2021,09,29,18,00,00),Temperatura="36",Peso="23",FrecuenciaRespiratoria="36",FrecuenciaCardiaca="110",EstadoDeAnimo="Tranquilo, alegre",Recomendaciones="Bañar cada 7 días. Continuar con los cuidados"}
-            };
-        }
-
-        public Visita GetVisitaPorId(int visitaId)
-        {
-            return visitas.SingleOrDefault(vi => vi.Id ==visitaId);
-        }        
-        /*Visita IRepositorioVisita.AddVisita(Visita visita)
-        {
-            var visitaAdicionado=_appContext.Visitas.Add(visita);
+            var visitaAdicionado=_appContext.Visitas.Add(nuevaVisita);
             _appContext.SaveChanges();
             return visitaAdicionado.Entity;
-        }*/
-        public Visita AddVisita(Visita nuevaVisita)
-        {
-            nuevaVisita.Id=visitas.Max(r => r.Id)+1;
-            visitas.Add(nuevaVisita);
-            return nuevaVisita;
         }
 
         void IRepositorioVisita.DeleteVisita(int idVisita)
         {
-            var visitaEncontrado=_appContext.Visitas.FirstOrDefault(m => m.Id == idVisita);
+            var visitaEncontrado=_appContext.Visitas.FirstOrDefault(p =>p.Id==idVisita);
             if(visitaEncontrado==null)
                 return;
             _appContext.Visitas.Remove(visitaEncontrado);
@@ -54,55 +30,36 @@ namespace MascotaFeliz.App.Persistencia
 
         IEnumerable<Visita> IRepositorioVisita.GetAllVisitas()
         {
-            //return _appContext.Visitas;
-            return visitas;
+            return _appContext.Visitas;
         }
 
         Visita IRepositorioVisita.GetVisita(int idVisita)
         {
-            return _appContext.Visitas.FirstOrDefault(vi => vi.Id == idVisita);
+            return _appContext.Visitas.FirstOrDefault(p =>p.Id==idVisita);
 
         }
 
-        /*Visita IRepositorioVisita.UpdateVisita(Visita visita, int idVisita_original)
+        Visita IRepositorioVisita.UpdateVisita(Visita visitaActualizado)
         {
-            var visitaEncontrado=_appContext.Visitas.FirstOrDefault(vi => vi.Id == idVisita_original);
-            if (visitaEncontrado==null)
+            var visitaEncontrado=_appContext.Visitas.FirstOrDefault(p =>p.Id== visitaActualizado.Id);
+            if (visitaEncontrado!=null)
             {
-                visitaEncontrado.Mascota=visita.Mascota;
-                visitaEncontrado.Veterinario=visita.Veterinario;
-                visitaEncontrado.Fecha=visita.Fecha;
-                visitaEncontrado.Temperatura=visita.Temperatura;
-                visitaEncontrado.Peso=visita.Peso;
-                visitaEncontrado.FrecuenciaRespiratoria=visita.FrecuenciaRespiratoria;
-                visitaEncontrado.FrecuenciaCardiaca=visita.FrecuenciaCardiaca;
-                visitaEncontrado.EstadoDeAnimo=visita.EstadoDeAnimo;
-                visitaEncontrado.Recomendaciones=visita.Recomendaciones;
-
-                //mascotaEncontrado.TarjetaProfesional=mascota.TarjetaProfesional;
+                visitaEncontrado.Mascota=visitaActualizado.Mascota;
+                visitaEncontrado.Veterinario=visitaActualizado.Veterinario;
+                visitaEncontrado.Fecha=visitaActualizado.Fecha;
+                visitaEncontrado.Temperatura=visitaActualizado.Temperatura;
+                visitaEncontrado.Peso=visitaActualizado.Peso;
+                visitaEncontrado.FrecuenciaRespiratoria=visitaActualizado.FrecuenciaRespiratoria;
+                visitaEncontrado.FrecuenciaCardiaca=visitaActualizado.FrecuenciaCardiaca;
+                visitaEncontrado.EstadoDeAnimo=visitaActualizado.EstadoDeAnimo;
+                visitaEncontrado.Recomendaciones=visitaActualizado.Recomendaciones;
 
                 _appContext.SaveChanges();
                 
             }
             return visitaEncontrado;
-        }*/
-
-        public Visita UpdateVisita(Visita visitaActualizado)
-        {
-            var visita = visitas.SingleOrDefault(r => r.Id == visitaActualizado.Id);
-            if (visita!=null)
-            {
-                visita.Mascota=visitaActualizado.Mascota;
-                visita.Veterinario=visitaActualizado.Veterinario;
-                visita.Fecha=visitaActualizado.Fecha;
-                visita.Temperatura=visitaActualizado.Temperatura;
-                visita.Peso=visitaActualizado.Peso;
-                visita.FrecuenciaRespiratoria=visitaActualizado.FrecuenciaRespiratoria;
-                visita.FrecuenciaCardiaca=visitaActualizado.FrecuenciaCardiaca;
-                visita.EstadoDeAnimo=visitaActualizado.EstadoDeAnimo;
-                visita.Recomendaciones=visitaActualizado.Recomendaciones;
-            }
-            return visita;
         }
+
     }
+
 }

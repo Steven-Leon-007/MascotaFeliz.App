@@ -14,13 +14,13 @@ namespace MascotaFeliz.App.Presentacion.Pages
         private readonly IRepositorioMascota repositorioMascota;
         public Mascota Mascota { get; set; }
 
-        public DetailsMascotaModel(IRepositorioMascota repositorioMascota)
+        public DetailsMascotaModel()
         {
-            this.repositorioMascota = repositorioMascota;
+            this.repositorioMascota = new RepositorioMascota(new MascotaFeliz.App.Persistencia.AppContext());
         }
         public IActionResult OnGet(int mascotaId)
         {
-            Mascota = repositorioMascota.GetMascotaPorId(mascotaId);
+            Mascota = repositorioMascota.GetMascota(mascotaId);
             if (Mascota == null)
             {
                 return RedirectToPage("./NotFound");
@@ -29,4 +29,5 @@ namespace MascotaFeliz.App.Presentacion.Pages
                 return Page();
         }
     }
+
 }

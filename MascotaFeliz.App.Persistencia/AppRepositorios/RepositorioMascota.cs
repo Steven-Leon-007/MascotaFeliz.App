@@ -7,45 +7,22 @@ namespace MascotaFeliz.App.Persistencia
 {
     public class RepositorioMascota : IRepositorioMascota
     {
-        static public List<Mascota> mascotas;
         private readonly AppContext _appContext;
 
         public RepositorioMascota(AppContext appContext)
         {
             _appContext=appContext;
         }
-
-        public RepositorioMascota()
+        Mascota IRepositorioMascota.AddMascota(Mascota nuevaMascota)
         {
-            mascotas = new List<Mascota>()
-            {
-                new Mascota{Id=1,NombreMascota="Pepito",Raza="Bull Dog",TipoAnimal=Tipo.Canino,Propietario=RepositorioPropietario.propietarios[0]},
-                new Mascota{Id=2,NombreMascota="Luna",Raza="Criollo",TipoAnimal=Tipo.Felino,Propietario=RepositorioPropietario.propietarios[1]},
-                new Mascota{Id=3,NombreMascota="Tom",Raza="Persa",TipoAnimal=Tipo.Felino,Propietario=RepositorioPropietario.propietarios[2]},
-                new Mascota{Id=4,NombreMascota="Pelos",Raza="Golden Retriever",TipoAnimal=Tipo.Canino,Propietario=RepositorioPropietario.propietarios[3]}
-            };
-        }
-
-        public Mascota GetMascotaPorId(int mascotaId)
-        {
-            return mascotas.SingleOrDefault(m => m.Id ==mascotaId);
-        }
-        /*Mascota IRepositorioMascota.AddMascota(Mascota mascota)
-        {
-            var mascotaAdicionado=_appContext.Mascotas.Add(mascota);
+            var mascotaAdicionado=_appContext.Mascotas.Add(nuevaMascota);
             _appContext.SaveChanges();
             return mascotaAdicionado.Entity;
-        }*/
-        public Mascota AddMascota(Mascota nuevaMascota)
-        {
-            nuevaMascota.Id=mascotas.Max(r => r.Id)+1;
-            mascotas.Add(nuevaMascota);
-            return nuevaMascota;
         }
 
-        void IRepositorioMascota.DeleteMascota(int IdMascota)
+        void IRepositorioMascota.DeleteMascota(int idMascota)
         {
-            var mascotaEncontrado=_appContext.Mascotas.FirstOrDefault(m => m.Id == IdMascota);
+            var mascotaEncontrado=_appContext.Mascotas.FirstOrDefault(p =>p.Id==idMascota);
             if(mascotaEncontrado==null)
                 return;
             _appContext.Mascotas.Remove(mascotaEncontrado);
@@ -54,46 +31,31 @@ namespace MascotaFeliz.App.Persistencia
 
         IEnumerable<Mascota> IRepositorioMascota.GetAllMascotas()
         {
-            //return _appContext.Mascotas;
-            return mascotas;
+            return _appContext.Mascotas;
         }
 
-        Mascota IRepositorioMascota.GetMascota(int IdMascota)
+        Mascota IRepositorioMascota.GetMascota(int idMascota)
         {
-            return _appContext.Mascotas.FirstOrDefault(m => m.Id == IdMascota);
+            return _appContext.Mascotas.FirstOrDefault(m =>m.Id==idMascota);
 
         }
 
-        /*Mascota IRepositorioMascota.UpdateMascota(Mascota mascota, int idMascota_original)
+        Mascota IRepositorioMascota.UpdateMascota(Mascota mascotaActualizado)
         {
-            var mascotaEncontrado=_appContext.Mascotas.FirstOrDefault(m => m.Id == idMascota_original);
-            if (mascotaEncontrado==null)
+            var mascotaEncontrado=_appContext.Mascotas.FirstOrDefault(m =>m.Id== mascotaActualizado.Id);
+            if (mascotaEncontrado!=null)
             {
-                mascotaEncontrado.NombreMascota=mascota.NombreMascota;
-                mascotaEncontrado.Raza=mascota.Raza;
-                mascotaEncontrado.TipoAnimal=mascota.TipoAnimal;
-                mascotaEncontrado.Propietario=mascota.Propietario;
-
-                //mascotaEncontrado.TarjetaProfesional=mascota.TarjetaProfesional;
+                mascotaEncontrado.NombreMascota=mascotaActualizado.NombreMascota;
+                mascotaEncontrado.Raza=mascotaActualizado.Raza;
+                mascotaEncontrado.TipoAnimal=mascotaActualizado.TipoAnimal;
+                mascotaEncontrado.Propietario=mascotaActualizado.Propietario;
 
                 _appContext.SaveChanges();
                 
             }
             return mascotaEncontrado;
-
-        }*/
-
-        public Mascota UpdateMascota(Mascota mascotaActualizado)
-        {
-            var mascota = mascotas.SingleOrDefault(r => r.Id == mascotaActualizado.Id);
-            if (mascota!=null)
-            {
-                mascota.NombreMascota=mascotaActualizado.NombreMascota;
-                mascota.Raza=mascotaActualizado.Raza;
-                mascota.TipoAnimal=mascotaActualizado.TipoAnimal;
-                mascota.Propietario=mascotaActualizado.Propietario;
-            }
-            return mascota;
         }
+
     }
+    
 }
