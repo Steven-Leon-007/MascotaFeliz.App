@@ -67,6 +67,13 @@
                             <i class="fas fa-address-book fa-lg" id="edit_link" aria-hidden="true"></i>
                         </a>
                     </td>
+                    <td>
+                        <a class="btn btn-primary table-btn" asp-page="./DeleteVeterinario"
+                        asp-route-veterinarioId="@veterinario.Id">
+                            <i class="fas fa-trash" aria-hidden="true"></i>
+                        </a>
+                    </td>
+                    
                 </tr>
             }
         </table>

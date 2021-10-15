@@ -11,7 +11,7 @@
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 
-<body> 
+<body>
     <header>
         <a id="nav_header_logo" asp-page="/RegisterPages/vetView"><img src="/lib/logoMascFeliz.png"
                 alt="Logo Mascota Feliz" />
@@ -49,7 +49,7 @@
                 <th>FECHA</th>
                 <th>FRECUENCIA <br>RESPIRATORIA</th>
                 <th>FRECUENCIA <br>CARDIACA</th>
-                
+
             </tr>
             @foreach (var visita in Model.Visitas)
             {
@@ -60,7 +60,7 @@
                     <td>@visita.Fecha</td>
                     <td>@visita.FrecuenciaRespiratoria x Minuto</td>
                     <td>@visita.FrecuenciaCardiaca x Minuto</td>
-                    
+
                     <td>
                         <a class="btn btn-primary table-btn" asp-page="./DetailsVisita" asp-route-visitaId="@visita.Id">
                             <i class="fas fa-info-circle" id="details_link"></i>
@@ -69,6 +69,12 @@
                     <td>
                         <a class="btn btn-primary table-btn" asp-page="./EditVisita" asp-route-visitaId="@visita.Id">
                             <i class="fas fa-address-book fa-lg" id="edit_link" aria-hidden="true"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="btn btn-primary table-btn" asp-page="./DeleteVisita"
+                        asp-route-veterinarioId="@visita.Id">
+                            <i class="fas fa-trash" id="edit_link" aria-hidden="true"></i>
                         </a>
                     </td>
                 </tr>

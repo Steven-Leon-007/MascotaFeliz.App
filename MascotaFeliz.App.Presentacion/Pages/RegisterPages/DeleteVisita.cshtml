@@ -1,0 +1,118 @@
+﻿@page
+@model MascotaFeliz.App.Presentacion.Pages.DeleteVisitaModel
+@{
+    Layout=null;
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/editVisitStyle.css" />
+    <title>Borrar datos de la Visita - Mascota Feliz</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+
+    <header>
+        <a id="nav_header_logo" asp-page="/RegisterPages/vetView"><img src="/lib/logoMascFeliz.png"
+                alt="Logo Mascota Feliz" />
+        </a>
+        <a id="nav_header_text" asp-page="/RegisterPages/vetView">
+            <h1>Mascota Feliz</h1>
+        </a>
+
+        <nav class="navbar">
+            <ul class="nav_menu">
+                <li><a id="nav_header_visit" asp-page="/RegisterPages/visitRegister">Registro Visitas</a></li>
+                <li><a id="nav_header_petregister">Historial de Registros</a>
+                    <ul class="nav_submenu">
+                        <li><a href="/RegisterPages/MascotasReg">Mascotas</a></li>
+                        <li><a href="/RegisterPages/PropietarioReg">Propietarios</a></li>
+                        <li><a href="/RegisterPages/List">Veterinarios</a></li>
+                        <li><a href="/RegisterPages/VisitasReg">Visitas</a></li>
+                    </ul>
+                </li>
+                <li><a id="nav_header_profile" href="#">Perfil</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <main>
+
+        <h1>ELIMINAR DATOS VISITA:</h1>
+        <form method="post">
+            <input type="hidden" asp-for="Visita.Id" />
+            <div class="grid-form">
+                <div class="form-group">
+                    <label asp-for="Visita.Mascota" class="visit-pet">Mascota: </label>
+                    <select asp-for="Visita.Mascota" class="form-control">
+                        <option disabled selected="">Selecciona una opción</option>
+                        @foreach (var pet in Model.Mascotas)
+                        {
+                            <option value="Visita.Mascota" class="form-control">@pet.NombreMascota</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Visita.Veterinario" class="visit-propietary">Veterinario: </label>
+                    <select asp-for="Visita.Veterinario" class="form-control">
+                        <option disabled selected="">Selecciona una opción</option>
+                        @foreach (var ve in Model.Veterinarios)
+                        {
+                            <option value="Mascota.Propietario" class="form-control">@ve.Nombre</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Visita.Fecha" class="visit-date">Fecha: </label>
+                    <input asp-for="Visita.Fecha" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label asp-for="Visita.Temperatura" class="visit-temperature">Temperatura: </label>
+                    <input asp-for="Visita.Temperatura" class="form-control">
+                    <span class="text-danger" asp-validation-for="Visita.Temperatura"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Visita.Peso" class="visit-weight">Peso: </label>
+                    <input asp-for="Visita.Peso" class="form-control">
+                    <span class="text-danger" asp-validation-for="Visita.Peso"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Visita.FrecuenciaRespiratoria">Frecuencia Respiratoria: </label>
+                    <input asp-for="Visita.FrecuenciaRespiratoria" class="form-control">
+                    <span class="text-danger" asp-validation-for="Visita.FrecuenciaRespiratoria"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Visita.FrecuenciaCardiaca">Frecuencia Cardiaca: </label>
+                    <input asp-for="Visita.FrecuenciaCardiaca" class="form-control">
+                    <span class="text-danger" asp-validation-for="Visita.FrecuenciaCardiaca"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Visita.EstadoDeAnimo" class="visit-mood">Estado de ánimo: </label>
+                    <input asp-for="Visita.EstadoDeAnimo" class="form-control">
+                    <span class="text-danger" asp-validation-for="Visita.EstadoDeAnimo"></span>
+                </div>
+            </div>
+            <div class="form-group" id="recomendations-div">
+                <label asp-for="Visita.Recomendaciones">Recomendaciones: </label>
+                <textarea asp-for="Visita.Recomendaciones" class="form-control" id="recomendations" rows="6"
+                    cols="50"></textarea>
+                <span class="text-danger" asp-validation-for="Visita.Recomendaciones"></span>
+            </div>
+            <button type="submit" class="btn btn-primary" id="save_form">Borrar</button>
+        </form>
+
+        <p class="p-separator-up"></p>
+        <a asp-page="./VisitasReg" class="btn-default">Regresar a la lista de Visitas</a>
+        <p class="p-separator-down">ㅤ</p>
+    </main>
+
+    <footer>
+        <article>
+            <p>© 2021 - Designed and Developed by InMotion</p>
+        </article>
+    </footer>
+
+</body>

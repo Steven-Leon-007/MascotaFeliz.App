@@ -93,3 +93,7 @@ C:\MascotaFeliz\MascotaFeliz.App\MascotaFeliz.App.Presentacion\obj\Debug\netcore
 C:\MascotaFeliz\MascotaFeliz.App\MascotaFeliz.App.Presentacion\obj\Debug\netcoreapp3.1\Razor\Pages\RegisterPages\MascotasReg.cshtml.g.cs
 C:\MascotaFeliz\MascotaFeliz.App\MascotaFeliz.App.Presentacion\obj\Debug\netcoreapp3.1\Razor\Pages\RegisterPages\PropietarioReg.cshtml.g.cs
 C:\MascotaFeliz\MascotaFeliz.App\MascotaFeliz.App.Presentacion\obj\Debug\netcoreapp3.1\Razor\Pages\RegisterPages\VisitasReg.cshtml.g.cs
+C:\MascotaFeliz\MascotaFeliz.App\MascotaFeliz.App.Presentacion\obj\Debug\netcoreapp3.1\Razor\Pages\RegisterPages\DeleteMascota.cshtml.g.cs
+C:\MascotaFeliz\MascotaFeliz.App\MascotaFeliz.App.Presentacion\obj\Debug\netcoreapp3.1\Razor\Pages\RegisterPages\DeletePropietario.cshtml.g.cs
+C:\MascotaFeliz\MascotaFeliz.App\MascotaFeliz.App.Presentacion\obj\Debug\netcoreapp3.1\Razor\Pages\RegisterPages\DeleteVeterinario.cshtml.g.cs
+C:\MascotaFeliz\MascotaFeliz.App\MascotaFeliz.App.Presentacion\obj\Debug\netcoreapp3.1\Razor\Pages\RegisterPages\DeleteVisita.cshtml.g.cs

@@ -1,0 +1,90 @@
+﻿@page
+@model MascotaFeliz.App.Presentacion.Pages.DeleteMascotaModel
+@{
+    Layout=null;
+}
+<head>
+    <link rel="stylesheet" href="~/css/editStyle.css" />
+    <title>Borrar datos de la Mascota - Mascota Feliz</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+
+    <header>
+           <a id="nav_header_logo" asp-page="/RegisterPages/vetView"><img src="/lib/logoMascFeliz.png" alt="Logo Mascota Feliz"/>
+        </a>
+        <a id="nav_header_text" asp-page="/RegisterPages/vetView">
+            <h1>Mascota Feliz</h1>
+        </a>
+
+        <nav class="navbar">
+            <ul class="nav_menu">
+                <li><a id="nav_header_visit" asp-page="/RegisterPages/visitRegister">Registro Visitas</a></li>
+                <li><a id="nav_header_petregister">Historial de Registros</a>
+                    <ul class="nav_submenu">
+                        <li><a href="/RegisterPages/MascotasReg">Mascotas</a></li>
+                        <li><a href="/RegisterPages/PropietarioReg">Propietarios</a></li>   
+                        <li><a href="/RegisterPages/List">Veterinarios</a></li>
+                        <li><a href="/RegisterPages/VisitasReg">Visitas</a></li>
+                    </ul>
+                </li>
+                <li><a id="nav_header_profile" href="#">Perfil</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <main>
+
+    <h1>ELIMINAR DATOS MASCOTA:</h1>
+    <form method="post">
+        <input type="hidden" asp-for="Mascota.Id" />
+        <div class="form-group">
+            <label asp-for="Mascota.NombreMascota" id="name-pet">Nombre: </label>
+            <input asp-for="Mascota.NombreMascota" class="form-control">
+            <span class="text-danger" asp-validation-for="Mascota.NombreMascota"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Mascota.Raza" id="name-raza">Raza: </label>
+            <input asp-for="Mascota.Raza" class="form-control">
+            <span class="text-danger" asp-validation-for="Mascota.Raza"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Mascota.TipoAnimal">Tipo de Animal: </label>
+            <select asp-for="Mascota.TipoAnimal" class="form-control">
+                <option disabled selected="">Selecciona una opción</option>
+                <option value="Mascota.TipoAnimal" class="form-control">Felino</option>
+                <option value="Mascota.TipoAnimal" class="form-control">Canino</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="Mascota.Propietario" id="name-propietary">Propietario: </label>
+            <select asp-for="Mascota.Propietario" class="form-control">
+                <option disabled selected="">Selecciona una opción</option>
+                @foreach (var duenio in Model.Propietarios)
+                {
+                    <option value="Mascota.Propietario" class="form-control">@duenio.Nombre</option>
+                }
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary" id="save_form">Borrar</button>
+
+    </form>
+
+    <p class="p-separator-up"></p>
+    <a asp-page="./MascotasReg" class="btn-default">Regresar a la lista de Mascotas </a>
+    <p class="p-separator-down">ㅤ</p>
+
+    </main>
+    
+    <footer>
+        <article>
+            <p>© 2021 - Designed and Developed by InMotion</p>
+        </article>
+    </footer>
+
+
+</body>
