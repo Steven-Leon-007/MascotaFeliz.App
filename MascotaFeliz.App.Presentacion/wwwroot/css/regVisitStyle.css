@@ -182,6 +182,13 @@ main tr:hover{
 }
 
 
+#delete_link{
+    text-decoration: none;
+    color: rgb(169, 56, 56);
+}
+
+
+
 .p-separator-up {
     margin-top: 30px;
 }

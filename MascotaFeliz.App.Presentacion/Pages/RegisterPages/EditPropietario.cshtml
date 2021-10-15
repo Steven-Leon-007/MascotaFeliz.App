@@ -47,27 +47,27 @@
             <input type="hidden" asp-for="Propietario.Id" />
             <div class="form-group">
                 <label asp-for="Propietario.Identificacion">Identificacion: </label>
-                <input asp-for="Propietario.Identificacion" class="form-control">
+                <input asp-for="Propietario.Identificacion" class="form-control" autocomplete="identification" required>
                 <span class="text-danger" asp-validation-for="Propietario.Identificacion"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Propietario.Nombre" id="name-propietary-prop">Nombre: </label>
-                <input asp-for="Propietario.Nombre" class="form-control">
+                <input asp-for="Propietario.Nombre" class="form-control" autocomplete="name" required>
                 <span class="text-danger" asp-validation-for="Propietario.Nombre"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Propietario.Apellidos" id="lastname-propietary">Apellidos: </label>
-                <input asp-for="Propietario.Apellidos" class="form-control">
+                <input asp-for="Propietario.Apellidos" class="form-control" autocomplete="lastname" required>
                 <span class="text-danger" asp-validation-for="Propietario.Apellidos"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Propietario.Telefono" id="phone-propietary">Telefono: </label>
-                <input asp-for="Propietario.Telefono" class="form-control">
+                <input asp-for="Propietario.Telefono" class="form-control" autocomplete="phone" required>
                 <span class="text-danger" asp-validation-for="Propietario.Telefono"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Propietario.Direccion" id="address-propietary">Direccion: </label>
-                <input asp-for="Propietario.Direccion" class="form-control">
+                <input asp-for="Propietario.Direccion" class="form-control" autocomplete="address" required>
                 <span class="text-danger" asp-validation-for="Propietario.Direccion"></span>
             </div>
             <button type="submit" class="btn btn-primary" id="save_form">Grabar</button>
