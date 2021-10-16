@@ -55,6 +55,11 @@ namespace MascotaFeliz.App.Persistencia
             }
             return veterinarioEncontrado;
         }
+        IEnumerable<Veterinario> IRepositorioVeterinario.SearchVeterinarios(string nombre)
+        {
+            return _appContext.Veterinarios
+                        .Where(p => p.Nombre.Contains(nombre));
+        }
 
     }
 

@@ -40,6 +40,15 @@
 
 
     <main>
+
+        <form method="get">
+            <div class="form-group">
+                <label for="nombre">Buscar</label>
+                <input name="nombre" id="nombre" class="form-control" asp-for="@Model.bActual">
+                <button type="submit" class="fas fa-search"></button>
+            </div>
+        </form>
+
         <h2>Veterinarios:</h2>
         <table class="table">
             <tr class="top-tr">
@@ -73,7 +82,7 @@
                             <i class="fas fa-trash" id="delete_link" aria-hidden="true"></i>
                         </a>
                     </td>
-                    
+
                 </tr>
             }
         </table>

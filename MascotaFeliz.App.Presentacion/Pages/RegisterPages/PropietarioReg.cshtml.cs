@@ -12,6 +12,7 @@ namespace MascotaFeliz.App.Presentacion.Pages
 {
     public class PropietarioRegModel : PageModel
     {
+        public string bActual{get; set;}
         private readonly IRepositorioPropietario repositorioPropietario;
         
         public IEnumerable<Propietario> Propietarios {get;set;}
@@ -21,10 +22,18 @@ namespace MascotaFeliz.App.Presentacion.Pages
             this.repositorioPropietario = new RepositorioPropietario(new MascotaFeliz.App.Persistencia.AppContext());
         }
 
-        public void OnGet()
+        public void OnGet(string nombre)
         {
-            Propietarios = repositorioPropietario.GetAllPropietarios();
-            
+            if(String.IsNullOrEmpty(nombre))
+            {
+                bActual = "";
+                Propietarios = repositorioPropietario.GetAllPropietarios();
+            }
+            else
+            {
+                bActual = nombre;
+                Propietarios = repositorioPropietario.SearchPropietarios(nombre);
+            }
         }
     }
 

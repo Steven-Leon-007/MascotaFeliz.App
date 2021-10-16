@@ -1,6 +1,7 @@
 ﻿@page
+@using MascotaFeliz.App.Dominio
 @model MascotaFeliz.App.Presentacion.Pages.MascotasRegModel
-@{
+@{ 
     Layout = null;
     ViewData["Title"] = "Registro de Mascotas";
 }
@@ -39,13 +40,32 @@
 
 
     <main>
+        
+        <form method="get">
+    <div class="form-group">
+        <label for="tipo">Tipo</label>
+        <select name="tipo" id="tipo" asp-items="Html.GetEnumSelectList<Tipo>()" class="form-control" asp-for="@Model.tActual">
+        <option value="-1">Ver todos</option>
+		</select>
+        <button type="submit" class="fas fa-filter"></button>
+    </div>
+	
+</form>
+
+        <form method="get">
+            <div class="form-group">
+                <label for="nombre">Buscar</label>
+                <input name="nombre" id="nombre" class="form-control" asp-for="@Model.bActual">
+                <button type="submit" class="fas fa-search"></button>
+            </div>
+        </form>
+
     <h2>Mascotas:</h2>
     <table class="table">
         <tr class="top-tr">
             <th>NOMBRE</th>
             <th>RAZA</th>
             <th>TIPO DE ANIMAL</th>
-            <th>DUEÑO</th>
         </tr>
         @foreach (var mascota in Model.Mascotas)
         {
@@ -53,7 +73,7 @@
                 <td>@mascota.NombreMascota</td>
                 <td>@mascota.Raza</td>
                 <td>@mascota.TipoAnimal</td>
-                <td>@mascota.Propietario.Nombre</td>
+                <td>@mascota.Propietario</td>
                 <td>
                     <a class="btn btn-primary table-btn" asp-page="./DetailsMascota" asp-route-mascotaId="@mascota.Id">
                     <i class="fas fa-info-circle" id="details_link"></i>

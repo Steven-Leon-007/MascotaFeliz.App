@@ -11,15 +11,25 @@ namespace MascotaFeliz.App.Presentacion.Pages
 {
     public class ListModel : PageModel
     {
+        public string bActual{get; set;}
         private readonly IRepositorioVeterinario repositorioVeterinario;
         public IEnumerable<Veterinario> Veterinarios{get;set;}
         public ListModel()
         {
             this.repositorioVeterinario= new RepositorioVeterinario(new MascotaFeliz.App.Persistencia.AppContext());
         }
-        public void OnGet()
+        public void OnGet(string nombre)
         {
-            Veterinarios = repositorioVeterinario.GetAllVeterinarios();
+            if(String.IsNullOrEmpty(nombre))
+            {
+                bActual = "";
+                Veterinarios = repositorioVeterinario.GetAllVeterinarios();
+            }
+            else
+            {
+                bActual = nombre;
+                Veterinarios = repositorioVeterinario.SearchVeterinarios(nombre);
+            }
         }
     }
 

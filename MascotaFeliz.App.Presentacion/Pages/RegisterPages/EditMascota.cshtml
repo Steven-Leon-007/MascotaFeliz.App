@@ -62,14 +62,13 @@
             </select>
         </div>
         <div class="form-group">
-            <label asp-for="Mascota.Propietario" id="name-propietary">Propietario: </label>
-            <select asp-for="Mascota.Propietario" class="form-control" required>
-                <option disabled selected="">Selecciona una opción</option>
-                @foreach (var duenio in Model.Propietarios)
-                {
-                    <option value="Mascota.Propietario" class="form-control">@duenio.Nombre</option>
-                }
-            </select>
+        <label asp-for="propietarioId">Propietario:</label>
+        <select name="propietarioId" asp-for="propietarioId" class="form-control">
+            @foreach (var propietario in Model.Propietarios)
+            {
+                <option value="@propietario.Id">@propietario.Nombre @propietario.Apellidos</option>
+            }
+        </select>
         </div>
         <button type="submit" class="btn btn-primary" id="save_form">Grabar</button>
 

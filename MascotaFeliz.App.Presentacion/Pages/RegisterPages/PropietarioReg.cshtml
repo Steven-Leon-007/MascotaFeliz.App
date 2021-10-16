@@ -39,6 +39,15 @@
     </header>
 
     <main>
+
+        <form method="get">
+            <div class="form-group">
+                <label for="nombre">Buscar</label>
+                <input name="nombre" id="nombre" class="form-control" asp-for="@Model.bActual">
+                <button type="submit" class="fas fa-search"></button>
+            </div>
+        </form>
+
         <h2>Propietarios:</h2>
         <table class="table">
             <tr class="top-tr">

@@ -55,6 +55,28 @@ namespace MascotaFeliz.App.Persistencia
             }
             return mascotaEncontrado;
         }
+        IEnumerable<Mascota> IRepositorioMascota.SearchMascotas(string nombre)
+        {
+            return _appContext.Mascotas
+                        .Where(p => p.NombreMascota.Contains(nombre));
+        }
+        IEnumerable<Mascota> IRepositorioMascota.GetMascotaxTipo(int tipo)
+        {
+            return _appContext.Mascotas
+                        .Where(p => p.TipoAnimal == (Tipo)tipo)
+                        .ToList();
+        }
+        
+        public Mascota AsignarPropietario(Mascota mascotaAModificar, int idPropietario)
+        {
+            var propietarioEncontrado = _appContext.Propietarios.FirstOrDefault(p => p.Id == idPropietario);
+            if (propietarioEncontrado != null)
+            {
+                mascotaAModificar.Propietario = propietarioEncontrado;
+                 _appContext.SaveChanges();
+            }
+            return mascotaAModificar;
+        }
 
     }
     
