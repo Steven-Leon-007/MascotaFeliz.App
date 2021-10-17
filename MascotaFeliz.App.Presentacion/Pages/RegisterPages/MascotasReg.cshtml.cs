@@ -25,26 +25,7 @@ namespace MascotaFeliz.App.Presentacion.Pages
         }
         public void OnGet(int? tipo, string nombre)
         {
-            if(String.IsNullOrEmpty(nombre))
-            {
-                bActual = "";
-                Propietarios = repositorioPropietario.GetAllPropietarios();
-            }
-            else
-            {
-                bActual = nombre;
-                Mascotas = repositorioMascota.SearchMascotas(nombre);
-            }
-            if(tipo.HasValue && tipo.Value != -1)
-            {
-                tActual = tipo.Value;
-                Mascotas = repositorioMascota.GetMascotaxTipo(tipo.Value);
-            }
-            else
-            {
-                tActual = -1;
-                Propietarios = repositorioPropietario.GetAllPropietarios();
-            }
+            Propietarios = repositorioPropietario.GetAllPropietarios();
         }
         public void OnPost(int idmascota)
             {

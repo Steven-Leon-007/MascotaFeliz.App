@@ -46,8 +46,14 @@
 
         <form method="get">
             <div class="form-group">
-                <label for="nombre">Buscar</label>
+                <label for="nombre">Buscar por Nombre</label>
                 <input name="nombre" id="nombre" class="form-control" asp-for="@Model.bActual">
+                <button type="submit" class="fas fa-search"></button>
+            </div>
+            
+            <div class="form-group">
+                <label for="iden">Buscar por Identificación</label>
+                <input name="iden" id="iden" class="form-control" asp-for="@Model.iActual">
                 <button type="submit" class="fas fa-search"></button>
             </div>
         </form>
@@ -56,6 +62,7 @@
         <a asp-page=".\EditVeterinario" class="btn-default">Agregar Veterinario</a>
         <table class="table">
             <tr class="top-tr">
+                <td>ID</td>
                 <th>IDENTIFICACIÓN</th>
                 <th>TARJETA PROFESIONAL</th>
                 <th>NOMBRE</th>
@@ -71,13 +78,13 @@
                     <td>@veterinario.Apellidos</td>
                     <td>
                         <a class="btn btn-primary table-btn" asp-page="./DetailsVeterinario"
-                        asp-route-propietarioId="@veterinario.Id">
+                        asp-route-veterinarioId="@veterinario.Id">
                             <i class="fas fa-info-circle" id="details_link"></i>
                         </a>
                     </td>
                     <td>
                         <a class="btn btn-primary table-btn" asp-page="./EditVeterinario"
-                        asp-route-propietarioId="@veterinario.Id">
+                        asp-route-veterinarioId="@veterinario.Id">
                             <i class="fas fa-address-book fa-lg" id="edit_link" aria-hidden="true"></i>
                         </a>
                     </td>

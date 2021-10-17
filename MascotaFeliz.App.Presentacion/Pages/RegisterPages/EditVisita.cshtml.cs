@@ -29,7 +29,6 @@ namespace MascotaFeliz.App.Presentacion.Pages
         }
         public IActionResult OnGet(int? visitaId, int? veterinarioId)
         {
-            Mascotas = repositorioMascota.GetAllMascotas();
             if(visitaId.HasValue && veterinarioId.HasValue)
             {
             veterinario = repositorioVeterinario.GetVeterinario(veterinarioId.Value);
@@ -71,20 +70,20 @@ namespace MascotaFeliz.App.Presentacion.Pages
             }
             else
             {
-                if (veterinario == null)
+                if (veterinario != null)
                 {
                     if (veterinario.Visitas != null)
                     {
                         veterinario.Visitas.Add(visita);
                         repositorioVeterinario.UpdateVeterinario(veterinario);
-                        ViewData["Respuesta"] = Alerts.ShowAlert(Alert.Primary, "<span><strong>" + visita.Mascota + "</strong> se agregó una nueva mascota para " + veterinario.Nombre + " " + veterinario.Apellidos + ".</span>");
+                        ViewData["Respuesta"] = Alerts.ShowAlert(Alert.Primary, "<span><strong>" + visita.Mascota + "</strong> se agregó una nueva visita para " + veterinario.Nombre + " " + veterinario.Apellidos + ".</span>");
                     }
                     else
                     {
                         veterinario.Visitas = new List<Visita>(){visita};
                         Console.WriteLine(JsonSerializer.Serialize(veterinario));
                         repositorioVeterinario.UpdateVeterinario(veterinario);
-                        ViewData["Respuesta"] = Alerts.ShowAlert(Alert.Primary, "<span><strong>" + visita.Mascota + "</strong> se agregó a la lista de mascotas de " + veterinario.Nombre + " " + veterinario.Apellidos + ".</span>");
+                        ViewData["Respuesta"] = Alerts.ShowAlert(Alert.Primary, "<span><strong>" + visita.Mascota + "</strong> se agregó a la lista de visitas de " + veterinario.Nombre + " " + veterinario.Apellidos + ".</span>");
                     }
                 }
             }

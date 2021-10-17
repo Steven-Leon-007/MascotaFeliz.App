@@ -44,25 +44,6 @@
 
 
     <main>
-        
-        <form method="get">
-    <div class="form-group">
-        <label for="tipo">Tipo</label>
-        <select name="tipo" id="tipo" asp-items="Html.GetEnumSelectList<Tipo>()" class="form-control" asp-for="@Model.tActual">
-        <option value="-1">Ver todos</option>
-		</select>
-        <button type="submit" class="fas fa-filter"></button>
-    </div>
-	
-</form>
-
-        <form method="get">
-            <div class="form-group">
-                <label for="nombre">Buscar</label>
-                <input name="nombre" id="nombre" class="form-control" asp-for="@Model.bActual">
-                <button type="submit" class="fas fa-search"></button>
-            </div>
-        </form>
 
     <h2>Mascotas:</h2>
     <table class="table">
@@ -84,14 +65,14 @@
                     <td>@mascota.Raza</td>
                     <td>@mascota.TipoAnimal</td>
                     <td>@propietario.Nombre @propietario.Apellidos</td>
-                    <form method="POST" class="form-inline" id="@mascota.Id">
-                                    <a class="btn btn-primary btn-sm mr-3" asp-page="/DetailsPropietario"
-                                asp-route-mascotaId="@mascota.Id" asp-route-propietarioId="@propietario.Id" data-toggle="tooltip" data-placement="right"
-                                title="Detalles">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                </form>
                 </tr>
+                <form method="POST" id="@mascota.Id">
+                    <a class="btn btn-primary btn-sm mr-3" asp-page="/RegisterPages/DetailsPropietario"
+                    asp-route-mascotaId="@mascota.Id" asp-route-propietarioId="@propietario.Id" data-toggle="tooltip" data-placement="right"
+                    title="Detalles">
+                    <i class="fas fa-eye"></i>
+                    </a>
+                    </form>
             }
         }
     </table>

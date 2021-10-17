@@ -11,6 +11,7 @@ namespace MascotaFeliz.App.Persistencia
         void DeleteVeterinario(int idVeterinario);    
         Veterinario GetVeterinario(int idVeterinario);
         IEnumerable<Veterinario> SearchVeterinarios(string nombre);
+        IEnumerable<Veterinario> SearchVeterinarioxId(string iden);
     }
 
 }

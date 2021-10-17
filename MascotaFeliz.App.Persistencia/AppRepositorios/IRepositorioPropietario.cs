@@ -13,6 +13,7 @@ namespace MascotaFeliz.App.Persistencia
         void DeletePropietario(int idPropietario);    
         Propietario GetPropietario(int idPropietario);
         IEnumerable<Propietario> SearchPropietarios(string nombre);
+        IEnumerable<Propietario> SearchPropietarioxId(string iden);
     }
 
 }

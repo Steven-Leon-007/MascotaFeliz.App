@@ -63,6 +63,11 @@ namespace MascotaFeliz.App.Persistencia
             return _appContext.Propietarios
                         .Where(p => p.Nombre.Contains(nombre));
         }
+        IEnumerable<Propietario> IRepositorioPropietario.SearchPropietarioxId(string iden)
+        {
+            return _appContext.Propietarios
+                        .Where(p => p.Identificacion.Contains(iden));
+        }
 
     }
 

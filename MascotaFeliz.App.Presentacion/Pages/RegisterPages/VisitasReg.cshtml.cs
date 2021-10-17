@@ -12,6 +12,7 @@ namespace MascotaFeliz.App.Presentacion.Pages
 {
     public class VisitasRegModel : PageModel
     {
+        public string bActual{get; set;}
         private readonly IRepositorioVeterinario repositorioVeterinario;
         public IEnumerable<Veterinario> Veterinarios { get; set; }
 
@@ -26,9 +27,9 @@ namespace MascotaFeliz.App.Presentacion.Pages
         }
 
 
-        public void OnGet()
+        public void OnGet(string nombre)
         {
-            Veterinarios = repositorioVeterinario.GetAllVeterinarios();
+            Veterinarios = repositorioVeterinario.GetAllVeterinarios(); 
         }
         public void OnPost(int idvisita)
         {

@@ -12,6 +12,7 @@ namespace MascotaFeliz.App.Persistencia
         Visita UpdateVisita(Visita visitaActualizado);
         void DeleteVisita(int idVisita);    
         Visita GetVisita(int idVisita);
+       
     }
 
 }

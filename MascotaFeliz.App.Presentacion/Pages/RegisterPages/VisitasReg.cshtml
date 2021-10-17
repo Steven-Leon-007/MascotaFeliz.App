@@ -67,14 +67,14 @@
                     <td>@visita.Fecha</td>
                     <td>@visita.FrecuenciaRespiratoria</td>
                     <td>@visita.FrecuenciaCardiaca</td>
-                    <form method="POST" class="form-inline" id="@visita.Id">
-                                    <a class="btn btn-primary btn-sm mr-3" asp-page="/DetailsVeterinario"
-                                asp-route-mascotaId="@visita.Id" asp-route-propietarioId="@veterinario.Id" data-toggle="tooltip" data-placement="right"
-                                title="Detalles">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                </form>
                 </tr>
+                <form method="POST" class="form-inline" id="@visita.Id">
+                    <a class="btn btn-primary btn-sm mr-3" asp-page="/RegisterPages/DetailsVeterinario"
+                    asp-route-visitaId="@visita.Id" asp-route-veterinarioId="@veterinario.Id" data-toggle="tooltip" data-placement="right"
+                    title="Detalles">
+                    <i class="fas fa-eye"></i>
+                    </a>
+                    </form>
             }
         }
         </table>

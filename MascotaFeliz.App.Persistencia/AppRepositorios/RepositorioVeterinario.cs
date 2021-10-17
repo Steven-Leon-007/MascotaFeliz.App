@@ -63,6 +63,11 @@ namespace MascotaFeliz.App.Persistencia
             return _appContext.Veterinarios
                         .Where(p => p.Nombre.Contains(nombre));
         }
+        IEnumerable<Veterinario> IRepositorioVeterinario.SearchVeterinarioxId(string iden)
+        {
+            return _appContext.Veterinarios
+                        .Where(p => p.Identificacion.Contains(iden));
+        }
 
     }
 
