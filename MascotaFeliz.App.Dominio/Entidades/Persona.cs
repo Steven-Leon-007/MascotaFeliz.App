@@ -18,6 +18,7 @@ namespace   MascotaFeliz.App.Dominio{
         public string Apellidos {get;set;}
         [Required, StringLength(50)]
         public string Telefono {get;set;}
+    
     }
 
 }

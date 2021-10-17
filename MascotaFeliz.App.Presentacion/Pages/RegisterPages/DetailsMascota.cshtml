@@ -51,11 +51,8 @@
         <div>
             Tipo de Animal: @Model.Mascota.TipoAnimal
         </div>
-        <div>
-            Dueño: @Model.Mascota.Propietario.Nombre
-        </div>
         <p class="p-separator-up"></p>
-        <a asp-page="./MascotasReg" class="btn-default">Regresar a la lista de Mascotas</a>
+        <a asp-page="./DetailsPropietario" asp-route-propietarioId='@Html.Raw(@ViewData["propietario"])' class="btn-default">Regresar</a>
         <p class="p-separator-down"></p>
     </main>
 

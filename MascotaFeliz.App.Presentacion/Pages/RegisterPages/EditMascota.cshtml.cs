@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using MascotaFeliz.App.Dominio;
 using MascotaFeliz.App.Persistencia;
@@ -11,55 +12,78 @@ namespace MascotaFeliz.App.Presentacion.Pages
 {
     public class EditMascotaModel : PageModel
     {
-        [BindProperty(SupportsGet = true)]
-        public int propietarioId {get;set;}
+        [BindProperty]
+        public Propietario propietario {get;set;}
         private readonly IRepositorioMascota repositorioMascota;
-         [BindProperty(SupportsGet = true)]
-        public IEnumerable<Propietario> Propietarios{get;set;}
         public IRepositorioPropietario repositorioPropietario;
         [BindProperty]
-        public Mascota Mascota { get; set; }
+        public Mascota mascota { get; set; }
         public EditMascotaModel()
         {
             this.repositorioMascota = new RepositorioMascota(new MascotaFeliz.App.Persistencia.AppContext());
             this.repositorioPropietario = new RepositorioPropietario(new MascotaFeliz.App.Persistencia.AppContext());
         }
-        public IActionResult OnGet(int? mascotaId)
+        public IActionResult OnGet(int? mascotaId, int? propietarioId)
         {
-            Propietarios = repositorioPropietario.GetAllPropietarios();
-            if(mascotaId.HasValue)
+            if(mascotaId.HasValue && propietarioId.HasValue)
             {
-            Mascota = repositorioMascota.GetMascota(mascotaId.Value);
-            propietarioId = Mascota.Propietario.Id; 
+            propietario = repositorioPropietario.GetPropietario(propietarioId.Value);
+            mascota = repositorioMascota.GetMascota(mascotaId.Value);
             }
             else
             {
-                Mascota = new Mascota();
+                if (propietarioId.HasValue)
+                {
+                    propietario = repositorioPropietario.GetPropietario(propietarioId.Value);
+                }
+                else
+                {
+                    return RedirectToPage("./PropietarioReg");
+                }
+                mascota = new Mascota();
             }
-            if (Mascota == null)
+            if (mascota == null || propietario == null)
             {
-                return RedirectToPage("./NotFound");
+                return RedirectToPage("./PropietarioReg");
             }
             else
-                return Page();
+            ViewData["propietario"] = propietarioId.Value;
+            return Page();
         }
 
         public IActionResult OnPost()
         {
-            Propietarios = repositorioPropietario.GetAllPropietarios(); 
-            if(!ModelState.IsValid)
+            propietario = repositorioPropietario.GetPropietario(int.Parse(Request.Form["propietarioId"]));
+            if (!ModelState.IsValid)
             {
+                Console.WriteLine("no valido");
                 return Page();
             }
-            if(Mascota.Id>0)
+            if (mascota.Id > 0)
             {
-              Mascota = repositorioMascota.UpdateMascota(Mascota);  
+                var mascotae = repositorioMascota.UpdateMascota(mascota);
+                ViewData["Respuesta"] = Alerts.ShowAlert(Alert.Success, "<span><strong>" + mascotae.NombreMascota + "</strong> fue modificado correctamente.</span>");
             }
             else
             {
-                repositorioMascota.AsignarPropietario(Mascota, propietarioId);
-                repositorioMascota.AddMascota(Mascota);
+                if (propietario != null)
+                {
+                    if (propietario.Mascotas != null)
+                    {
+                        propietario.Mascotas.Add(mascota);
+                        repositorioPropietario.UpdatePropietario(propietario);
+                        ViewData["Respuesta"] = Alerts.ShowAlert(Alert.Primary, "<span><strong>" + mascota.NombreMascota + "</strong> se agregó una nueva mascota para " + propietario.Nombre + " " + propietario.Apellidos + ".</span>");
+                    }
+                    else
+                    {
+                        propietario.Mascotas = new List<Mascota>(){mascota};
+                        Console.WriteLine(JsonSerializer.Serialize(propietario));
+                        repositorioPropietario.UpdatePropietario(propietario);
+                        ViewData["Respuesta"] = Alerts.ShowAlert(Alert.Primary, "<span><strong>" + mascota.NombreMascota + "</strong> se agregó a la lista de mascotas de " + propietario.Nombre + " " + propietario.Apellidos + ".</span>");
+                    }
+                }
             }
+            ViewData["propietario"] = propietario.Id;
             return Page();
         }
     }

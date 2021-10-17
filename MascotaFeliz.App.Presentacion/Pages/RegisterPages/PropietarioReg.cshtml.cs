@@ -35,6 +35,12 @@ namespace MascotaFeliz.App.Presentacion.Pages
                 Propietarios = repositorioPropietario.SearchPropietarios(nombre);
             }
         }
+        public void OnPost(int idpropietario)
+        {
+            repositorioPropietario.DeletePropietario(idpropietario);
+            ViewData["Respuesta"] = Alerts.ShowAlert(Alert.Danger, "<span>Se eliminó el propietario seleccionado.</span>");
+            Propietarios=repositorioPropietario.GetAllPropietarios();            
+        }
     }
 
 }

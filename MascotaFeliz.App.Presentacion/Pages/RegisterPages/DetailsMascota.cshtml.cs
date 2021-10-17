@@ -18,7 +18,7 @@ namespace MascotaFeliz.App.Presentacion.Pages
         {
             this.repositorioMascota = new RepositorioMascota(new MascotaFeliz.App.Persistencia.AppContext());
         }
-        public IActionResult OnGet(int mascotaId)
+        public IActionResult OnGet(int mascotaId, int propietarioId)
         {
             Mascota = repositorioMascota.GetMascota(mascotaId);
             if (Mascota == null)
@@ -26,7 +26,8 @@ namespace MascotaFeliz.App.Presentacion.Pages
                 return RedirectToPage("./NotFound");
             }
             else
-                return Page();
+            ViewData["propietario"]=propietarioId;
+            return Page();
         }
     }
 

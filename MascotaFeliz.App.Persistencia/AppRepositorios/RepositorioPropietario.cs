@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using MascotaFeliz.App.Dominio;
+using Microsoft.EntityFrameworkCore;
 
 namespace MascotaFeliz.App.Persistencia
 {
@@ -30,12 +31,12 @@ namespace MascotaFeliz.App.Persistencia
 
         IEnumerable<Propietario> IRepositorioPropietario.GetAllPropietarios()
         {
-            return _appContext.Propietarios;
+            return _appContext.Propietarios.Include(p=>p.Mascotas);
         }
 
         Propietario IRepositorioPropietario.GetPropietario(int idPropietario)
         {
-            return _appContext.Propietarios.FirstOrDefault(p =>p.Id==idPropietario);
+            return _appContext.Propietarios.Where(p => p.Id == idPropietario).Include(p=>p.Mascotas).FirstOrDefault();
 
         }
 
@@ -44,11 +45,13 @@ namespace MascotaFeliz.App.Persistencia
             var propietarioEncontrado=_appContext.Propietarios.FirstOrDefault(p =>p.Id== propietarioActualizado.Id);
             if (propietarioEncontrado!=null)
             {
+                propietarioEncontrado.Id = propietarioActualizado.Id;
                 propietarioEncontrado.Identificacion=propietarioActualizado.Identificacion;
                 propietarioEncontrado.Nombre=propietarioActualizado.Nombre;
                 propietarioEncontrado.Apellidos=propietarioActualizado.Apellidos;
                 propietarioEncontrado.Telefono=propietarioActualizado.Telefono;
                 propietarioEncontrado.Direccion=propietarioActualizado.Direccion;
+                propietarioEncontrado.Mascotas = propietarioActualizado.Mascotas;
 
                 _appContext.SaveChanges();
                 

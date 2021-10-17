@@ -14520,11 +14520,6 @@
       "FilePath": "c:\\MascotaFeliz\\MascotaFeliz.App\\MascotaFeliz.App.Presentacion\\Pages\\RegisterPages\\PropietarioReg.cshtml",
       "TargetPath": "Pages\\RegisterPages\\PropietarioReg.cshtml",
       "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\MascotaFeliz\\MascotaFeliz.App\\MascotaFeliz.App.Presentacion\\Pages\\RegisterPages\\DeleteMascota.cshtml",
-      "TargetPath": "Pages\\RegisterPages\\DeleteMascota.cshtml",
-      "FileKind": "mvc"
     }
   ],
   "SerializationFormat": "0.2"

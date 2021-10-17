@@ -12,11 +12,13 @@ namespace MascotaFeliz.App.Presentacion.Pages
     public class DetailsPropietarioModel : PageModel
     {
         private readonly IRepositorioPropietario repositorioPropietario;
+        private readonly IRepositorioMascota repositorioMascota;
         public Propietario Propietario { get; set; }
 
         public DetailsPropietarioModel()
         {
             this.repositorioPropietario = new RepositorioPropietario(new MascotaFeliz.App.Persistencia.AppContext());
+            this.repositorioMascota = new RepositorioMascota(new MascotaFeliz.App.Persistencia.AppContext());
         }
 
         public IActionResult OnGet(int propietarioId)
@@ -29,6 +31,13 @@ namespace MascotaFeliz.App.Presentacion.Pages
             }
             else
                 return Page();
+        }
+        public void OnPost(int idmascota,int idpropietario)
+        {
+            Console.WriteLine(idmascota+idpropietario);
+            repositorioMascota.DeleteMascota(idmascota);
+            ViewData["Respuesta"] = Alerts.ShowAlert(Alert.Danger, "<span>La mascota seleccionada se eliminó.</span>");
+            Propietario = repositorioPropietario.GetPropietario(idpropietario);            
         }
     }
 

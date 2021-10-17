@@ -15,7 +15,5 @@ namespace MascotaFeliz.App.Dominio
         [Required, StringLength(50)]
         public string Raza {get;set;}
         public Tipo TipoAnimal {get;set;}
-        public Propietario Propietario {get;set;}
-
     }
 } 

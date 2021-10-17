@@ -13,6 +13,9 @@
 </head>
 
 <body>
+    <div class="col-6">
+        @Html.Raw(@ViewData["Respuesta"])
+    </div>
     <header>
            <a id="nav_header_logo" asp-page="/RegisterPages/vetView"><img src="/lib/logoMascFeliz.png" alt="Logo Mascota Feliz"/>
         </a>
@@ -63,38 +66,47 @@
     <h2>Mascotas:</h2>
     <table class="table">
         <tr class="top-tr">
+            <th>ID</th>
             <th>NOMBRE</th>
             <th>RAZA</th>
             <th>TIPO DE ANIMAL</th>
+            <th>PROPIETARIO</th>
         </tr>
-        @foreach (var mascota in Model.Mascotas)
-        {
-            <tr>
-                <td>@mascota.NombreMascota</td>
-                <td>@mascota.Raza</td>
-                <td>@mascota.TipoAnimal</td>
-                <td>@mascota.Propietario</td>
-                <td>
-                    <a class="btn btn-primary table-btn" asp-page="./DetailsMascota" asp-route-mascotaId="@mascota.Id">
-                    <i class="fas fa-info-circle" id="details_link"></i>
+
+    @foreach (var propietario in Model.Propietarios)
+    {
+            @foreach (var mascota in propietario.Mascotas)
+            {
+                <tr>
+                    <td>@mascota.Id</td>
+                    <td>@mascota.NombreMascota</td>
+                    <td>@mascota.Raza</td>
+                    <td>@mascota.TipoAnimal</td>
+                    <td>@propietario.Nombre @propietario.Apellidos</td>
+                    <form method="POST" class="form-inline" id="@mascota.Id">
+                                    <a class="btn btn-primary btn-sm mr-3" asp-page="/DetailsPropietario"
+                                asp-route-mascotaId="@mascota.Id" asp-route-propietarioId="@propietario.Id" data-toggle="tooltip" data-placement="right"
+                                title="Detalles">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                </form>
+                    @*<td>
+                        <a class="btn btn-primary table-btn" asp-page="./EditMascota" asp-route-mascotaId="@mascota.Id">
+                        <i class="fas fa-address-book fa-lg" id="edit_link" aria-hidden="true"></i>
                     </a>
-                </td> 
-                <td>
-                    <a class="btn btn-primary table-btn" asp-page="./EditMascota" asp-route-mascotaId="@mascota.Id">
-                    <i class="fas fa-address-book fa-lg" id="edit_link" aria-hidden="true"></i>
-                </a>
-                </td>
-                <td>
-                    <a class="btn btn-primary table-btn" asp-page="./DeleteMascota" asp-route-mascotaId="@mascota.Id">
-                    <i class="fas fa-trash" id="delete_link" aria-hidden="true"></i>
-                </a>
-                </td>
-            </tr>
+                    </td>
+                    <td>
+                        <a class="btn btn-primary table-btn" asp-page="./DeleteMascota" asp-route-mascotaId="@mascota.Id">
+                        <i class="fas fa-trash" id="delete_link" aria-hidden="true"></i>
+                    </a>
+                    </td>*@
+                </tr>
+            }
         }
     </table>
             <p class="p-separator-up">ㅤ</p>
             <p class="p-separator-down"></p>
-    <a asp-page=".\EditMascota" class="btn btn-primary" id="create_link">Adicionar Mascota</a>
+     @*<a asp-page=".\EditMascota" class="btn btn-primary" id="create_link">Adicionar Mascota</a> *@
 
     </main>
 

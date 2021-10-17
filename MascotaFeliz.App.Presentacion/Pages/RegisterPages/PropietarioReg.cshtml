@@ -12,6 +12,9 @@
 </head>
 
 <body>
+    <div class="col-6">
+        @Html.Raw(@ViewData["Respuesta"])
+    </div>
     <header>
         <a id="nav_header_logo" asp-page="/RegisterPages/vetView"><img src="/lib/logoMascFeliz.png"
                 alt="Logo Mascota Feliz" />
@@ -49,8 +52,10 @@
         </form>
 
         <h2>Propietarios:</h2>
+        <a asp-page=".\EditPropietario" class="btn-default">Agregar Propietario</a>
         <table class="table">
             <tr class="top-tr">
+                <th>ID</th>
                 <th>IDENTIFICACIÓN</th>
                 <th>NOMBRE</th>
                 <th>APELLIDOS</th>
@@ -60,11 +65,12 @@
             @foreach (var propietario in Model.Propietarios)
             {
                 <tr>
+                    <td>@propietario.Id</td>
                     <td>@propietario.Identificacion</td>
-                    <td>@propietario.Nombre</td> 
+                    <td>@propietario.Nombre</td>
                     <td>@propietario.Apellidos</td>
                     <td>@propietario.Telefono</td>
-                    
+
                     <td>
                         <a class="btn btn-primary table-btn" asp-page="./DetailsPropietario"
                         asp-route-propietarioId="@propietario.Id">
@@ -78,16 +84,23 @@
                         </a>
                     </td>
                     <td>
-                       <a class="btn btn-primary table-btn" asp-page="./DeletePropietario" asp-route-propietarioId="@propietario.Id">
-                       <i class="fas fa-trash" id="delete_link" aria-hidden="true"></i>
-                       </a>
+                        <input type="hidden" value="@propietario.Id" name="idpropietario">
+                        <a href="#" class="btn btn-danger btn-sm" onclick="confirmar(@propietario.Id);"
+                        data-toggle="tooltip" data-placement="right" title="Eliminar">
+                        <i class="fas fa-trash"></i>
                     </td>
+                    @*<td>
+                        <a class="btn btn-primary table-btn" asp-page="./DeletePropietario"
+                        asp-route-propietarioId="@propietario.Id">
+                        <i class="fas fa-trash" id="delete_link" aria-hidden="true"></i>
+                        </a>
+                        </td>*@
                 </tr>
             }
         </table>
         <p class="p-separator-up">ㅤ</p>
         <p class="p-separator-down"></p>
-        <a asp-page=".\EditPropietario" class="btn btn-primary" id="create_link">Adicionar Propietario</a>
+        @*<a asp-page=".\EditPropietario" class="btn btn-primary" id="create_link">Adicionar Propietario</a>*@
 
     </main>
 
@@ -99,3 +112,11 @@
 
 
 </body>
+<script>
+    function confirmar(id) {
+        var opcion = confirm("Realmente desea eliminar el Propietario?");
+        if (opcion == true) {
+            $('#' + id).submit();
+        }
+    }
+</script>

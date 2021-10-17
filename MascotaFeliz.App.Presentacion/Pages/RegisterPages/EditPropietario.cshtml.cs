@@ -44,11 +44,13 @@ namespace MascotaFeliz.App.Presentacion.Pages
             }
             if(Propietario.Id>0)
             {
-              Propietario = repositorioPropietario.UpdatePropietario(Propietario);  
+              var propietario = repositorioPropietario.UpdatePropietario(Propietario); 
+              ViewData["Respuesta"] = Alerts.ShowAlert(Alert.Success, "<span><strong>"+propietario.Nombre+" "+propietario.Apellidos+"</strong> fue modificado correctamente.</span>");
             }
             else
             {
-                repositorioPropietario.AddPropietario(Propietario);
+               var propietario = repositorioPropietario.AddPropietario(Propietario);
+                ViewData["Respuesta"] = Alerts.ShowAlert(Alert.Primary, "<span><strong>"+propietario.Nombre+" "+propietario.Apellidos+"</strong> se agregó a la lista de propietarios.</span>");
             }
             return Page();
         }

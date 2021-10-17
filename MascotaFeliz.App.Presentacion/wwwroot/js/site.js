@@ -2,3 +2,7 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your Javascript code.
+//Activar los tooltip de bootstrap para mostrar globos on hover
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})

@@ -45,10 +45,10 @@ namespace MascotaFeliz.App.Persistencia
             var mascotaEncontrado=_appContext.Mascotas.FirstOrDefault(m =>m.Id== mascotaActualizado.Id);
             if (mascotaEncontrado!=null)
             {
+                mascotaEncontrado.Id =mascotaActualizado.Id;
                 mascotaEncontrado.NombreMascota=mascotaActualizado.NombreMascota;
                 mascotaEncontrado.Raza=mascotaActualizado.Raza;
                 mascotaEncontrado.TipoAnimal=mascotaActualizado.TipoAnimal;
-                mascotaEncontrado.Propietario=mascotaActualizado.Propietario;
 
                 _appContext.SaveChanges();
                 
@@ -67,16 +67,6 @@ namespace MascotaFeliz.App.Persistencia
                         .ToList();
         }
         
-        public Mascota AsignarPropietario(Mascota mascotaAModificar, int idPropietario)
-        {
-            var propietarioEncontrado = _appContext.Propietarios.FirstOrDefault(p => p.Id == idPropietario);
-            if (propietarioEncontrado != null)
-            {
-                mascotaAModificar.Propietario = propietarioEncontrado;
-                 _appContext.SaveChanges();
-            }
-            return mascotaAModificar;
-        }
 
     }
     

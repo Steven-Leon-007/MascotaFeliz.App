@@ -14,18 +14,21 @@ namespace MascotaFeliz.App.Presentacion.Pages
         public string bActual{get; set;}
         public int tActual{get; set;}
         private readonly IRepositorioMascota repositorioMascota;
-        public IEnumerable<Mascota> Mascotas{get;set;}
+        private readonly IRepositorioPropietario repositorioPropietario; 
+        public IEnumerable<Propietario> Propietarios{get;set;}
+        public IEnumerable<Mascota> Mascotas{get;set;} 
         
         public MascotasRegModel()
         {
             this.repositorioMascota = new RepositorioMascota(new MascotaFeliz.App.Persistencia.AppContext());
+            this.repositorioPropietario = new RepositorioPropietario(new MascotaFeliz.App.Persistencia.AppContext());
         }
         public void OnGet(int? tipo, string nombre)
         {
             if(String.IsNullOrEmpty(nombre))
             {
                 bActual = "";
-                Mascotas = repositorioMascota.GetAllMascotas();
+                Propietarios = repositorioPropietario.GetAllPropietarios();
             }
             else
             {
@@ -40,9 +43,15 @@ namespace MascotaFeliz.App.Presentacion.Pages
             else
             {
                 tActual = -1;
-                Mascotas = repositorioMascota.GetAllMascotas();
+                Propietarios = repositorioPropietario.GetAllPropietarios();
             }
         }
+        public void OnPost(int idmascota)
+            {
+            repositorioMascota.DeleteMascota(idmascota);
+            ViewData["Respuesta"] = Alerts.ShowAlert(Alert.Danger, "<span>La mascota seleccionada se eliminó.</span>");
+            Propietarios=repositorioPropietario.GetAllPropietarios();            
+            }
     }
 
 }

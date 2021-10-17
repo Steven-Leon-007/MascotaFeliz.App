@@ -8,22 +8,37 @@ namespace MascotaFeliz.App.Persistencia.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Personas",
+                name: "Propietarios",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Direccion = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Identificacion = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Nombre = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Apellidos = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Telefono = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Direccion = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    TarjetaProfesional = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true)
+                    Telefono = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Personas", x => x.Id);
+                    table.PrimaryKey("PK_Propietarios", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Veterinarios",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TarjetaProfesional = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Identificacion = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Nombre = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Apellidos = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Telefono = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Veterinarios", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -41,9 +56,9 @@ namespace MascotaFeliz.App.Persistencia.Migrations
                 {
                     table.PrimaryKey("PK_Mascotas", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Mascotas_Personas_PropietarioId",
+                        name: "FK_Mascotas_Propietarios_PropietarioId",
                         column: x => x.PropietarioId,
-                        principalTable: "Personas",
+                        principalTable: "Propietarios",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -74,9 +89,9 @@ namespace MascotaFeliz.App.Persistencia.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Visitas_Personas_VeterinarioId",
+                        name: "FK_Visitas_Veterinarios_VeterinarioId",
                         column: x => x.VeterinarioId,
-                        principalTable: "Personas",
+                        principalTable: "Veterinarios",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -106,7 +121,10 @@ namespace MascotaFeliz.App.Persistencia.Migrations
                 name: "Mascotas");
 
             migrationBuilder.DropTable(
-                name: "Personas");
+                name: "Veterinarios");
+
+            migrationBuilder.DropTable(
+                name: "Propietarios");
         }
     }
 }

@@ -12,6 +12,9 @@
 </head>
 
 <body>
+    <div class="col-10">
+        @Html.Raw(@ViewData["Respuesta"])
+    </div>
     <header>
         <a id="nav_header_logo" asp-page="/RegisterPages/vetView"><img src="/lib/logoMascFeliz.png"
                 alt="Logo Mascota Feliz" />
@@ -53,8 +56,44 @@
         <div>
             Dirección: @Model.Propietario.Direccion
         </div>
+        <div class="col m-3">
+                    <ul class="list-group">
+                        <li class="list-group-item text-center"><strong>Mascotas</strong></li>
+                        @foreach (var mascota in Model.Propietario.Mascotas)
+
+                        {
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>@mascota.NombreMascota - @mascota.TipoAnimal</span>
+                                <div>
+                                    <form method="post" class="form-inline" id="@mascota.Id">
+                                        <a class="btn btn-sm btn-primary mr-2" asp-page="/RegisterPages/DetailsMascota"
+                                        asp-route-mascotaId="@mascota.Id" asp-route-propietarioId="@Model.Propietario.Id" data-toggle="tooltip" data-placement="top"
+                                        title="Detalles">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a class="btn btn-sm btn-success mr-2" asp-page="/RegisterPages/EditMascota"
+                                        asp-route-mascotaId="@mascota.Id"
+                                        asp-route-propietarioId="@Model.Propietario.Id" data-toggle="tooltip"
+                                        data-placement="top" title="Editar">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <input type="hidden" value="@mascota.Id" name="idmascota">
+                                        <input type="hidden" value="@Model.Propietario.Id" name="idpropietario">
+                                        <a href="#" class="btn btn-danger btn-sm" onclick="confirmar(@mascota.Id);"
+                                        data-toggle="tooltip" data-placement="right" title="Eliminar">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </form>
+                                </div>
+                            </li>
+
+                        }
+                    </ul>
+
+                </div>
         <p class="p-separator-up"></p>
-        <a asp-page="./PropietarioReg" class="btn-default">Regresar a la lista de Propietarios</a>
+        <a asp-page="./PropietarioReg" class="btn-default">Regresar</a>
+        <a asp-page="./EditMascota" asp-route-propietarioId="@Model.Propietario.Id" class="btn btn-primary">Agregar una mascota</a>
         <p class="p-separator-down"></p>
         
     </main>
@@ -66,3 +105,11 @@
     </footer>
 
 </body>
+<script>
+    function confirmar(id) {
+        var opcion = confirm("Realmente desea eliminar la mascota?");
+        if (opcion == true) {
+        $('#'+id).submit();
+        }
+    }
+</script>
