@@ -12,11 +12,13 @@ namespace MascotaFeliz.App.Presentacion.Pages
     public class DetailsVeterinarioModel : PageModel
     {
         private readonly IRepositorioVeterinario repositorioVeterinario;
+        private readonly IRepositorioVisita repositorioVisita;
         public Veterinario Veterinario { get; set; }
 
         public DetailsVeterinarioModel()
         {
             this.repositorioVeterinario = new RepositorioVeterinario(new MascotaFeliz.App.Persistencia.AppContext());
+            this.repositorioVisita = new RepositorioVisita(new MascotaFeliz.App.Persistencia.AppContext());
         }
 
         public IActionResult OnGet(int veterinarioId)
@@ -29,6 +31,12 @@ namespace MascotaFeliz.App.Presentacion.Pages
             }
             else
                 return Page();
+        }
+        public void OnPost(int idvisita,int idveterinario)
+        {
+            repositorioVisita.DeleteVisita(idvisita);
+            ViewData["Respuesta"] = Alerts.ShowAlert(Alert.Danger, "<span>La mascota seleccionada se eliminó.</span>");
+            Veterinario = repositorioVeterinario.GetVeterinario(idveterinario);           
         }
     }
 

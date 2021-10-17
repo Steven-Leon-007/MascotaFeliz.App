@@ -148,8 +148,8 @@ namespace MascotaFeliz.App.Persistencia.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int?>("MascotaId")
-                        .HasColumnType("int");
+                    b.Property<string>("Mascota")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Peso")
                         .IsRequired()
@@ -171,8 +171,6 @@ namespace MascotaFeliz.App.Persistencia.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MascotaId");
-
                     b.HasIndex("VeterinarioId");
 
                     b.ToTable("Visitas");
@@ -187,22 +185,19 @@ namespace MascotaFeliz.App.Persistencia.Migrations
 
             modelBuilder.Entity("MascotaFeliz.App.Dominio.Visita", b =>
                 {
-                    b.HasOne("MascotaFeliz.App.Dominio.Mascota", "Mascota")
-                        .WithMany()
-                        .HasForeignKey("MascotaId");
-
-                    b.HasOne("MascotaFeliz.App.Dominio.Veterinario", "Veterinario")
-                        .WithMany()
+                    b.HasOne("MascotaFeliz.App.Dominio.Veterinario", null)
+                        .WithMany("Visitas")
                         .HasForeignKey("VeterinarioId");
-
-                    b.Navigation("Mascota");
-
-                    b.Navigation("Veterinario");
                 });
 
             modelBuilder.Entity("MascotaFeliz.App.Dominio.Propietario", b =>
                 {
                     b.Navigation("Mascotas");
+                });
+
+            modelBuilder.Entity("MascotaFeliz.App.Dominio.Veterinario", b =>
+                {
+                    b.Navigation("Visitas");
                 });
 #pragma warning restore 612, 618
         }

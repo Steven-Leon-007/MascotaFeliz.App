@@ -13,9 +13,7 @@
 </head>
 
 <body>
-    <div class="col-6">
-        @Html.Raw(@ViewData["Respuesta"])
-    </div>
+
     <header>
            <a id="nav_header_logo" asp-page="/RegisterPages/vetView"><img src="/lib/logoMascFeliz.png" alt="Logo Mascota Feliz"/>
         </a>
@@ -38,6 +36,9 @@
             </ul>
 
         </nav>
+        <div class="col-6">
+        @Html.Raw(@ViewData["Respuesta"])
+        </div>
 
     </header>
 
@@ -90,23 +91,12 @@
                                         <i class="fas fa-eye"></i>
                                     </a>
                                 </form>
-                    @*<td>
-                        <a class="btn btn-primary table-btn" asp-page="./EditMascota" asp-route-mascotaId="@mascota.Id">
-                        <i class="fas fa-address-book fa-lg" id="edit_link" aria-hidden="true"></i>
-                    </a>
-                    </td>
-                    <td>
-                        <a class="btn btn-primary table-btn" asp-page="./DeleteMascota" asp-route-mascotaId="@mascota.Id">
-                        <i class="fas fa-trash" id="delete_link" aria-hidden="true"></i>
-                    </a>
-                    </td>*@
                 </tr>
             }
         }
     </table>
             <p class="p-separator-up">ㅤ</p>
             <p class="p-separator-down"></p>
-     @*<a asp-page=".\EditMascota" class="btn btn-primary" id="create_link">Adicionar Mascota</a> *@
 
     </main>
 

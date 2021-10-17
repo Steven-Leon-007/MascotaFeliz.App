@@ -36,76 +36,72 @@
             </ul>
 
         </nav>
+        <div class="col-10">
+        @Html.Raw(@ViewData["Respuesta"])
+    </div>
 
     </header>
 
     <main>
 
         <h1>EDICIÓN DATOS VISITA:</h1>
-        <form method="post">
-            <input type="hidden" asp-for="Visita.Id" />
-            <div class="grid-form">
-                <div class="form-group">
-                    <label asp-for="Visita.Mascota" class="visit-pet">Mascota: </label>
-                    <select asp-for="Visita.Mascota" class="form-control" required>
-                        <option disabled selected="">Selecciona una opción</option>
-                        @foreach (var pet in Model.Mascotas)
-                        {
-                            <option value="Visita.Mascota" class="form-control">@pet.NombreMascota</option>
-                        }
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Visita.Veterinario" class="visit-propietary">Veterinario: </label>
-                    <select asp-for="Visita.Veterinario" class="form-control" required>
-                        <option disabled selected="">Selecciona una opción</option>
-                        @foreach (var ve in Model.Veterinarios)
-                        {
-                            <option value="Mascota.Propietario" class="form-control">@ve.Nombre</option>
-                        }
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Visita.Fecha" class="visit-date">Fecha: </label>
-                    <input asp-for="Visita.Fecha" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Visita.Temperatura" class="visit-temperature">Temperatura: </label>
-                    <input asp-for="Visita.Temperatura" class="form-control" required>
-                    <span class="text-danger" asp-validation-for="Visita.Temperatura"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Visita.Peso" class="visit-weight">Peso: </label>
-                    <input asp-for="Visita.Peso" class="form-control" required>
-                    <span class="text-danger" asp-validation-for="Visita.Peso"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Visita.FrecuenciaRespiratoria">Frecuencia Respiratoria: </label>
-                    <input asp-for="Visita.FrecuenciaRespiratoria" class="form-control" required>
-                    <span class="text-danger" asp-validation-for="Visita.FrecuenciaRespiratoria"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Visita.FrecuenciaCardiaca">Frecuencia Cardiaca: </label>
-                    <input asp-for="Visita.FrecuenciaCardiaca" class="form-control" required>
-                    <span class="text-danger" asp-validation-for="Visita.FrecuenciaCardiaca"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Visita.EstadoDeAnimo" class="visit-mood">Estado de ánimo: </label>
-                    <input asp-for="Visita.EstadoDeAnimo" class="form-control" required>
-                    <span class="text-danger" asp-validation-for="Visita.EstadoDeAnimo"></span>
-                </div>
+        <h4>Veterinario: @Model.veterinario.Nombre @Model.veterinario.Apellidos</h4><hr>
+    <form method="post">
+        <input type="hidden" asp-for="visita.Id" />
+            <input type="hidden" asp-for="veterinario.Id" name="veterinarioId"/>
+            <input type="hidden" asp-for="veterinario.Nombre" />
+            <input type="hidden" asp-for="veterinario.Apellidos" />
+            <input type="hidden" asp-for="veterinario.Identificacion" />
+            <input type="hidden" asp-for="veterinario.TarjetaProfesional" />
+            <input type="hidden" asp-for="veterinario.Telefono"/>
+            <select asp-for="visita.Mascota" class="form-group">
+                <option disabled selected="">Selecciona una opción</option>
+                @foreach (var pet in Model.Mascotas)
+                {
+                    <option value="visita.Mascota" class="form-control">@pet.NombreMascota</option>
+                }
+            </select>
+            <div class="form-group">
+                <label asp-for="visita.Fecha">Fecha:</label>
+                <input asp-for="visita.Fecha" class="form-control">
+                <span class="text-danger" asp-validation-for="visita.Fecha"></span>
             </div>
-            <div class="form-group" id="recomendations-div">
-                <label asp-for="Visita.Recomendaciones">Recomendaciones: </label>
-                <textarea asp-for="Visita.Recomendaciones" class="form-control" id="recomendations" rows="6"
-                    cols="50"></textarea>
-                <span class="text-danger" asp-validation-for="Visita.Recomendaciones"></span>
+            <div class="form-group">
+                <label asp-for="visita.Temperatura">Temperatura:</label>
+                <input asp-for="visita.Temperatura" class="form-control">
+                <span class="text-danger" asp-validation-for="visita.Temperatura"></span>
             </div>
-            <button type="submit" class="btn btn-primary" id="save_form">Grabar</button>
-        </form>
+            <div class="form-group">
+                <label asp-for="visita.Peso">Peso:</label>
+                <input asp-for="visita.Peso" class="form-control">
+                <span class="text-danger" asp-validation-for="visita.Peso"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="visita.FrecuenciaRespiratoria">Frecuencia Respiratoria:</label>
+                <input asp-for="visita.FrecuenciaRespiratoria" class="form-control">
+                <span class="text-danger" asp-validation-for="visita.FrecuenciaRespiratoria"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="visita.FrecuenciaCardiaca">Frecuencia Cardiaca:</label>
+                <input asp-for="visita.FrecuenciaCardiaca" class="form-control">
+                <span class="text-danger" asp-validation-for="visita.FrecuenciaCardiaca"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="visita.EstadoDeAnimo">Estado de ánimo:</label>
+                <input asp-for="visita.EstadoDeAnimo" class="form-control">
+                <span class="text-danger" asp-validation-for="visita.EstadoDeAnimo"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="visita.Recomendaciones">Recomendaciones:</label>
+                <input asp-for="visita.Recomendaciones" class="form-control">
+                <span class="text-danger" asp-validation-for="visita.Recomendaciones"></span>
+            </div>
+        <button type="submit" class="btn btn-primary" id="save_form">Grabar</button>
+
+    </form>
 
         <p class="p-separator-up"></p>
-        <a asp-page="./VisitasReg" class="btn-default">Regresar a la lista de Visitas</a>
+        <a asp-page="./DetailsVeterinario" asp-route-veterinarioId='@Html.Raw(@ViewData["veterinario"])' class="btn btn-outline-primary mt-4">Regresar </a>
         <p class="p-separator-down">ㅤ</p>
     </main>
 

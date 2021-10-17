@@ -43,9 +43,9 @@
 
     <main>
         <h1>DETALLES DE LA VISITA</h1>
-        <h3>Nombre de la mascota: @Model.Visita.Mascota.NombreMascota</h3>
+        <h3>Nombre de la mascota: @Model.Visita.Mascota</h3>
         <div>
-            Veterinario: @Model.Visita.Veterinario.Nombre
+            Id: @Model.Visita.Id
         </div>
         <div>
             Fecha: @Model.Visita.Fecha
@@ -69,7 +69,7 @@
             Recomendaciones: @Model.Visita.Recomendaciones
         </div>
         <p class="p-separator-up"></p>
-        <a asp-page="./VisitasReg" class="btn-default">Regresar a la lista de Visitas</a>
+        <a asp-page="./DetailsVeterinario" asp-route-veterinarioId='@Html.Raw(@ViewData["veterinario"])' class="btn-default">Regresar</a>
         <p class="p-separator-down"></p>
 
     </main>

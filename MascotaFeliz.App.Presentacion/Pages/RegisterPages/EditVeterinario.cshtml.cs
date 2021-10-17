@@ -45,11 +45,13 @@ namespace MascotaFeliz.App.Presentacion.Pages
             }
             if(Veterinario.Id>0)
             {
-              Veterinario = repositorioVeterinario.UpdateVeterinario(Veterinario); 
+              var veterinario = repositorioVeterinario.UpdateVeterinario(Veterinario); 
+              ViewData["Respuesta"] = Alerts.ShowAlert(Alert.Success, "<span><strong>"+veterinario.Nombre+" "+veterinario.Apellidos+"</strong> fue modificado correctamente.</span>"); 
             }
             else
             {
-                repositorioVeterinario.AddVeterinario(Veterinario);
+                var veterinario = repositorioVeterinario.AddVeterinario(Veterinario);
+                ViewData["Respuesta"] = Alerts.ShowAlert(Alert.Primary, "<span><strong>"+veterinario.Nombre+" "+veterinario.Apellidos+"</strong> se agregó a la lista de propietarios.</span>");
             }
             return Page();
         }

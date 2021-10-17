@@ -31,6 +31,12 @@ namespace MascotaFeliz.App.Presentacion.Pages
                 Veterinarios = repositorioVeterinario.SearchVeterinarios(nombre);
             }
         }
+        public void OnPost(int idveterinario)
+        {
+            repositorioVeterinario.DeleteVeterinario(idveterinario);
+            ViewData["Respuesta"] = Alerts.ShowAlert(Alert.Danger, "<span>Se eliminó el propietario seleccionado.</span>");
+            Veterinarios=repositorioVeterinario.GetAllVeterinarios();            
+        }
     }
 
 }

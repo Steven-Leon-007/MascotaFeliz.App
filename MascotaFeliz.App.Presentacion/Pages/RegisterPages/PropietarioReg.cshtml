@@ -12,9 +12,6 @@
 </head>
 
 <body>
-    <div class="col-6">
-        @Html.Raw(@ViewData["Respuesta"])
-    </div>
     <header>
         <a id="nav_header_logo" asp-page="/RegisterPages/vetView"><img src="/lib/logoMascFeliz.png"
                 alt="Logo Mascota Feliz" />
@@ -38,6 +35,9 @@
             </ul>
 
         </nav>
+        <div class="col-6">
+        @Html.Raw(@ViewData["Respuesta"])
+        </div>
 
     </header>
 
@@ -70,7 +70,6 @@
                     <td>@propietario.Nombre</td>
                     <td>@propietario.Apellidos</td>
                     <td>@propietario.Telefono</td>
-
                     <td>
                         <a class="btn btn-primary table-btn" asp-page="./DetailsPropietario"
                         asp-route-propietarioId="@propietario.Id">
@@ -83,24 +82,20 @@
                             <i class="fas fa-address-book fa-lg" id="edit_link" aria-hidden="true"></i>
                         </a>
                     </td>
+                    <form method="post" class="form-inline" id="@propietario.Id">
                     <td>
                         <input type="hidden" value="@propietario.Id" name="idpropietario">
                         <a href="#" class="btn btn-danger btn-sm" onclick="confirmar(@propietario.Id);"
                         data-toggle="tooltip" data-placement="right" title="Eliminar">
+                        <button type="submit" class="btn btn-primary" id="save_form"></button>
                         <i class="fas fa-trash"></i>
                     </td>
-                    @*<td>
-                        <a class="btn btn-primary table-btn" asp-page="./DeletePropietario"
-                        asp-route-propietarioId="@propietario.Id">
-                        <i class="fas fa-trash" id="delete_link" aria-hidden="true"></i>
-                        </a>
-                        </td>*@
+                    </form>
                 </tr>
             }
         </table>
         <p class="p-separator-up">ㅤ</p>
         <p class="p-separator-down"></p>
-        @*<a asp-page=".\EditPropietario" class="btn btn-primary" id="create_link">Adicionar Propietario</a>*@
 
     </main>
 

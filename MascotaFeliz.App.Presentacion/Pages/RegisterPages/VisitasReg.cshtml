@@ -35,6 +35,9 @@
             </ul>
 
         </nav>
+        <div class="col-6">
+        @Html.Raw(@ViewData["Respuesta"])
+        </div>
 
     </header>
 
@@ -43,6 +46,7 @@
         <h2>Visitas:</h2>
         <table class="table">
             <tr class="top-tr">
+                <th>ID</th>
                 <th>NOMBRE <br>MASCOTA</th>
                 <th>VETERINARIO</th>
                 <th>PESO</th>
@@ -51,38 +55,31 @@
                 <th>FRECUENCIA <br>CARDIACA</th>
 
             </tr>
-            @foreach (var visita in Model.Visitas)
+            @foreach (var veterinario in Model.Veterinarios)
+    {
+            @foreach (var visita in veterinario.Visitas)
             {
                 <tr>
-                    <td>@visita.Mascota.NombreMascota</td>
-                    <td>@visita.Veterinario.Nombre</td>
-                    <td>@visita.Peso Kg</td>
+                    <td>@visita.Id</td>
+                    <td>@visita.Mascota</td>
+                    <td>@veterinario.Nombre @veterinario.Apellidos</td>
+                    <td>@visita.Peso</td>
                     <td>@visita.Fecha</td>
-                    <td>@visita.FrecuenciaRespiratoria x Minuto</td>
-                    <td>@visita.FrecuenciaCardiaca x Minuto</td>
-
-                    <td>
-                        <a class="btn btn-primary table-btn" asp-page="./DetailsVisita" asp-route-visitaId="@visita.Id">
-                            <i class="fas fa-info-circle" id="details_link"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a class="btn btn-primary table-btn" asp-page="./EditVisita" asp-route-visitaId="@visita.Id">
-                            <i class="fas fa-address-book fa-lg" id="edit_link" aria-hidden="true"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a class="btn btn-primary table-btn" asp-page="./DeleteVisita"
-                        asp-route-veterinarioId="@visita.Id">
-                            <i class="fas fa-trash" id="delete_link" aria-hidden="true"></i>
-                        </a>
-                    </td>
+                    <td>@visita.FrecuenciaRespiratoria</td>
+                    <td>@visita.FrecuenciaCardiaca</td>
+                    <form method="POST" class="form-inline" id="@visita.Id">
+                                    <a class="btn btn-primary btn-sm mr-3" asp-page="/DetailsVeterinario"
+                                asp-route-mascotaId="@visita.Id" asp-route-propietarioId="@veterinario.Id" data-toggle="tooltip" data-placement="right"
+                                title="Detalles">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                </form>
                 </tr>
             }
+        }
         </table>
         <p class="p-separator-up">ㅤ</p>
         <p class="p-separator-down"></p>
-        <a asp-page=".\EditVisita" class="btn btn-primary" id="create_link">Adicionar Visita</a>
 
 
     </main>

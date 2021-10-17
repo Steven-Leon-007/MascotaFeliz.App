@@ -12,9 +12,6 @@
 </head>
 
 <body>
-    <div class="col-10">
-        @Html.Raw(@ViewData["Respuesta"])
-    </div>
     <header>
         <a id="nav_header_logo" asp-page="/RegisterPages/vetView"><img src="/lib/logoMascFeliz.png"
                 alt="Logo Mascota Feliz" />
@@ -38,6 +35,9 @@
             </ul>
 
         </nav>
+        <div class="col-10">
+        @Html.Raw(@ViewData["Respuesta"])
+        </div>
 
     </header>
 
@@ -65,7 +65,7 @@
                     <li class="list-group-item d-flex justify-content-between">
                         <span>@mascota.NombreMascota - @mascota.TipoAnimal</span>
                         <div>
-                            <form method="post" class="form-inline" id="@mascota.Id">
+                            <form method="Post" class="form-inline" id="@mascota.Id">
                                 <a class="btn btn-sm btn-primary mr-2" asp-page="/RegisterPages/DetailsMascota"
                                 asp-route-mascotaId="@mascota.Id" asp-route-propietarioId="@Model.Propietario.Id"
                                 data-toggle="tooltip" data-placement="top" title="Detalles">
@@ -80,7 +80,7 @@
                                 <input type="hidden" value="@Model.Propietario.Id" name="idpropietario">
                                 <a href="#" class="btn btn-danger btn-sm" onclick="confirmar(@mascota.Id);"
                                 data-toggle="tooltip" data-placement="right" title="Eliminar">
-                                <button type="submit" class="btn btn-primary" id="save_form">Borrar</button>
+                                <button type="submit" class="btn btn-primary" id="save_form"></button>
                                     <i class="fas fa-trash"></i>
                                 </a>
                             </form>

@@ -12,9 +12,6 @@
 
 
 <body>
-    <div class="col-10">
-       @Html.Raw(@ViewData["Respuesta"])
-    </div>
     <header>
         <a id="nav_header_logo" asp-page="/RegisterPages/vetView"><img src="/lib/logoMascFeliz.png"
                 alt="Logo Mascota Feliz" />
@@ -38,6 +35,9 @@
             </ul>
 
         </nav>
+        <div class="col-10">
+       @Html.Raw(@ViewData["Respuesta"])
+       </div>
 
     </header>
 

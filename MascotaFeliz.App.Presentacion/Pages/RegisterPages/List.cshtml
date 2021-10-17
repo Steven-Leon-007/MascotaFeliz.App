@@ -35,6 +35,9 @@
             </ul>
 
         </nav>
+        <div class="col-6">
+        @Html.Raw(@ViewData["Respuesta"])
+        </div>
 
     </header>
 
@@ -50,6 +53,7 @@
         </form>
 
         <h2>Veterinarios:</h2>
+        <a asp-page=".\EditVeterinario" class="btn-default">Agregar Veterinario</a>
         <table class="table">
             <tr class="top-tr">
                 <th>IDENTIFICACIÓN</th>
@@ -60,35 +64,38 @@
             @foreach (var veterinario in Model.Veterinarios)
             {
                 <tr>
+                    <td>@veterinario.Id</td>
                     <td>@veterinario.Identificacion</td>
                     <td>@veterinario.TarjetaProfesional</td>
                     <td>@veterinario.Nombre</td>
                     <td>@veterinario.Apellidos</td>
                     <td>
                         <a class="btn btn-primary table-btn" asp-page="./DetailsVeterinario"
-                        asp-route-veterinarioId="@veterinario.Id">
+                        asp-route-propietarioId="@veterinario.Id">
                             <i class="fas fa-info-circle" id="details_link"></i>
                         </a>
                     </td>
                     <td>
                         <a class="btn btn-primary table-btn" asp-page="./EditVeterinario"
-                        asp-route-veterinarioId="@veterinario.Id">
+                        asp-route-propietarioId="@veterinario.Id">
                             <i class="fas fa-address-book fa-lg" id="edit_link" aria-hidden="true"></i>
                         </a>
                     </td>
+                    <form method="post" class="form-inline" id="@veterinario.Id">
                     <td>
-                        <a class="btn btn-primary table-btn" asp-page="./DeleteVeterinario"
-                        asp-route-veterinarioId="@veterinario.Id">
-                            <i class="fas fa-trash" id="delete_link" aria-hidden="true"></i>
-                        </a>
+                        <input type="hidden" value="@veterinario.Id" name="idpropietario">
+                        <a href="#" class="btn btn-danger btn-sm" onclick="confirmar(@veterinario.Id);"
+                        data-toggle="tooltip" data-placement="right" title="Eliminar">
+                        <button type="submit" class="btn btn-primary" id="save_form"></button>
+                        <i class="fas fa-trash"></i>
                     </td>
+                    </form>
 
                 </tr>
             }
         </table>
         <p class="p-separator-up">ㅤ</p>
         <p class="p-separator-down"></p>
-        <a asp-page=".\EditVeterinario" class="btn btn-primary" id="create_link">Adicionar Veterinario</a>
 
     </main>
     <footer>
@@ -99,3 +106,11 @@
 
 
 </body>
+<script>
+    function confirmar(id) {
+        var opcion = confirm("Realmente desea eliminar el Veterinario?");
+        if (opcion == true) {
+            $('#' + id).submit();
+        }
+    }
+</script>

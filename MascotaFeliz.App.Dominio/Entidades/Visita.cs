@@ -8,8 +8,7 @@ namespace MascotaFeliz.App.Dominio
 
         public int Id { get; set; }
         
-        public Mascota Mascota {get; set;}
-        public Veterinario Veterinario {get;set;}
+        public string Mascota {get; set;}
         public DateTime Fecha {get; set;}
         [Required, StringLength(50)]
         public string Temperatura {get;set;}

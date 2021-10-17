@@ -14442,23 +14442,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\MascotaFeliz\\MascotaFeliz.App\\MascotaFeliz.App.Presentacion\\Pages\\RegisterPages\\DeleteVeterinario.cshtml",
-      "TargetPath": "Pages\\RegisterPages\\DeleteVeterinario.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\MascotaFeliz\\MascotaFeliz.App\\MascotaFeliz.App.Presentacion\\Pages\\RegisterPages\\DeletePropietario.cshtml",
-      "TargetPath": "Pages\\RegisterPages\\DeletePropietario.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "c:\\MascotaFeliz\\MascotaFeliz.App\\MascotaFeliz.App.Presentacion\\Pages\\RegisterPages\\EditVisita.cshtml",
       "TargetPath": "Pages\\RegisterPages\\EditVisita.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\MascotaFeliz\\MascotaFeliz.App\\MascotaFeliz.App.Presentacion\\Pages\\RegisterPages\\DeleteVisita.cshtml",
-      "TargetPath": "Pages\\RegisterPages\\DeleteVisita.cshtml",
       "FileKind": "mvc"
     },
     {

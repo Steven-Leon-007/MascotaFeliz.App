@@ -44,8 +44,8 @@ namespace MascotaFeliz.App.Persistencia
             var visitaEncontrado=_appContext.Visitas.FirstOrDefault(p =>p.Id== visitaActualizado.Id);
             if (visitaEncontrado!=null)
             {
+                visitaEncontrado.Id = visitaActualizado.Id;
                 visitaEncontrado.Mascota=visitaActualizado.Mascota;
-                visitaEncontrado.Veterinario=visitaActualizado.Veterinario;
                 visitaEncontrado.Fecha=visitaActualizado.Fecha;
                 visitaEncontrado.Temperatura=visitaActualizado.Temperatura;
                 visitaEncontrado.Peso=visitaActualizado.Peso;

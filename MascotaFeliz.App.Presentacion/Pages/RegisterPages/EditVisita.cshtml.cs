@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using MascotaFeliz.App.Dominio;
 using MascotaFeliz.App.Persistencia;
@@ -12,56 +13,85 @@ namespace MascotaFeliz.App.Presentacion.Pages
     public class EditVisitaModel : PageModel
     
     {
-        private readonly IRepositorioMascota repositorioMascota;
-        private readonly IRepositorioVeterinario repositorioVeterinario;
-        public IEnumerable<Veterinario> Veterinarios{get;set;}
-        public IEnumerable<Mascota> Mascotas{get;set;}
-        private readonly IRepositorioVisita repositorioVisita;
         [BindProperty]
-        public Visita Visita { get; set; }
+        public Veterinario veterinario {get;set;}
+        private readonly IRepositorioVisita repositorioVisita;
+        public IRepositorioVeterinario repositorioVeterinario;
+        [BindProperty]
+        public Visita visita { get; set; }
+        public IEnumerable<Mascota> Mascotas{get;set;}
+        public IRepositorioMascota repositorioMascota;
 
         public EditVisitaModel()
         {
             this.repositorioVisita = new RepositorioVisita(new MascotaFeliz.App.Persistencia.AppContext());
             this.repositorioVeterinario = new RepositorioVeterinario(new MascotaFeliz.App.Persistencia.AppContext());
-            this.repositorioMascota = new RepositorioMascota(new MascotaFeliz.App.Persistencia.AppContext());
         }
-        public IActionResult OnGet(int? visitaId)
+        public IActionResult OnGet(int? visitaId, int? veterinarioId)
         {
             Mascotas = repositorioMascota.GetAllMascotas();
-            Veterinarios = repositorioVeterinario.GetAllVeterinarios();
-            if(visitaId.HasValue)
+            if(visitaId.HasValue && veterinarioId.HasValue)
             {
-            Visita = repositorioVisita.GetVisita(visitaId.Value);
+            veterinario = repositorioVeterinario.GetVeterinario(veterinarioId.Value);
+            visita = repositorioVisita.GetVisita(visitaId.Value);
             }
             else
             {
-                Visita = new Visita();
+                if (veterinarioId.HasValue)
+                {
+                    veterinario = repositorioVeterinario.GetVeterinario(veterinarioId.Value);
+                }
+                else
+                {
+                    return RedirectToPage("./List");
+                }
+                visita = new Visita();
             }
-            if (Visita == null)
+            if (visita == null || veterinario == null)
             {
-                return RedirectToPage("./NotFound");
+                return RedirectToPage("./List");
             }
             else
-                return Page();
+            ViewData["veterinario"] = veterinarioId.Value;
+            return Page();
         }
 
         public IActionResult OnPost()
         {
-            if(!ModelState.IsValid)
+            veterinario = repositorioVeterinario.GetVeterinario(int.Parse(Request.Form["veterinarioId"]));
+            if (!ModelState.IsValid)
             {
+                Console.WriteLine("no valido");
                 return Page();
             }
-            if(Visita.Id>0)
+            if (visita.Id > 0)
             {
-              Visita = repositorioVisita.UpdateVisita(Visita);  
+                var visitae = repositorioVisita.UpdateVisita(visita);
+                ViewData["Respuesta"] = Alerts.ShowAlert(Alert.Success, "<span><strong>" + visitae.Mascota + "</strong> fue modificado correctamente.</span>");
             }
             else
             {
-                repositorioVisita.AddVisita(Visita);
+                if (veterinario == null)
+                {
+                    if (veterinario.Visitas != null)
+                    {
+                        veterinario.Visitas.Add(visita);
+                        repositorioVeterinario.UpdateVeterinario(veterinario);
+                        ViewData["Respuesta"] = Alerts.ShowAlert(Alert.Primary, "<span><strong>" + visita.Mascota + "</strong> se agregó una nueva mascota para " + veterinario.Nombre + " " + veterinario.Apellidos + ".</span>");
+                    }
+                    else
+                    {
+                        veterinario.Visitas = new List<Visita>(){visita};
+                        Console.WriteLine(JsonSerializer.Serialize(veterinario));
+                        repositorioVeterinario.UpdateVeterinario(veterinario);
+                        ViewData["Respuesta"] = Alerts.ShowAlert(Alert.Primary, "<span><strong>" + visita.Mascota + "</strong> se agregó a la lista de mascotas de " + veterinario.Nombre + " " + veterinario.Apellidos + ".</span>");
+                    }
+                }
             }
+            ViewData["veterinario"] = veterinario.Id;
             return Page();
         }
+        
     }
 
 }

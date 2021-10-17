@@ -19,16 +19,16 @@ namespace MascotaFeliz.App.Presentacion.Pages
             this.repositorioVisita =new RepositorioVisita(new MascotaFeliz.App.Persistencia.AppContext());
         }
 
-        public IActionResult OnGet(int visitaId)
+        public IActionResult OnGet(int visitaId, int veterinarioId)
         {
-
             Visita = repositorioVisita.GetVisita(visitaId);
             if (Visita == null)
             {
                 return RedirectToPage("./NotFound");
             }
             else
-                return Page();
+            ViewData["veterinario"]=veterinarioId;
+            return Page();
         }
     }
 

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using MascotaFeliz.App.Dominio;
+using Microsoft.EntityFrameworkCore;
 
 namespace MascotaFeliz.App.Persistencia
 {
@@ -30,12 +31,12 @@ namespace MascotaFeliz.App.Persistencia
 
         IEnumerable<Veterinario> IRepositorioVeterinario.GetAllVeterinarios()
         {
-            return _appContext.Veterinarios;
+            return _appContext.Veterinarios.Include(p=>p.Visitas);
         }
 
         Veterinario IRepositorioVeterinario.GetVeterinario(int idVeterinario)
         {
-            return _appContext.Veterinarios.FirstOrDefault(p =>p.Id==idVeterinario);
+            return _appContext.Veterinarios.Where(p => p.Id == idVeterinario).Include(p=>p.Visitas).FirstOrDefault();
 
         }
 
@@ -44,11 +45,13 @@ namespace MascotaFeliz.App.Persistencia
             var veterinarioEncontrado=_appContext.Veterinarios.FirstOrDefault(p =>p.Id== veterinarioActualizado.Id);
             if (veterinarioEncontrado!=null)
             {
+                veterinarioEncontrado.Id = veterinarioActualizado.Id;
                 veterinarioEncontrado.Identificacion=veterinarioActualizado.Identificacion;
                 veterinarioEncontrado.Nombre=veterinarioActualizado.Nombre;
                 veterinarioEncontrado.Apellidos=veterinarioActualizado.Apellidos;
                 veterinarioEncontrado.Telefono=veterinarioActualizado.Telefono;
                 veterinarioEncontrado.TarjetaProfesional=veterinarioActualizado.TarjetaProfesional;
+                veterinarioEncontrado.Visitas = veterinarioActualizado.Visitas;
 
                 _appContext.SaveChanges();
                 
