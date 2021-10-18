@@ -45,8 +45,8 @@
     <main>
 
         <h1>EDICIÓN DATOS VISITA:</h1>
-        <h4>Veterinario: @Model.veterinario.Nombre @Model.veterinario.Apellidos</h4><hr>
-    <form method="post">
+        <h4>Veterinario: @Model.veterinario.Nombre @Model.veterinario.Apellidos</h4>
+    <form method="post" class="grid-form">
         <input type="hidden" asp-for="visita.Id" />
             <input type="hidden" asp-for="veterinario.Id" name="veterinarioId"/>
             <input type="hidden" asp-for="veterinario.Nombre" />
@@ -55,22 +55,22 @@
             <input type="hidden" asp-for="veterinario.TarjetaProfesional" />
             <input type="hidden" asp-for="veterinario.Telefono"/>
             <div class="form-group">
-                <label asp-for="visita.Mascota">Mascota:</label>
+                <label asp-for="visita.Mascota" class="visit-pet">Mascota:</label>
                 <input asp-for="visita.Mascota" class="form-control">
                 <span class="text-danger" asp-validation-for="visita.Mascota"></span>
             </div>
             <div class="form-group">
-                <label asp-for="visita.Fecha">Fecha:</label>
+                <label asp-for="visita.Fecha" class="visit-date">Fecha:</label>
                 <input asp-for="visita.Fecha" class="form-control">
                 <span class="text-danger" asp-validation-for="visita.Fecha"></span>
             </div>
             <div class="form-group">
-                <label asp-for="visita.Temperatura">Temperatura:</label>
+                <label asp-for="visita.Temperatura" class="visit-temperature">Temperatura:</label>
                 <input asp-for="visita.Temperatura" class="form-control">
                 <span class="text-danger" asp-validation-for="visita.Temperatura"></span>
             </div>
             <div class="form-group">
-                <label asp-for="visita.Peso">Peso:</label>
+                <label asp-for="visita.Peso" class="visit-weight">Peso:</label>
                 <input asp-for="visita.Peso" class="form-control">
                 <span class="text-danger" asp-validation-for="visita.Peso"></span>
             </div>
@@ -85,12 +85,12 @@
                 <span class="text-danger" asp-validation-for="visita.FrecuenciaCardiaca"></span>
             </div>
             <div class="form-group">
-                <label asp-for="visita.EstadoDeAnimo">Estado de ánimo:</label>
+                <label asp-for="visita.EstadoDeAnimo" class="visit-mood">Estado de ánimo:</label>
                 <input asp-for="visita.EstadoDeAnimo" class="form-control">
                 <span class="text-danger" asp-validation-for="visita.EstadoDeAnimo"></span>
             </div>
             <div class="form-group">
-                <label asp-for="visita.Recomendaciones">Recomendaciones:</label>
+                <label asp-for="visita.Recomendaciones" class="visit-recomendations">Recomendaciones:</label>
                 <input asp-for="visita.Recomendaciones" class="form-control">
                 <span class="text-danger" asp-validation-for="visita.Recomendaciones"></span>
             </div>

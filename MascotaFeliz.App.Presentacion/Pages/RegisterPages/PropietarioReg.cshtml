@@ -43,21 +43,22 @@
 
     <main>
 
-        <form method="get">
+        <p class="p-separator-up">ㅤ</p>
+        <form method="get" class="search-form">
             <div class="form-group">
-                <label for="nombre">Buscar por Nombre</label>
+                <label for="nombre">Buscar por Nombre: </label>
                 <input name="nombre" id="nombre" class="form-control" asp-for="@Model.bActual">
-                <button type="submit" class="fas fa-search"></button>
+                <button type="submit" class="fas fa-search" id="search-button"></button>
             </div>
             <div class="form-group">
-                <label for="iden">Buscar por Identificación</label>
+                <label for="iden" id="label-iden">Buscar por Identificación: </label>
                 <input name="iden" id="iden" class="form-control" asp-for="@Model.iActual">
-                <button type="submit" class="fas fa-search"></button>
+                <button type="submit" class="fas fa-search" id="btnSearch"></button>
             </div>
         </form>
 
         <h2>Propietarios:</h2>
-        <a asp-page=".\EditPropietario" class="btn-default">Agregar Propietario</a>
+
         <table class="table">
             <tr class="top-tr">
                 <th>ID</th>
@@ -78,7 +79,7 @@
                     <td>
                         <a class="btn btn-primary table-btn" asp-page="./DetailsPropietario"
                         asp-route-propietarioId="@propietario.Id">
-                            <i class="fas fa-info-circle" id="details_link"></i>
+                            <i class="fas fa-info-circle fa-lg" id="details_link"></i>
                         </a>
                     </td>
                     <td>
@@ -90,10 +91,7 @@
                     <form method="post" class="form-inline" id="@propietario.Id">
                     <td>
                         <input type="hidden" value="@propietario.Id" name="idpropietario">
-                        <a href="#" class="btn btn-danger btn-sm" onclick="confirmar(@propietario.Id);"
-                        data-toggle="tooltip" data-placement="right" title="Eliminar">
-                        <button type="submit" class="btn btn-primary" id="save_form"></button>
-                        <i class="fas fa-trash"></i>
+                        <button type="submit" class="fas fa-trash fa-lg" id="delete_link"></button> 
                     </td>
                     </form>
                 </tr>
@@ -103,7 +101,8 @@
         <p class="p-separator-down"></p>
 
     </main>
-
+        <a asp-page=".\EditPropietario" class="btn-default" id="create_link">Agregar Propietario</a>
+        
     <footer>
         <article>
             <p>© 2021 - Designed and Developed by InMotion</p>

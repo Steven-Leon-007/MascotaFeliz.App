@@ -65,25 +65,21 @@
                 {
                     <li class="list-group-item d-flex justify-content-between">
                         <span>@visita.Mascota - @visita.Fecha</span>
-                        <div>
+                        <div class="div-crud">
                             <form method="POST" class="form-inline" id="@visita.Id">
-                                <a class="btn btn-sm btn-primary mr-2" asp-page="/RegisterPages/DetailsVeterinario"
+                                <a class="btn btn-sm btn-primary mr-2" asp-page="/RegisterPages/DetailsVisita"
                                 asp-route-visitaId="@visita.Id" asp-route-veterinarioId="@Model.Veterinario.Id"
                                 data-toggle="tooltip" data-placement="top" title="Detalles">
-                                    <i class="fas fa-eye"></i>
+                                    <i class="fas fa-eye fa-lg" id="details_link"></i>
                                 </a>
-                                <a class="btn btn-sm btn-success mr-2" asp-page="RegisterPages//EditVisita"
+                                <a class="btn btn-sm btn-success mr-2" asp-page="/RegisterPages/EditVisita"
                                 asp-route-visitaId="@visita.Id" asp-route-veterinarioId="@Model.Veterinario.Id"
                                 data-toggle="tooltip" data-placement="top" title="Editar">
-                                    <i class="fas fa-edit"></i>
+                                    <i class="fas fa-edit fa-lg" id="edit_link"></i>
                                 </a>
                                 <input type="hidden" value="@visita.Id" name="idvisita">
                                 <input type="hidden" value="@Model.Veterinario.Id" name="idveterinario">
-                                <a href="#" class="btn btn-danger btn-sm" onclick="confirmar(@visita.Id);"
-                                data-toggle="tooltip" data-placement="right" title="Eliminar">
-                                    <button type="submit" class="btn btn-primary" id="save_form"></button>
-                                    <i class="fas fa-trash"></i>
-                                </a>
+                                    <button type="submit" class="fas fa-trash fa-lg" id="delete_link"></button>
                             </form>
                         </div>
                     </li>
@@ -93,8 +89,8 @@
 
         </div>
         <p class="p-separator-up"></p>
-        <a asp-page="./List" class="btn-default">Regresar</a>
-        <a asp-page="./EditVisita" asp-route-veterinarioId="@Model.Veterinario.Id" class="btn btn-primary">Agregar una
+        <a asp-page="./List" class="btn-default" id="a-button-style">Regresar</a>
+        <a asp-page="./EditVisita" asp-route-veterinarioId="@Model.Veterinario.Id" class="btn btn-primary" id="a-button-style">Agregar una
             visita</a>
         <p class="p-separator-down"></p>
 

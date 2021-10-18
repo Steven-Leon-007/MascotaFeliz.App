@@ -150,6 +150,29 @@ main h2{
     font-size: 28px;
 }
 
+#nombre{
+    width: 40%;
+    height: 40%;
+    margin-bottom: 25px;
+    margin-right: 5px;
+    border-radius: 3px;
+    border: 1px solid gray;
+    text-align: center;
+}
+
+#iden{
+    width: 40%;
+    height: 40%;
+    margin-bottom: 25px;
+    margin-right: 5px;
+    border-radius: 3px;
+    border: 1px solid gray;
+    text-align: center;
+}
+
+#label-iden{
+    margin-left: 20px;
+}
 
 main td,
 main th{
@@ -181,8 +204,42 @@ main tr:hover{
 #delete_link{
     text-decoration: none;
     color: rgb(169, 56, 56);
+    border: none;
+    background: none;
+    
 }
 
+#delete_link:hover{
+    cursor: hand;
+}
+
+#details-eye{
+    color: #263a7e;
+}
+
+.search-form{
+    display: flex;
+    margin-bottom: 20px;
+    margin-left: 50px;
+    margin-top: 20px;
+}
+
+#search-button{
+    margin-right: 50px;
+    border: none;
+    color:rgb(194, 152, 60);
+    
+}
+
+#btnSearch{
+    border: none;
+    color:rgb(194, 152, 60);
+}
+
+#search-button:hover,
+#btnSearch:hover{
+    cursor: hand;
+}
 
 .p-separator-up {
     margin-top: 30px;
@@ -198,13 +255,11 @@ main tr:hover{
     text-decoration: none;
     color: #000;
     background: #d2d8d8;
-    margin-left: 70px;
+    margin-left: 1075px;
     margin-top: 30px;
     border: 1px solid;
     border-radius: 8px;
     padding: 20px;
-    position: absolute;
-    right: 100px;
     font-weight: bold;
 
 }
@@ -219,7 +274,7 @@ main tr:hover{
 
 
 footer{
-    margin-top: 125px;
+    margin-top: 110px;
     margin-bottom: 0px;
     background-color: #1A181B;
     box-shadow: #4e1566 0px 1px 4px, rgb(145, 89, 89) 0px 0px 0px 3px;

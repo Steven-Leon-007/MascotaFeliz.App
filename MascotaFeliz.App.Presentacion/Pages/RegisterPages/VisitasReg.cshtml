@@ -36,7 +36,7 @@
 
         </nav>
         <div class="col-6">
-        @Html.Raw(@ViewData["Respuesta"])
+            @Html.Raw(@ViewData["Respuesta"])
         </div>
 
     </header>
@@ -49,34 +49,35 @@
                 <th>ID</th>
                 <th>NOMBRE <br>MASCOTA</th>
                 <th>VETERINARIO</th>
-                <th>PESO</th>
                 <th>FECHA</th>
                 <th>FRECUENCIA <br>RESPIRATORIA</th>
                 <th>FRECUENCIA <br>CARDIACA</th>
 
             </tr>
             @foreach (var veterinario in Model.Veterinarios)
-    {
-            @foreach (var visita in veterinario.Visitas)
             {
-                <tr>
-                    <td>@visita.Id</td>
-                    <td>@visita.Mascota</td>
-                    <td>@veterinario.Nombre @veterinario.Apellidos</td>
-                    <td>@visita.Peso</td>
-                    <td>@visita.Fecha</td>
-                    <td>@visita.FrecuenciaRespiratoria</td>
-                    <td>@visita.FrecuenciaCardiaca</td>
-                </tr>
-                <form method="POST" class="form-inline" id="@visita.Id">
-                    <a class="btn btn-primary btn-sm mr-3" asp-page="/RegisterPages/DetailsVeterinario"
-                    asp-route-visitaId="@visita.Id" asp-route-veterinarioId="@veterinario.Id" data-toggle="tooltip" data-placement="right"
-                    title="Detalles">
-                    <i class="fas fa-eye"></i>
-                    </a>
-                    </form>
+                @foreach (var visita in veterinario.Visitas)
+                {
+                    <tr>
+                        <td>@visita.Id</td>
+                        <td>@visita.Mascota</td>
+                        <td>@veterinario.Nombre @veterinario.Apellidos</td>
+                        <td>@visita.Fecha</td>
+                        <td>@visita.FrecuenciaRespiratoria</td>
+                        <td>@visita.FrecuenciaCardiaca</td>
+                        <td>
+                        <form method="POST" class="form-inline" id="@visita.Id">
+                            <a class="btn btn-primary btn-sm mr-3" asp-page="/RegisterPages/DetailsVeterinario"
+                        asp-route-visitaId="@visita.Id" asp-route-veterinarioId="@veterinario.Id" data-toggle="tooltip"
+                        data-placement="right" title="Detalles">
+                                <i class="fas fa-eye" id="details-eye"></i>
+                            </a>
+                        </form>
+                        </td>
+                    </tr>
+
+                }
             }
-        }
         </table>
         <p class="p-separator-up">ㅤ</p>
         <p class="p-separator-down"></p>

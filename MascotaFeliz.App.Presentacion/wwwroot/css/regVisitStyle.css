@@ -187,7 +187,9 @@ main tr:hover{
     color: rgb(169, 56, 56);
 }
 
-
+#details-eye{
+    color: #263a7e;
+}
 
 .p-separator-up {
     margin-top: 30px;

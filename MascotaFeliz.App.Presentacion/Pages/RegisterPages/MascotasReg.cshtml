@@ -1,7 +1,7 @@
 ﻿@page
 @using MascotaFeliz.App.Dominio
 @model MascotaFeliz.App.Presentacion.Pages.MascotasRegModel
-@{ 
+@{
     Layout = null;
     ViewData["Title"] = "Registro de Mascotas";
 }
@@ -15,7 +15,8 @@
 <body>
 
     <header>
-           <a id="nav_header_logo" asp-page="/RegisterPages/vetView"><img src="/lib/logoMascFeliz.png" alt="Logo Mascota Feliz"/>
+        <a id="nav_header_logo" asp-page="/RegisterPages/vetView"><img src="/lib/logoMascFeliz.png"
+                alt="Logo Mascota Feliz" />
         </a>
         <a id="nav_header_text" asp-page="/RegisterPages/vetView">
             <h1>Mascota Feliz</h1>
@@ -27,7 +28,7 @@
                 <li><a id="nav_header_petregister">Historial de Registros</a>
                     <ul class="nav_submenu">
                         <li><a href="/RegisterPages/MascotasReg">Mascotas</a></li>
-                        <li><a href="/RegisterPages/PropietarioReg">Propietarios</a></li>   
+                        <li><a href="/RegisterPages/PropietarioReg">Propietarios</a></li>
                         <li><a href="/RegisterPages/List">Veterinarios</a></li>
                         <li><a href="/RegisterPages/VisitasReg">Visitas</a></li>
                     </ul>
@@ -37,7 +38,7 @@
 
         </nav>
         <div class="col-6">
-        @Html.Raw(@ViewData["Respuesta"])
+            @Html.Raw(@ViewData["Respuesta"])
         </div>
 
     </header>
@@ -45,39 +46,43 @@
 
     <main>
 
-    <h2>Mascotas:</h2>
-    <table class="table">
-        <tr class="top-tr">
-            <th>ID</th>
-            <th>NOMBRE</th>
-            <th>RAZA</th>
-            <th>TIPO DE ANIMAL</th>
-            <th>PROPIETARIO</th>
-        </tr>
+        <h2>Mascotas:</h2>
+        <table class="table">
+            <tr class="top-tr">
+                <th>ID</th>
+                <th>NOMBRE</th>
+                <th>RAZA</th>
+                <th>TIPO DE ANIMAL</th>
+                <th>PROPIETARIO</th>
+                <th>DETALLES</th>
+            </tr>
 
-    @foreach (var propietario in Model.Propietarios)
-    {
-            @foreach (var mascota in propietario.Mascotas)
+            @foreach (var propietario in Model.Propietarios)
             {
-                <tr>
-                    <td>@mascota.Id</td>
-                    <td>@mascota.NombreMascota</td>
-                    <td>@mascota.Raza</td>
-                    <td>@mascota.TipoAnimal</td>
-                    <td>@propietario.Nombre @propietario.Apellidos</td>
-                </tr>
-                <form method="POST" id="@mascota.Id">
-                    <a class="btn btn-primary btn-sm mr-3" asp-page="/RegisterPages/DetailsPropietario"
-                    asp-route-mascotaId="@mascota.Id" asp-route-propietarioId="@propietario.Id" data-toggle="tooltip" data-placement="right"
-                    title="Detalles">
-                    <i class="fas fa-eye"></i>
-                    </a>
-                    </form>
+                @foreach (var mascota in propietario.Mascotas)
+                {
+                    <tr>
+                        <td>@mascota.Id</td>
+                        <td>@mascota.NombreMascota</td>
+                        <td>@mascota.Raza</td>
+                        <td>@mascota.TipoAnimal</td>
+                        <td>@propietario.Nombre @propietario.Apellidos</td>
+                        <td>
+                            <form method="POST" id="@mascota.Id">
+                                <a class="btn btn-primary btn-sm mr-3" asp-page="/RegisterPages/DetailsPropietario"
+                            asp-route-mascotaId="@mascota.Id" asp-route-propietarioId="@propietario.Id"
+                            data-toggle="tooltip" data-placement="right" title="Detalles">
+                                    <i class="fas fa-eye" id="details-eye"></i>
+                                </a>
+                            </form>
+                        </td>
+                    </tr>
+
+                }
             }
-        }
-    </table>
-            <p class="p-separator-up">ㅤ</p>
-            <p class="p-separator-down"></p>
+        </table>
+        <p class="p-separator-up">ㅤ</p>
+        <p class="p-separator-down"></p>
 
     </main>
 
